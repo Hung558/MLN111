@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html class="dark" lang="vi">
+<head>
+    <!-- Chặn hiện tượng nháy theme (FOUC) -->
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            if (savedTheme === 'light') {
+                document.documentElement.classList.remove('dark');
+                document.documentElement.classList.add('light');
+            } else {
+                document.documentElement.classList.remove('light');
+                document.documentElement.classList.add('dark');
+            }
+        })();
+    </script>
+
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Lý Luận Chi Tiết - Triết Học Hệ Số</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="css/shared.css"/>
+    <link rel="stylesheet" href="css/lythuyet.css"/>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: { extend: { fontFamily: { sans: ["Be Vietnam Pro", "sans-serif"] } } }
+        }
+    </script>
+</head>
+<body class="min-h-screen pb-16 lg:pb-0" >
+
+    <!-- SideNavBar -->
+    <side-bar active="lythuyet"></side-bar>
+
+    <div class="lg:pl-64 flex flex-col min-h-screen">
+
+        <!-- TopAppBar -->
+        <top-bar active="lythuyet"></top-bar>
+
+        <main class="flex-grow w-full max-w-6xl mx-auto px-6 py-8">
+            <section class="space-y-3 max-w-3xl mb-8">
+                <div class="flex items-center gap-2">
+                    <span class="badge-primary px-2.5 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider" style="background:#1a3a5a; color:#86a4ca;">Học tập</span>
+                    <span style="color:#c3c6ce;">•</span>
+                    <span class="text-sm font-medium dark-text-dim" style="color:#43474e;">Tài liệu học thuật</span>
+                </div>
+                <h2 class="text-3xl lg:text-4xl font-extrabold leading-tight dark-heading" style="color:#002442;">Lý Luận Chi Tiết</h2>
+                <p class="text-base leading-relaxed dark-text" style="color:#43474e;">
+                    Khảo cứu các học thuyết triết học Đông - Tây để hiểu rõ bản chất của sự tha hóa trong thời đại số và con đường đi tới giải phóng tự do toàn diện.
+                </p>
+            </section>
+
+            <!-- Article 1: West -->
+            <article class="theory-article card-surface p-8 rounded-2xl shadow-sm space-y-6 mb-8" style="background:#f3f4f5; border:1px solid rgba(195,198,206,0.1);">
+                <div class="flex items-center gap-3 pb-4" style="border-bottom:1px solid rgba(195,198,206,0.1);">
+                    <span class="article-icon material-symbols-outlined text-3xl icon-primary" style="color:#002442;">gavel</span>
+                    <h2 id="t-title-west" class="text-2xl font-black dark-heading" style="color:#002442;">Chương III: Triết học về con người - Sự tha hóa</h2>
+                </div>
+                <p id="t-p1-west" class="text-base leading-relaxed text-justify dark-text" style="color:#43474e;">
+                    Theo giáo trình Triết học Mác - Lênin, bản chất của con người không phải là cái gì trừu tượng cố định, mà là tổng hòa các mối quan hệ xã hội. Con người tự tạo ra chính mình thông qua quá trình lao động thực tiễn cải tạo thế giới quan.
+                </p>
+                <div class="highlight-box p-5 rounded-r-xl space-y-2" style="background:rgba(183,16,50,0.05); border-left:4px solid #b71032;">
+                    <strong id="t-alert-title" class="font-bold text-base block" style="color:#b71032;">Trạng thái cực đoan (Dark Mode):</strong>
+                    <p id="t-alert-desc" class="text-sm leading-relaxed dark-text" style="color:#43474e;">
+                        Sự tha hóa con người xuất hiện đỉnh điểm khi lao động bị ép buộc. Người công nghệ số (IT) làm việc kiệt sức, biến thành công cụ tạo ra lợi nhuận cho guồng quay phần mềm, không còn thời gian tái tạo tư duy độc lập tự do.
+                    </p>
+                </div>
+                <div class="space-y-3">
+                    <h3 class="text-lg font-bold dark-heading" style="color:#002442;">Hệ quả đối với đời sống văn hóa</h3>
+                    <p id="t-p2-west" class="text-base leading-relaxed text-justify dark-text" style="color:#43474e;">
+                        Khi bị tha hóa, con người đánh mất mối liên kết với cộng đồng xung quanh, thu mình lại trong vỏ bọc cô độc của mạng xã hội, dần biến tư duy sống động thành những phản xạ máy móc lập trình sẵn.
+                    </p>
+                </div>
+            </article>
+
+            <!-- Article 2: East -->
+            <article class="theory-article card-surface p-8 rounded-2xl shadow-sm space-y-6" style="background:#f3f4f5; border:1px solid rgba(195,198,206,0.1);">
+                <div class="flex items-center gap-3 pb-4" style="border-bottom:1px solid rgba(195,198,206,0.1);">
+                    <span class="article-icon material-symbols-outlined text-3xl icon-primary" style="color:#002442;">ac_unit</span>
+                    <h2 id="t-title-east" class="text-2xl font-black dark-heading" style="color:#002442;">Học Thuyết Phương Đông: Âm Dương &amp; Ngũ Hành</h2>
+                </div>
+                <p id="t-p1-east" class="text-base leading-relaxed text-justify dark-text" style="color:#43474e;">
+                    Vũ trụ được tạo thành từ năm yếu tố cơ bản: Kim, Mộc, Thủy, Hỏa, Thổ. Các yếu tố này vận hành theo cơ chế tương sinh (nuôi dưỡng) và tương khắc (kiềm tỏa) để duy trì một trạng thái cân bằng động của vạn vật.
+                </p>
+                <div class="space-y-3">
+                    <h3 class="text-lg font-bold dark-heading" style="color:#002442;">Sự mất cân bằng hệ sinh thái tinh thần</h3>
+                    <p id="t-p2-east" class="text-base leading-relaxed text-justify dark-text" style="color:#43474e;">
+                        Trong không gian gò bó, hành Kim (máy móc, thuật toán sắc lạnh) đang thịnh vượng quá mức lấn át hành Mộc (sự tăng trưởng tự nhiên, sáng tạo) và thiêu rụi hành Thủy (dòng chảy cảm xúc mềm mại). Sự mất cân bằng hệ thống này đẩy con người rơi thẳng vào trạng thái u tối, ngột ngạt.
+                    </p>
+                </div>
+            </article>
+        </main>
+
+        <footer class="w-full max-w-6xl mx-auto px-6 py-8 text-center" style="border-top:1px solid rgba(195,198,206,0.1);">
+            <p class="text-xs" style="color:#73777e;">© 2026 Nhóm Đồ Án Triết Học Đông - Tây | Ứng Dụng Kỹ Thuật Theme Switching Chuyên Sâu</p>
+        </footer>
+    </div>
+
+    <!-- BottomNavBar -->
+    <bottom-bar active="lythuyet"></bottom-bar>
+
+    <script src="js/components.js"></script>
+    <script>
+        const toggle = document.getElementById('theme-toggle');
+        const modeText = document.getElementById('mode-text');
+
+        function updateContent(isLight) {
+            if (isLight) {
+                document.documentElement.classList.remove('dark');
+                document.documentElement.classList.add('light');
+                if(modeText) modeText.innerText = "TỰ DO (DƯƠNG)";
+                document.getElementById('t-title-west').innerText = "Chương III: Giải phóng con người toàn diện";
+                document.getElementById('t-p1-west').innerText = "Mục đích cao cả nhất của Triết học phương Tây tiến bộ là trả lại vị thế chủ thể cho con người. Giải phóng con người là giải phóng họ khỏi sự nô dịch vật chất, đưa công nghệ về đúng vai trò công cụ đắc lực hỗ trợ tư duy.";
+                document.getElementById('t-alert-title').innerText = "Trạng thái giải phóng (Light Mode):";
+                document.getElementById('t-alert-desc').innerText = "Không gian mở rộng, thời gian làm việc được làm chủ một cách khoa học. Con người có đầy đủ điều kiện để phát triển năng lực sáng tạo nghệ thuật, nghiên cứu và kết nối cảm xúc chân thật.";
+                document.getElementById('t-p2-west').innerText = "Học thuyết khẳng định sự phát triển tự do của mỗi người là điều kiện tiên quyết cho sự phát triển tự do của tất cả mọi người trong xã hội tương lai.";
+                document.getElementById('t-title-east').innerText = "Học Thuyết Phương Đông: Ngũ Hành Tương Sinh";
+                document.getElementById('t-p1-east').innerText = "Khi năng lượng Dương bừng sáng, quy luật Tương Sinh được khôi phục. Mộc (Sáng tạo) nhận được Thủy (Tri thức) tưới mát, phát triển vượt bậc và thuần hóa hành Kim (Công nghệ) trở nên mềm dẻo, hữu ích.";
+                document.getElementById('t-p2-east').innerText = "Mọi yếu tố tự nhiên và nhân tạo hòa làm một. Con người sống thuận theo tự nhiên nhưng làm chủ bằng trí tuệ, tạo ra sự phát triển bền vững và thịnh vượng lâu dài.";
+            } else {
+                document.documentElement.classList.remove('light');
+                document.documentElement.classList.add('dark');
+                if(modeText) modeText.innerText = "TÙ TÚNG (ÂM)";
+                document.getElementById('t-title-west').innerText = "Chương III: Triết học về con người - Sự tha hóa";
+                document.getElementById('t-p1-west').innerText = "Theo giáo trình Triết học Mác - Lênin, bản chất của con người không phải là cái gì trừu tượng cố định, mà là tổng hòa các mối quan hệ xã hội. Con người tự tạo ra chính mình thông qua quá trình lao động thực tiễn cải tạo thế giới quan.";
+                document.getElementById('t-alert-title').innerText = "Trạng thái cực đoan (Dark Mode):";
+                document.getElementById('t-alert-desc').innerText = "Sự tha hóa con người xuất hiện đỉnh điểm khi lao động bị ép buộc. Người công nghệ số (IT) làm việc kiệt sức, biến thành công cụ tạo ra lợi nhuận cho guồng quay phần mềm, không còn thời gian tái tạo tư duy độc lập tự do.";
+                document.getElementById('t-p2-west').innerText = "Khi bị tha hóa, con người đánh mất mối liên kết với cộng đồng xung quanh, thu mình lại trong vỏ bọc cô độc của mạng xã hội, dần biến tư duy sống động thành những phản xạ máy móc lập trình sẵn.";
+                document.getElementById('t-title-east').innerText = "Học Thuyết Phương Đông: Âm Dương & Ngũ Hành";
+                document.getElementById('t-p1-east').innerText = "Vũ trụ được tạo thành từ năm yếu tố cơ bản: Kim, Mộc, Thủy, Hỏa, Thổ. Các yếu tố này vận hành theo cơ chế tương sinh (nuôi dưỡng) và tương khắc (kiềm tỏa) để duy trì một trạng thái cân bằng động của vạn vật.";
+                document.getElementById('t-p2-east').innerText = "Trong không gian gò bó, hành Kim (máy móc, thuật toán sắc lạnh) đang thịnh vượng quá mức lấn át hành Mộc (sự tăng trưởng tự nhiên, sáng tạo) và thiêu rụi hành Thủy (dòng chảy cảm xúc mềm mại). Sự mất cân bằng hệ thống này đẩy con người rơi thẳng vào trạng thái u tối, ngột ngạt.";
+            }
+        }
+
+        const currentTheme = localStorage.getItem('theme') || 'dark';
+        if (currentTheme === 'light') { toggle.checked = true; updateContent(true); }
+        else { toggle.checked = false; updateContent(false); }
+        toggle.addEventListener('change', function() {
+            localStorage.setItem('theme', this.checked ? 'light' : 'dark');
+            updateContent(this.checked);
+        });
+    </script>
+</body>
+</html>

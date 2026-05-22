@@ -1,0 +1,222 @@
+/* ========================================
+   SHARED.CSS - Dùng chung cho toàn bộ site
+   ======================================== */
+
+/* --- CSS Custom Properties (Theme Variables) --- */
+:root {
+    /* Light mode (default) */
+    --bg-body: #f8f9fa;
+    --text-body: #191c1d;
+    --bg-sidebar: #f3f4f5;
+    --text-sidebar-title: #002442;
+    --text-sidebar-subtitle: #73777e;
+    --bg-sidebar-btn: #002442;
+    --text-sidebar-btn: #ffffff;
+    --bg-nav-active: #da3148;
+    --text-nav-active: #fffbff;
+    --text-nav-inactive: #43474e;
+    --bg-nav-hover: #e7e8e9;
+    --bg-header: #f8f9fa;
+    --text-header-title: #b71032;
+    --text-header-link: #43474e;
+    --text-header-link-active: #b71032;
+    --bg-toggle-track: #e1e3e4;
+    --bg-toggle-thumb: #ffffff;
+    --bg-card-surface: #f3f4f5;
+    --border-card: rgba(195,198,206,0.1);
+    --bg-banner-primary: #002442;
+    --text-banner: #ffffff;
+    --bg-footer: transparent;
+    --border-footer: rgba(195,198,206,0.1);
+    --text-footer: #73777e;
+    --bg-bottom-nav: #edeeef;
+    --text-bottom-nav: #43474e;
+    --bg-bottom-nav-active: #da3148;
+    --text-bottom-nav-active: #fffbff;
+}
+
+/* Dark mode overrides via class */
+html.dark {
+    --bg-body: #111318;
+    --text-body: #e2e2e5;
+    --bg-sidebar: #1a1c20;
+    --text-sidebar-title: #abc9f0;
+    --text-sidebar-subtitle: #8e9099;
+    --bg-sidebar-btn: #abc9f0;
+    --text-sidebar-btn: #001d36;
+    --bg-nav-active: #93000a;
+    --text-nav-active: #ffdad9;
+    --text-nav-inactive: #c3c6ce;
+    --bg-nav-hover: #2a2d32;
+    --bg-header: #111318;
+    --text-header-title: #ffb3b4;
+    --text-header-link: #c3c6ce;
+    --text-header-link-active: #ffb3b4;
+    --bg-toggle-track: #43474e;
+    --bg-toggle-thumb: #ffffff;
+    --bg-card-surface: #1a1c20;
+    --border-card: rgba(255,255,255,0.06);
+    --bg-banner-primary: #1a3a5a;
+    --text-banner: #abc9f0;
+    --bg-footer: transparent;
+    --border-footer: rgba(255,255,255,0.06);
+    --text-footer: #8e9099;
+    --bg-bottom-nav: #1a1c20;
+    --text-bottom-nav: #c3c6ce;
+    --bg-bottom-nav-active: #93000a;
+    --text-bottom-nav-active: #ffdad9;
+}
+
+/* --- Font & Reset --- */
+body {
+    font-family: 'Be Vietnam Pro', sans-serif;
+    background-color: var(--bg-body);
+    color: var(--text-body);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+/* --- Glass Card --- */
+.glass-card {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(183, 16, 50, 0.1);
+}
+
+/* --- Scrollbar Hide --- */
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* ========================================
+   COMPONENT STYLES USING CSS VARIABLES
+   Các component sử dụng CSS variables
+   ======================================== */
+
+/* --- Sidebar --- */
+aside {
+    background-color: var(--bg-sidebar);
+    border-right-color: var(--border-card);
+    transition: background-color 0.3s ease;
+}
+
+aside h2 {
+    color: var(--text-sidebar-title);
+}
+
+aside p {
+    color: var(--text-sidebar-subtitle);
+}
+
+aside nav a:not(.nav-active) {
+    color: var(--text-nav-inactive);
+}
+
+aside nav a:not(.nav-active):hover {
+    background-color: var(--bg-nav-hover);
+}
+
+aside nav a.nav-active {
+    background-color: var(--bg-nav-active);
+    color: var(--text-nav-active);
+}
+
+aside .sidebar-btn {
+    background-color: var(--bg-sidebar-btn);
+    color: var(--text-sidebar-btn);
+}
+
+/* --- Header / TopAppBar --- */
+header {
+    background-color: var(--bg-header);
+    border-bottom-color: var(--border-card);
+    transition: background-color 0.3s ease;
+}
+
+header h1 {
+    color: var(--text-header-title);
+}
+
+header nav a:not(.top-active) {
+    color: var(--text-header-link);
+}
+
+header nav a.top-active {
+    color: var(--text-header-link-active);
+    border-bottom-color: var(--text-header-link-active);
+}
+
+/* --- Theme Toggle --- */
+.toggle-track {
+    background-color: var(--bg-toggle-track);
+    transition: background-color 0.3s ease;
+}
+
+#mode-text {
+    color: var(--text-nav-inactive);
+}
+
+/* --- Cards & Containers --- */
+.card-surface {
+    background-color: var(--bg-card-surface);
+    border-color: var(--border-card);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.banner-primary {
+    background-color: var(--bg-banner-primary);
+}
+
+/* --- Footer --- */
+footer {
+    border-top-color: var(--border-footer);
+}
+
+footer p {
+    color: var(--text-footer);
+}
+
+/* --- Bottom Nav --- */
+.bottom-nav {
+    background-color: var(--bg-bottom-nav);
+    border-top-color: var(--border-card);
+}
+
+.bottom-nav a:not(.bnav-active) {
+    color: var(--text-bottom-nav);
+}
+
+.bottom-nav a.bnav-active {
+    background-color: var(--bg-bottom-nav-active);
+    color: var(--text-bottom-nav-active);
+}
+
+/* --- Misc --- */
+.dark-heading {
+    color: var(--text-sidebar-title);
+}
+
+.dark-heading-secondary {
+    color: var(--text-header-title);
+}
+
+.dark-text {
+    color: var(--text-nav-inactive);
+}
+
+.dark-text-dim {
+    color: var(--text-sidebar-subtitle);
+}
+
+/* --- Suit Colors --- */
+.suit-bich { color: #1565c0; }
+.suit-ro { color: #e65100; }
+.suit-co { color: #b71032; }
+.suit-chuon { color: #2e7d32; }
+
+html.dark .suit-bich { color: #90caf9; }
+html.dark .suit-ro { color: #ffcc80; }
+html.dark .suit-co { color: #ef9a9a; }
+html.dark .suit-chuon { color: #a5d6a7; }

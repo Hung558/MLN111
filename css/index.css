@@ -1,0 +1,33 @@
+/* ========================================
+   INDEX.CSS - Riêng cho trang chủ
+   ======================================== */
+
+/* Hero animation */
+.hero-title {
+    animation: fadeInUp 0.8s ease-out;
+}
+.hero-desc {
+    animation: fadeInUp 0.8s ease-out 0.15s both;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Home cards hover glow */
+.home-card {
+    transition: all 0.3s ease;
+}
+.home-card:hover {
+    box-shadow: 0 8px 30px rgba(0, 36, 66, 0.1);
+}
+html.dark .home-card:hover {
+    box-shadow: 0 8px 30px rgba(171, 201, 240, 0.08);
+}

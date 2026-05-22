@@ -1,0 +1,64 @@
+/* ========================================
+   THEBAI.CSS - Riêng cho trang Hệ Thống Thẻ Bài
+   ======================================== */
+
+/* Suit card animation */
+.suit-card {
+    animation: fadeInScale 0.5s ease-out both;
+}
+.suit-card:nth-child(1) { animation-delay: 0s; }
+.suit-card:nth-child(2) { animation-delay: 0.1s; }
+.suit-card:nth-child(3) { animation-delay: 0.2s; }
+.suit-card:nth-child(4) { animation-delay: 0.3s; }
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.92) translateY(16px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+/* Suit card hover */
+.suit-card {
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.suit-card:hover {
+    transform: translateY(-8px) scale(1.02);
+}
+
+/* Suit icon glow */
+.suit-icon-wrap {
+    transition: all 0.4s ease;
+}
+.suit-card:hover .suit-icon-wrap {
+    transform: scale(1.1);
+    box-shadow: 0 0 24px rgba(183, 16, 50, 0.15);
+}
+html.dark .suit-card:hover .suit-icon-wrap {
+    box-shadow: 0 0 24px rgba(255, 179, 180, 0.15);
+}
+
+/* Bích = xanh dương đậm, Rô = cam vàng, Cơ = đỏ, Chuồn = xanh lá */
+.suit-bich  { color: #1565c0; }
+.suit-ro    { color: #e65100; }
+.suit-co    { color: #b71032; }
+.suit-chuon { color: #2e7d32; }
+
+.suit-bich-bg  { background-color: rgba(21, 101, 192, 0.08); border-color: rgba(21, 101, 192, 0.2); }
+.suit-ro-bg    { background-color: rgba(230, 81, 0, 0.08); border-color: rgba(230, 81, 0, 0.2); }
+.suit-co-bg    { background-color: rgba(183, 16, 50, 0.08); border-color: rgba(183, 16, 50, 0.2); }
+.suit-chuon-bg { background-color: rgba(46, 125, 50, 0.08); border-color: rgba(46, 125, 50, 0.2); }
+
+html.dark .suit-bich  { color: #90caf9; }
+html.dark .suit-ro    { color: #ffcc80; }
+html.dark .suit-co    { color: #ef9a9a; }
+html.dark .suit-chuon { color: #a5d6a7; }
+
+html.dark .suit-bich-bg  { background-color: rgba(144, 202, 249, 0.08); border-color: rgba(144, 202, 249, 0.15); }
+html.dark .suit-ro-bg    { background-color: rgba(255, 204, 128, 0.08); border-color: rgba(255, 204, 128, 0.15); }
+html.dark .suit-co-bg    { background-color: rgba(239, 154, 154, 0.08); border-color: rgba(239, 154, 154, 0.15); }
+html.dark .suit-chuon-bg { background-color: rgba(165, 214, 167, 0.08); border-color: rgba(165, 214, 167, 0.15); }

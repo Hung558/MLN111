@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html class="dark" lang="vi">
+<head>
+    <!-- Chặn hiện tượng nháy theme (FOUC) -->
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            if (savedTheme === 'light') {
+                document.documentElement.classList.remove('dark');
+                document.documentElement.classList.add('light');
+            } else {
+                document.documentElement.classList.remove('light');
+                document.documentElement.classList.add('dark');
+            }
+        })();
+    </script>
+
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Bích - Duy Vật</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="css/shared.css"/>
+    <link rel="stylesheet" href="css/cards.css"/>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: { extend: { fontFamily: { sans: ["Be Vietnam Pro", "sans-serif"] } } }
+        }
+    </script>
+</head>
+<body class="min-h-screen pb-16 lg:pb-0" >
+
+    <!-- SideNavBar -->
+    <side-bar active="thebai"></side-bar>
+
+    <div class="lg:pl-64 flex flex-col min-h-screen">
+
+        <!-- TopAppBar -->
+        <top-bar active="thebai"></top-bar>
+
+        <main class="flex-grow w-full max-w-6xl mx-auto px-6 py-8">
+            <!-- Breadcrumb -->
+            <div class="mb-6">
+                <a href="thebai.html" class="inline-flex items-center gap-1 text-sm font-semibold px-3 py-1.5 rounded-lg transition" style="background:#f3f4f5; color:#43474e; text-decoration:none;">
+                    <span class="material-symbols-outlined text-sm">arrow_back</span>
+                    Quay lại
+                </a>
+                <span class="ml-2 text-sm" style="color:#73777e;">Thẻ bài > Bích</span>
+            </div>
+
+            <!-- Page Title -->
+            <div class="mb-8">
+                <h1 class="text-4xl font-bold mb-2" style="color:#002442;">Bích - Duy Vật</h1>
+                <p class="text-base" style="color:#43474e;">Chủ nghĩa duy vật biện chứng, vật chất và ý thức, quy luật khách quan.</p>
+            </div>
+
+            <!-- Cards Grid -->
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 mb-8">
+                <!-- Át -->
+                <div class="mini-card card-surface rounded-xl shadow-sm overflow-hidden group">
+                    <div class="relative">
+                        <div class="absolute top-2 left-2 z-10">
+                            <div class="text-xs font-bold suit-bich" style="color:#1565c0;">A</div>
+                            <span class="material-symbols-outlined text-xs suit-bich" style="font-variation-settings:'FILL' 1; color:#1565c0;">playing_cards</span>
+                        </div>
+                        <div class="absolute bottom-2 right-2 z-10 rotate-180">
+                            <div class="text-xs font-bold suit-bich" style="color:#1565c0;">A</div>
+                            <span class="material-symbols-outlined text-xs suit-bich" style="font-variation-settings:'FILL' 1; color:#1565c0;">playing_cards</span>
+                        </div>
+                        <div class="card-img-placeholder suit-bich" >
+                            <span class="text-xs" style="color:#666;">[Ảnh lá Át Bích]</span>
+                        </div>
+                    </div>
+                    <div class="px-3 py-2 text-center border-t" style="border-color:#e0e0e0;">
+                        <div class="text-sm font-semibold suit-bich" style="color:#1565c0;">Át Bích</div>
+                    </div>
+                </div>
+
+                <!-- 2 -->
+                <div class="mini-card card-surface rounded-xl shadow-sm overflow-hidden group">
+                    <div class="relative">
+                        <div class="absolute top-2 left-2 z-10">
+                            <div class="text-xs font-bold suit-bich" style="color:#1565c0;">2</div>
+                            <span class="material-symbols-outlined text-xs suit-bich" style="font-variation-settings:'FILL' 1; color:#1565c0;">playing_cards</span>
+                        </div>
+                        <div class="absolute bottom-2 right-2 z-10 rotate-180">
+                            <div class="text-xs font-bold suit-bich" style="color:#1565c0;">2</div>
+                            <span class="material-symbols-outlined text-xs suit-bich" style="font-variation-settings:'FILL' 1; color:#1565c0;">playing_cards</span>
+                        </div>
+                        <div class="card-img-placeholder suit-bich" >
+                            <span class="text-xs" style="color:#666;">[Ảnh lá 2 Bích]</span>
+                        </div>
+                    </div>
+                    <div class="px-3 py-2 text-center border-t" style="border-color:#e0e0e0;">
+                        <div class="text-sm font-semibold suit-bich" style="color:#1565c0;">2 Bích</div>
+                    </div>
+                </div>
+
+                <!-- 3 -->
+                <div class="mini-card card-surface rounded-xl shadow-sm overflow-hidden group">
+                    <div class="relative">
+                        <div class="absolute top-2 left-2 z-10">
+                            <div class="text-xs font-bold suit-bich" style="color:#1565c0;">3</div>
+                            <span class="material-symbols-outlined text-xs suit-bich" style="font-variation-settings:'FILL' 1; color:#1565c0;">playing_cards</span>
+                        </div>
+                        <div class="absolute bottom-2 right-2 z-10 rotate-180">
+                            <div class="text-xs font-bold suit-bich" style="color:#1565c0;">3</div>
+                            <span class="material-symbols-outlined text-xs suit-bich" style="font-variation-settings:'FILL' 1; color:#1565c0;">playing_cards</span>
+                        </div>
+                        <div class="card-img-placeholder suit-bich" >
+                            <span class="text-xs" style="color:#666;">[Ảnh lá 3 Bích]</span>
+                        </div>
+                    </div>
+                    <div class="px-3 py-2 text-center border-t" style="border-color:#e0e0e0;">
+                        <div class="text-sm font-semibold suit-bich" style="color:#1565c0;">3 Bích</div>
+                    </div>
+                </div>
+
+                <!-- 4 -->
+                <div class="mini-card card-surface rounded-xl shadow-sm overflow-hidden group">
+                    <div class="relative">
+                        <div class="absolute top-2 left-2 z-10">
+                            <div class="text-xs font-bold suit-bich" style="color:#1565c0;">4</div>
+                            <span class="material-symbols-outlined text-xs suit-bich" style="font-variation-settings:'FILL' 1; color:#1565c0;">playing_cards</span>
+                        </div>
+                        <div class="absolute bottom-2 right-2 z-10 rotate-180">
+                            <div class="text-xs font-bold suit-bich" style="color:#1565c0;">4</div>
+                            <span class="material-symbols-outlined text-xs suit-bich" style="font-variation-settings:'FILL' 1; color:#1565c0;">playing_cards</span>
+                        </div>
+                        <div class="card-img-placeholder suit-bich" >
+                            <span class="text-xs" style="color:#666;">[Ảnh lá 4 Bích]</span>
+                        </div>
+                    </div>
+                    <div class="px-3 py-2 text-center border-t" style="border-color:#e0e0e0;">
+                        <div class="text-sm font-semibold suit-bich" style="color:#1565c0;">4 Bích</div>
+                    </div>
+                </div>
+
+                <!-- 5 -->
+                <div class="mini-card card-surface rounded-xl shadow-sm overflow-hidden group">
+                    <div class="relative">
+                        <div class="absolute top-2 left-2 z-10">
+                            <div class="text-xs font-bold suit-bich" style="color:#1565c0;">5</div>
+                            <span class="material-symbols-outlined text-xs suit-bich" style="font-variation-settings:'FILL' 1; color:#1565c0;">playing_cards</span>
+                        </div>
+                        <div class="absolute bottom-2 right-2 z-10 rotate-180">
+                            <div class="text-xs font-bold suit-bich" style="color:#1565c0;">5</div>
+                            <span class="material-symbols-outlined text-xs suit-bich" style="font-variation-settings:'FILL' 1; color:#1565c0;">playing_cards</span>
+                        </div>
+                        <div class="card-img-placeholder suit-bich" >
+                            <span class="text-xs" style="color:#666;">[Ảnh lá 5 Bích]</span>
+                        </div>
+                    </div>
+                    <div class="px-3 py-2 text-center border-t" style="border-color:#e0e0e0;">
+                        <div class="text-sm font-semibold suit-bich" style="color:#1565c0;">5 Bích</div>
+                    </div>
+                </div>
+
+                <!-- 6 -->
+                <div class="mini-card card-surface rounded-xl shadow-sm overflow-hidden group">
+                    <div class="relative">
+                        <div class="absolute top-2 left-2 z-10">
+                            <div class="text-xs font-bold suit-bich" style="color:#1565c0;">6</div>
+                            <span class="material-symbols-outlined text-xs suit-bich" style="font-variation-settings:'FILL' 1; color:#1565c0;">playing_cards</span>
+                        </div>
+                        <div class="absolute bottom-2 right-2 z-10 rotate-180">
+                            <div class="text-xs font-bold suit-bich" style="color:#1565c0;">6</div>
+                            <span class="material-symbols-outlined text-xs suit-bich" style="font-variation-settings:'FILL' 1; color:#1565c0;">playing_cards</span>
+                        </div>
+                        <div class="card-img-placeholder suit-bich" >
+                            <span class="text-xs" style="color:#666;">[Ảnh lá 6 Bích]</span>
+                        </div>
+                    </div>
+                    <div class="px-3 py-2 text-center border-t" style="border-color:#e0e0e0;">
+                        <div class="text-sm font-semibold suit-bich" style="color:#1565c0;">6 Bích</div>
+                    </div>
+                </div>
+
+                <!-- 7 -->
+                <div class="mini-card card-surface rounded-xl shadow-sm overflow-hidden group">
+                    <div class="relative">
+                        <div class="absolute top-2 left-2 z-10">
+                            <div class="text-xs font-bold suit-bich" style="color:#1565c0;">7</div>
+                            <span class="material-symbols-outlined text-xs suit-bich" style="font-variation-settings:'FILL' 1; color:#1565c0;">playing_cards</span>
+                        </div>
+                        <div class="absolute bottom-2 right-2 z-10 rotate-180">
+                            <div class="text-xs font-bold suit-bich" style="color:#1565c0;">7</div>
+                            <span class="material-symbols-outlined text-xs suit-bich" style="font-variation-settings:'FILL' 1; color:#1565c0;">playing_cards</span>
+                        </div>
+                        <div class="card-img-placeholder suit-bich" >
+                            <span class="text-xs" style="color:#666;">[Ảnh lá 7 Bích]</span>
+                        </div>
+                    </div>
+                    <div class="px-3 py-2 text-center border-t" style="border-color:#e0e0e0;">
+                        <div class="text-sm font-semibold suit-bich" style="color:#1565c0;">7 Bích</div>
+                    </div>
+                </div>
+
+                <!-- 8 -->
+                <div class="mini-card card-surface rounded-xl shadow-sm overflow-hidden group">
+                    <div class="relative">
+                        <div class="absolute top-2 left-2 z-10">
+                            <div class="text-xs font-bold suit-bich" style="color:#1565c0;">8</div>
+                            <span class="material-symbols-outlined text-xs suit-bich" style="font-variation-settings:'FILL' 1; color:#1565c0;">playing_cards</span>
+                        </div>
+                        <div class="absolute bottom-2 right-2 z-10 rotate-180">
+                            <div class="text-xs font-bold suit-bich" style="color:#1565c0;">8</div>
+                            <span class="material-symbols-outlined text-xs suit-bich" style="font-variation-settings:'FILL' 1; color:#1565c0;">playing_cards</span>
+                        </div>
+                        <div class="card-img-placeholder suit-bich" >
+                            <span class="text-xs" style="color:#666;">[Ảnh lá 8 Bích]</span>
+                        </div>
+                    </div>
+                    <div class="px-3 py-2 text-center border-t" style="border-color:#e0e0e0;">
+                        <div class="text-sm font-semibold suit-bich" style="color:#1565c0;">8 Bích</div>
+                    </div>
+                </div>
+
+                <!-- 9 -->
+                <div class="mini-card card-surface rounded-xl shadow-sm overflow-hidden group">
+                    <div class="relative">
+                        <div class="absolute top-2 left-2 z-10">
+                            <div class="text-xs font-bold suit-bich" style="color:#1565c0;">9</div>
+                            <span class="material-symbols-outlined text-xs suit-bich" style="font-variation-settings:'FILL' 1; color:#1565c0;">playing_cards</span>
+                        </div>
+                        <div class="absolute bottom-2 right-2 z-10 rotate-180">
+                            <div class="text-xs font-bold suit-bich" style="color:#1565c0;">9</div>
+                            <span class="material-symbols-outlined text-xs suit-bich" style="font-variation-settings:'FILL' 1; color:#1565c0;">playing_cards</span>
+                        </div>
+                        <div class="card-img-placeholder suit-bich" >
+                            <span class="text-xs" style="color:#666;">[Ảnh lá 9 Bích]</span>
+                        </div>
+                    </div>
+                    <div class="px-3 py-2 text-center border-t" style="border-color:#e0e0e0;">
+                        <div class="text-sm font-semibold suit-bich" style="color:#1565c0;">9 Bích</div>
+                    </div>
+                </div>
+
+                <!-- 10 -->
+                <div class="mini-card card-surface rounded-xl shadow-sm overflow-hidden group">
+                    <div class="relative">
+                        <div class="absolute top-2 left-2 z-10">
+                            <div class="text-xs font-bold suit-bich" style="color:#1565c0;">10</div>
+                            <span class="material-symbols-outlined text-xs suit-bich" style="font-variation-settings:'FILL' 1; color:#1565c0;">playing_cards</span>
+                        </div>
+                        <div class="absolute bottom-2 right-2 z-10 rotate-180">
+                            <div class="text-xs font-bold suit-bich" style="color:#1565c0;">10</div>
+                            <span class="material-symbols-outlined text-xs suit-bich" style="font-variation-settings:'FILL' 1; color:#1565c0;">playing_cards</span>
+                        </div>
+                        <div class="card-img-placeholder suit-bich" >
+                            <span class="text-xs" style="color:#666;">[Ảnh lá 10 Bích]</span>
+                        </div>
+                    </div>
+                    <div class="px-3 py-2 text-center border-t" style="border-color:#e0e0e0;">
+                        <div class="text-sm font-semibold suit-bich" style="color:#1565c0;">10 Bích</div>
+                    </div>
+                </div>
+
+                <!-- J -->
+                <div class="mini-card card-surface rounded-xl shadow-sm overflow-hidden group">
+                    <div class="relative">
+                        <div class="absolute top-2 left-2 z-10">
+                            <div class="text-xs font-bold suit-bich" style="color:#1565c0;">J</div>
+                            <span class="material-symbols-outlined text-xs suit-bich" style="font-variation-settings:'FILL' 1; color:#1565c0;">playing_cards</span>
+                        </div>
+                        <div class="absolute bottom-2 right-2 z-10 rotate-180">
+                            <div class="text-xs font-bold suit-bich" style="color:#1565c0;">J</div>
+                            <span class="material-symbols-outlined text-xs suit-bich" style="font-variation-settings:'FILL' 1; color:#1565c0;">playing_cards</span>
+                        </div>
+                        <div class="card-img-placeholder suit-bich" >
+                            <span class="text-xs" style="color:#666;">[Ảnh lá J Bích]</span>
+                        </div>
+                    </div>
+                    <div class="px-3 py-2 text-center border-t" style="border-color:#e0e0e0;">
+                        <div class="text-sm font-semibold suit-bich" style="color:#1565c0;">J Bích</div>
+                    </div>
+                </div>
+
+                <!-- Q -->
+                <div class="mini-card card-surface rounded-xl shadow-sm overflow-hidden group">
+                    <div class="relative">
+                        <div class="absolute top-2 left-2 z-10">
+                            <div class="text-xs font-bold suit-bich" style="color:#1565c0;">Q</div>
+                            <span class="material-symbols-outlined text-xs suit-bich" style="font-variation-settings:'FILL' 1; color:#1565c0;">playing_cards</span>
+                        </div>
+                        <div class="absolute bottom-2 right-2 z-10 rotate-180">
+                            <div class="text-xs font-bold suit-bich" style="color:#1565c0;">Q</div>
+                            <span class="material-symbols-outlined text-xs suit-bich" style="font-variation-settings:'FILL' 1; color:#1565c0;">playing_cards</span>
+                        </div>
+                        <div class="card-img-placeholder suit-bich" >
+                            <span class="text-xs" style="color:#666;">[Ảnh lá Q Bích]</span>
+                        </div>
+                    </div>
+                    <div class="px-3 py-2 text-center border-t" style="border-color:#e0e0e0;">
+                        <div class="text-sm font-semibold suit-bich" style="color:#1565c0;">Q Bích</div>
+                    </div>
+                </div>
+
+                <!-- K -->
+                <div class="mini-card card-surface rounded-xl shadow-sm overflow-hidden group">
+                    <div class="relative">
+                        <div class="absolute top-2 left-2 z-10">
+                            <div class="text-xs font-bold suit-bich" style="color:#1565c0;">K</div>
+                            <span class="material-symbols-outlined text-xs suit-bich" style="font-variation-settings:'FILL' 1; color:#1565c0;">playing_cards</span>
+                        </div>
+                        <div class="absolute bottom-2 right-2 z-10 rotate-180">
+                            <div class="text-xs font-bold suit-bich" style="color:#1565c0;">K</div>
+                            <span class="material-symbols-outlined text-xs suit-bich" style="font-variation-settings:'FILL' 1; color:#1565c0;">playing_cards</span>
+                        </div>
+                        <div class="card-img-placeholder suit-bich" >
+                            <span class="text-xs" style="color:#666;">[Ảnh lá K Bích]</span>
+                        </div>
+                    </div>
+                    <div class="px-3 py-2 text-center border-t" style="border-color:#e0e0e0;">
+                        <div class="text-sm font-semibold suit-bich" style="color:#1565c0;">K Bích</div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="w-full max-w-6xl mx-auto px-6 py-8 text-center" style="border-top:1px solid rgba(195,198,206,0.1);">
+            <p class="text-xs" style="color:#73777e;">© 2026 Nhóm Đồ Án Triết Học Đông - Tây</p>
+        </footer>
+    </div>
+
+    <!-- BottomNavBar -->
+    <bottom-bar active="thebai"></bottom-bar>
+
+    <script src="js/components.js"></script>
+    <script>
+        const toggle = document.getElementById('theme-toggle');
+        const modeText = document.getElementById('mode-text');
+        function updateTheme(isLight) {
+            if (isLight) {
+                document.documentElement.classList.remove('dark');
+                document.documentElement.classList.add('light');
+                if(modeText) modeText.innerText = "TỰ DO (DƯƠNG)";
+            } else {
+                document.documentElement.classList.remove('light');
+                document.documentElement.classList.add('dark');
+                if(modeText) modeText.innerText = "TÙ TÚNG (ÂM)";
+            }
+        }
+        const currentTheme = localStorage.getItem('theme') || 'dark';
+        if (currentTheme === 'light') { toggle.checked = true; updateTheme(true); }
+        else { toggle.checked = false; updateTheme(false); }
+        toggle.addEventListener('change', function() {
+            localStorage.setItem('theme', this.checked ? 'light' : 'dark');
+            updateTheme(this.checked);
+        });
+    </script>
+</body>
+</html>

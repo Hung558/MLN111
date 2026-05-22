@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html class="dark" lang="vi">
+<head>
+    <!-- Chặn hiện tượng nháy theme (FOUC) -->
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            if (savedTheme === 'light') {
+                document.documentElement.classList.remove('dark');
+                document.documentElement.classList.add('light');
+            } else {
+                document.documentElement.classList.remove('light');
+                document.documentElement.classList.add('dark');
+            }
+        })();
+    </script>
+
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Hệ Thống Thẻ Bài - Triết Học Hệ Số</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="css/shared.css"/>
+    <link rel="stylesheet" href="css/thebai.css"/>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: { extend: { fontFamily: { sans: ["Be Vietnam Pro", "sans-serif"] } } }
+        }
+    </script>
+</head>
+<body class="min-h-screen pb-16 lg:pb-0" >
+
+    <!-- SideNavBar -->
+    <side-bar active="thebai"></side-bar>
+
+    <div class="lg:pl-64 flex flex-col min-h-screen">
+
+        <!-- TopAppBar -->
+        <top-bar active="thebai"></top-bar>
+
+        <main class="flex-grow w-full max-w-6xl mx-auto px-6 py-8">
+            <section class="space-y-3 max-w-3xl mb-10">
+                <div class="flex items-center gap-2">
+                    <span class="badge-primary px-2.5 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider" style="background:#1a3a5a; color:#86a4ca;">Bộ sưu tập</span>
+                    <span style="color:#c3c6ce;">•</span>
+                    <span class="text-sm font-medium dark-text-dim" style="color:#43474e;">4 Chất bài × 13 lá</span>
+                </div>
+                <h2 class="text-3xl lg:text-4xl font-extrabold leading-tight dark-heading" style="color:#002442;">Hệ Thống Thẻ Bài Triết Học</h2>
+                <p class="text-base leading-relaxed dark-text" style="color:#43474e;">
+                    Bộ bài "Tá Lả Triết Học" gồm 4 chất, mỗi chất đại diện cho một nhánh tư tưởng lớn. Chọn một chất bài để xem chi tiết 13 lá bài bên trong.
+                </p>
+            </section>
+
+            <!-- 4 Suit Cards Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+                <!-- Bích (Spades) -->
+                <a href="bich.html" class="suit-card card-surface rounded-2xl shadow-md p-6 flex flex-col items-center text-center cursor-pointer group" style="border:1px solid rgba(195,198,206,0.15);">
+                    <div class="suit-icon-wrap w-20 h-20 rounded-full flex items-center justify-center mb-4 border suit-bich-bg">
+                        <span class="material-symbols-outlined text-4xl suit-bich" style="font-variation-settings:'FILL' 1;">playing_cards</span>
+                    </div>
+                    <div class="text-xs font-medium uppercase tracking-widest mb-1 dark-text-dim" style="color:#73777e;">Chất Bích</div>
+                    <h3 class="text-xl font-extrabold mb-2 dark-heading suit-bich" style="color:#1565c0;">Bích - Duy Vật</h3>
+                    <p class="text-sm leading-relaxed dark-text" style="color:#43474e;">Chủ nghĩa duy vật biện chứng, vật chất và ý thức, quy luật khách quan.</p>
+                    <div class="mt-4 flex items-center gap-1 text-xs font-bold suit-bich">
+                        <span>13 lá bài</span>
+                        <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                    </div>
+                </a>
+
+                <!-- Rô (Diamonds) -->
+                <a href="ro.html" class="suit-card card-surface rounded-2xl shadow-md p-6 flex flex-col items-center text-center cursor-pointer group" style="border:1px solid rgba(195,198,206,0.15);">
+                    <div class="suit-icon-wrap w-20 h-20 rounded-full flex items-center justify-center mb-4 border suit-ro-bg">
+                        <span class="material-symbols-outlined text-4xl suit-ro" style="font-variation-settings:'FILL' 1;">diamond</span>
+                    </div>
+                    <div class="text-xs font-medium uppercase tracking-widest mb-1 dark-text-dim" style="color:#73777e;">Chất Rô</div>
+                    <h3 class="text-xl font-extrabold mb-2 dark-heading suit-ro" style="color:#e65100;">Rô - Biện Chứng</h3>
+                    <p class="text-sm leading-relaxed dark-text" style="color:#43474e;">Phép biện chứng duy vật, các cặp phạm trù, ba quy luật cơ bản.</p>
+                    <div class="mt-4 flex items-center gap-1 text-xs font-bold suit-ro">
+                        <span>13 lá bài</span>
+                        <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                    </div>
+                </a>
+
+                <!-- Cơ (Hearts) -->
+                <a href="co.html" class="suit-card card-surface rounded-2xl shadow-md p-6 flex flex-col items-center text-center cursor-pointer group" style="border:1px solid rgba(195,198,206,0.15);">
+                    <div class="suit-icon-wrap w-20 h-20 rounded-full flex items-center justify-center mb-4 border suit-co-bg">
+                        <span class="material-symbols-outlined text-4xl suit-co" style="font-variation-settings:'FILL' 1;">favorite</span>
+                    </div>
+                    <div class="text-xs font-medium uppercase tracking-widest mb-1 dark-text-dim" style="color:#73777e;">Chất Cơ</div>
+                    <h3 class="text-xl font-extrabold mb-2 dark-heading suit-co" style="color:#b71032;">Cơ - Nhận Thức</h3>
+                    <p class="text-sm leading-relaxed dark-text" style="color:#43474e;">Lý luận nhận thức, thực tiễn, chân lý, các giai đoạn nhận thức.</p>
+                    <div class="mt-4 flex items-center gap-1 text-xs font-bold suit-co">
+                        <span>13 lá bài</span>
+                        <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                    </div>
+                </a>
+
+                <!-- Chuồn (Clubs) -->
+                <a href="chuon.html" class="suit-card card-surface rounded-2xl shadow-md p-6 flex flex-col items-center text-center cursor-pointer group" style="border:1px solid rgba(195,198,206,0.15);">
+                    <div class="suit-icon-wrap w-20 h-20 rounded-full flex items-center justify-center mb-4 border suit-chuon-bg">
+                        <span class="material-symbols-outlined text-4xl suit-chuon" style="font-variation-settings:'FILL' 1;">eco</span>
+                    </div>
+                    <div class="text-xs font-medium uppercase tracking-widest mb-1 dark-text-dim" style="color:#73777e;">Chất Chuồn</div>
+                    <h3 class="text-xl font-extrabold mb-2 dark-heading suit-chuon" style="color:#2e7d32;">Chuồn - Lịch Sử</h3>
+                    <p class="text-sm leading-relaxed dark-text" style="color:#43474e;">Chủ nghĩa duy vật lịch sử, hình thái kinh tế - xã hội, giai cấp và đấu tranh.</p>
+                    <div class="mt-4 flex items-center gap-1 text-xs font-bold suit-chuon">
+                        <span>13 lá bài</span>
+                        <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                    </div>
+                </a>
+
+            </div>
+
+            <!-- Info Banner -->
+            <div class="banner-primary mt-12 text-white p-6 rounded-2xl relative overflow-hidden shadow-md" style="background:#002442;">
+                <div class="relative z-10 space-y-2 max-w-2xl">
+                    <h4 class="text-lg font-bold">Cách sử dụng hệ thống thẻ</h4>
+                    <p class="text-sm opacity-85 leading-relaxed">
+                        Chọn một chất bài để xem 13 lá bài bên trong. Mỗi lá bài đại diện cho một khái niệm triết học cụ thể. Bạn có thể thêm ảnh minh họa cho từng lá bài sau.
+                    </p>
+                </div>
+                <div class="absolute -top-6 -right-6 opacity-10 pointer-events-none select-none">
+                    <span class="material-symbols-outlined text-[120px]">style</span>
+                </div>
+            </div>
+        </main>
+
+        <footer class="w-full max-w-6xl mx-auto px-6 py-8 text-center" style="border-top:1px solid rgba(195,198,206,0.1);">
+            <p class="text-xs" style="color:#73777e;">© 2026 Nhóm Đồ Án Triết Học Đông - Tây | Ứng Dụng Kỹ Thuật Theme Switching Chuyên Sâu</p>
+        </footer>
+    </div>
+
+    <!-- BottomNavBar -->
+    <bottom-bar active="thebai"></bottom-bar>
+
+    <script src="js/components.js"></script>
+    <script>
+        const toggle = document.getElementById('theme-toggle');
+        const modeText = document.getElementById('mode-text');
+        function updateTheme(isLight) {
+            if (isLight) {
+                document.documentElement.classList.remove('dark');
+                document.documentElement.classList.add('light');
+                if(modeText) modeText.innerText = "TỰ DO (DƯƠNG)";
+            } else {
+                document.documentElement.classList.remove('light');
+                document.documentElement.classList.add('dark');
+                if(modeText) modeText.innerText = "TÙ TÚNG (ÂM)";
+            }
+        }
+        const currentTheme = localStorage.getItem('theme') || 'dark';
+        if (currentTheme === 'light') { toggle.checked = true; updateTheme(true); }
+        else { toggle.checked = false; updateTheme(false); }
+        toggle.addEventListener('change', function() {
+            localStorage.setItem('theme', this.checked ? 'light' : 'dark');
+            updateTheme(this.checked);
+        });
+    </script>
+</body>
+</html>

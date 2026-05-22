@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html class="light" lang="vi">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Chi tiết Thẻ Bài - Lá 4 Cơ</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline": "#73777e",
+                        "tertiary-container": "#04421f",
+                        "tertiary-fixed": "#b5f1bf",
+                        "secondary-fixed": "#ffdad9",
+                        "surface": "#f8f9fa",
+                        "on-primary-fixed-variant": "#2a4969",
+                        "on-error": "#ffffff",
+                        "primary": "#002442",
+                        "on-tertiary-fixed-variant": "#18512c",
+                        "on-primary": "#ffffff",
+                        "inverse-surface": "#2e3132",
+                        "surface-bright": "#f8f9fa",
+                        "outline-variant": "#c3c6ce",
+                        "surface-container": "#edeeef",
+                        "on-error-container": "#93000a",
+                        "on-secondary-fixed-variant": "#920023",
+                        "surface-dim": "#d9dadb",
+                        "on-secondary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-highest": "#e1e3e4",
+                        "primary-fixed": "#d1e4ff",
+                        "tertiary-fixed-dim": "#99d4a4",
+                        "inverse-on-surface": "#f0f1f2",
+                        "error-container": "#ffdad6",
+                        "on-background": "#191c1d",
+                        "tertiary": "#002a11",
+                        "on-primary-fixed": "#001d36",
+                        "surface-container-lowest": "#ffffff",
+                        "on-surface-variant": "#43474e",
+                        "secondary": "#b71032",
+                        "surface-container-high": "#e7e8e9",
+                        "primary-container": "#1a3a5a",
+                        "on-tertiary-container": "#76af82",
+                        "surface-container-low": "#f3f4f5",
+                        "secondary-fixed-dim": "#ffb3b4",
+                        "secondary-container": "#da3148",
+                        "background": "#f8f9fa",
+                        "on-primary-container": "#86a4ca",
+                        "on-secondary-container": "#fffbff",
+                        "primary-fixed-dim": "#abc9f0",
+                        "surface-tint": "#436082",
+                        "on-secondary-fixed": "#40000a",
+                        "on-tertiary-fixed": "#00210c",
+                        "surface-variant": "#e1e3e4",
+                        "on-surface": "#191c1d",
+                        "inverse-primary": "#abc9f0"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "sans": ["Be Vietnam Pro", "sans-serif"]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        body { font-family: 'Be Vietnam Pro', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(183, 16, 50, 0.1);
+        }
+        /* Ẩn thanh cuộn nhưng vẫn cuộn được */
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface min-h-screen pb-16 lg:pb-0">
+
+    <!-- SideNavBar (Cố định bên trái trên màn hình lớn) -->
+    <aside class="hidden lg:flex flex-col h-full py-6 gap-6 bg-surface-container-low dark:bg-surface-container-highest w-64 fixed left-0 top-0 z-40 border-r border-outline-variant/20">
+        <div class="px-6 mb-4">
+            <div class="flex items-center gap-3 mb-4">
+                <div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-on-primary shrink-0">
+                    <span class="material-symbols-outlined">school</span>
+                </div>
+                <div>
+                    <h2 class="text-base font-bold text-primary leading-tight">Hành trình của Po</h2>
+                    <p class="text-xs text-outline">Học giả tinh nghịch</p>
+                </div>
+            </div>
+            <button class="w-full bg-primary text-on-primary text-sm font-semibold py-2.5 rounded-full hover:opacity-90 transition-all shadow-sm">Bắt đầu học</button>
+        </div>
+        
+        <nav class="flex-grow space-y-1 px-2">
+            <div class="text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 cursor-pointer transition-all">
+                <span class="material-symbols-outlined">playing_cards</span>
+                <span class="text-sm font-medium">Bích (Duy vật)</span>
+            </div>
+            <div class="text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 cursor-pointer transition-all">
+                <span class="material-symbols-outlined">diamond</span>
+                <span class="text-sm font-medium">Rô (Biện chứng)</span>
+            </div>
+            <div class="bg-secondary-container text-on-secondary-container rounded-full px-4 py-2.5 flex items-center gap-3 transition-all shadow-sm">
+                <span class="material-symbols-outlined">favorite</span>
+                <span class="text-sm font-bold">Cơ (Nhận thức)</span>
+            </div>
+            <div class="text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 cursor-pointer transition-all">
+                <span class="material-symbols-outlined">potted_plant</span>
+                <span class="text-sm font-medium">Chuồn (Lịch sử)</span>
+            </div>
+        </nav>
+
+        <div class="mt-auto border-t border-outline-variant/10 pt-4 px-4 space-y-1">
+            <div class="text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2 flex items-center gap-3 cursor-pointer transition-all">
+                <span class="material-symbols-outlined">settings</span>
+                <span class="text-sm font-medium">Cài đặt</span>
+            </div>
+            <div class="text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2 flex items-center gap-3 cursor-pointer transition-all">
+                <span class="material-symbols-outlined">help</span>
+                <span class="text-sm font-medium">Trợ giúp</span>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Layout chính bên phải (Dịch lề trái lg:pl-64 để tránh đè menu) -->
+    <div class="lg:pl-64 flex flex-col min-h-screen">
+        
+        <!-- TopAppBar -->
+        <header class="bg-surface dark:bg-on-background shadow-sm sticky top-0 z-30">
+            <div class="flex justify-between items-center w-full px-6 py-3 max-w-6xl mx-auto">
+                <div class="flex items-center gap-4">
+                    <button class="p-2 -ml-2 rounded-full hover:bg-surface-container transition-colors text-on-surface-variant">
+                        <span class="material-symbols-outlined">arrow_back</span>
+                    </button>
+                    <h1 class="text-xl font-extrabold text-secondary dark:text-secondary-fixed tracking-tight">Tá Lả Triết Học</h1>
+                </div>
+                <nav class="hidden md:flex gap-6 items-center">
+                    <a class="text-sm font-medium text-on-surface-variant dark:text-outline-variant hover:text-secondary transition-colors" href="#">Hành trình</a>
+                    <a class="text-sm font-bold text-secondary dark:text-secondary-fixed border-b-2 border-secondary pb-1" href="#">Bộ bài</a>
+                    <a class="text-sm font-medium text-on-surface-variant dark:text-outline-variant hover:text-secondary transition-colors" href="#">Thư viện</a>
+                    <a class="text-sm font-medium text-on-surface-variant dark:text-outline-variant hover:text-secondary transition-colors" href="#">Xếp hạng</a>
+                </nav>
+                <div class="flex items-center">
+                    <span class="material-symbols-outlined text-primary dark:text-primary-fixed text-2xl p-1 cursor-pointer hover:opacity-80 transition-opacity">account_circle</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content Grid -->
+        <main class="flex-grow w-full max-w-6xl mx-auto px-6 py-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                
+                <!-- Left Column: Card Visual (5/12 cột) -->
+                <div class="lg:col-span-5 space-y-6">
+                    <!-- Main Card Display -->
+                    <div class="relative bg-surface-container-lowest rounded-2xl overflow-hidden shadow-md border border-secondary/10 group flex items-center justify-center p-12 min-h-[400px] max-h-[500px]">
+                        <!-- Top Left Core -->
+                        <div class="absolute top-4 left-4 flex flex-col items-center justify-center select-none">
+                            <span class="text-3xl font-black text-secondary leading-none">4</span>
+                            <span class="material-symbols-outlined text-secondary text-2xl mt-1" style="font-variation-settings: 'FILL' 1;">favorite</span>
+                        </div>
+                        
+                        <!-- Card Illustration -->
+                        <img alt="Philosophical illustration for a playing card: A cute panda (Po) holding an apple" 
+                             class="w-full h-full max-h-[300px] object-contain transition-transform duration-500 group-hover:scale-105" 
+                             src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGBj24gDN_sbra_JisUMXMXI-RL5y05WPMbNR15iU0thHQ-bvdHAeX021BscYUnNc89t_U7W29IK2wzEee2YiwhbK7XUMTsXX5Qkfy85FBE7d_-SeKf5PCxHuJyxpiQnbgZDxDNXi-NW2vfjRC5mKU7DNVpP0bZ9rNhKqNtqAvbjww47vfU0QJi9ZzF5Nm2X64T5wwEycA8NAg-hT0-9JLF49iePsEwAl7I_frm-fJk4Hzii2N-prRl1v5_OKBcRpZoexvraoFjM8"/>
+                        
+                        <!-- Bottom Right Core -->
+                        <div class="absolute bottom-4 right-4 flex flex-col items-center justify-center rotate-180 select-none">
+                            <span class="text-3xl font-black text-secondary leading-none">4</span>
+                            <span class="material-symbols-outlined text-secondary text-2xl mt-1" style="font-variation-settings: 'FILL' 1;">favorite</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Suit Meta Info -->
+                    <div class="glass-card rounded-xl p-5 flex items-center justify-between shadow-sm">
+                        <div class="flex items-center gap-2">
+                            <span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">favorite</span>
+                            <span class="text-sm font-bold text-secondary">Bộ Cơ (Nhận thức)</span>
+                        </div>
+                        <div class="px-3 py-1 bg-secondary-container text-on-secondary-container rounded-full text-xs font-bold uppercase tracking-wider">
+                            Đã học
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Intellectual Content (7/12 cột) -->
+                <div class="lg:col-span-7 space-y-8">
+                    <!-- Header Section -->
+                    <section class="space-y-3">
+                        <div class="flex items-center gap-2">
+                            <span class="px-2 py-0.5 bg-primary-container text-on-primary-container rounded text-[10px] font-bold uppercase tracking-wider">Level 4</span>
+                            <span class="text-outline-variant">•</span>
+                            <span class="text-sm font-medium text-outline">Triết học Mác-Lênin</span>
+                        </div>
+                        <h2 class="text-3xl lg:text-4xl font-extrabold text-primary leading-tight">Lá 4 Cơ - Tri giác</h2>
+                        <p class="text-base text-on-surface-variant leading-relaxed italic border-l-4 border-secondary pl-4 py-1 bg-surface-container-low/50 rounded-r-lg">
+                            "Tri giác là sự phản ánh trực tiếp sự vật khách quan trong tính toàn vẹn của nó."
+                        </p>
+                    </section>
+
+                    <!-- Detailed Breakdown Grid -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Concept Explanation -->
+                        <div class="bg-surface-container-low p-5 rounded-xl border border-outline-variant/10 shadow-sm flex flex-col justify-between">
+                            <div>
+                                <div class="flex items-center gap-2 mb-3">
+                                    <span class="material-symbols-outlined text-primary">psychology</span>
+                                    <h3 class="text-lg font-bold text-primary">Bản chất</h3>
+                                </div>
+                                <p class="text-sm text-on-surface-variant leading-relaxed">
+                                    Tri giác không phải là phép cộng đơn giản các cảm giác, mà là một cấu trúc tâm lý trọn vẹn. Khi Po nhìn thấy quả táo, Po không chỉ thấy "màu đỏ" riêng hay "vị ngọt" riêng, mà nhận ra ngay lập tức đó là "Quả Táo".
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <!-- Characteristics -->
+                        <div class="bg-surface-container-low p-5 rounded-xl border border-outline-variant/10 shadow-sm">
+                            <div class="flex items-center gap-2 mb-3">
+                                <span class="material-symbols-outlined text-primary">account_tree</span>
+                                <h3 class="text-lg font-bold text-primary">Đặc điểm</h3>
+                            </div>
+                            <ul class="space-y-2.5 text-sm text-on-surface-variant font-medium">
+                                <li class="flex items-center gap-2">
+                                    <span class="text-secondary font-bold">01.</span> Tính trọn vẹn
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <span class="text-secondary font-bold">02.</span> Tính trực tiếp
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <span class="text-secondary font-bold">03.</span> Gắn với đối tượng cụ thể
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Learning Journey Progress -->
+                    <div class="bg-primary text-on-primary p-6 rounded-xl relative overflow-hidden shadow-md">
+                        <div class="relative z-10 space-y-4">
+                            <div class="flex justify-between items-end">
+                                <div>
+                                    <h4 class="text-lg font-bold">Hành trình của Po</h4>
+                                    <p class="text-xs opacity-75 uppercase tracking-wider">Tiến trình nhận thức</p>
+                                </div>
+                                <span class="text-3xl font-black">45%</span>
+                            </div>
+                            
+                            <div class="h-2 w-full bg-primary-container rounded-full overflow-hidden">
+                                <div class="h-full bg-on-tertiary-container w-[45%] transition-all duration-1000 rounded-full"></div>
+                            </div>
+                            
+                            <div class="flex justify-between items-center pt-2">
+                                <button class="bg-secondary-container text-on-secondary-container px-5 py-2 rounded-full text-sm font-bold hover:opacity-90 transition-all active:scale-95 shadow-sm">
+                                    Tiếp tục học tập
+                                </button>
+                                <div class="flex -space-x-2">
+                                    <div class="w-8 h-8 rounded-full border-2 border-primary bg-secondary-fixed"></div>
+                                    <div class="w-8 h-8 rounded-full border-2 border-primary bg-tertiary-fixed"></div>
+                                    <div class="w-8 h-8 rounded-full border-2 border-primary bg-primary-fixed flex items-center justify-center text-[10px] font-bold text-primary">+8</div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Subtle background pattern -->
+                        <div class="absolute -top-4 -right-4 opacity-10 pointer-events-none select-none">
+                            <span class="material-symbols-outlined text-[120px]">school</span>
+                        </div>
+                    </div>
+
+                    <!-- Related Cards -->
+                    <section class="space-y-4">
+                        <h3 class="text-lg font-bold text-primary">Các lá bài liên quan</h3>
+                        <div class="flex overflow-x-auto gap-4 pb-2 scrollbar-hide snap-x">
+                            
+                            <!-- Card 1 -->
+                            <div class="flex-none w-40 glass-card p-4 rounded-xl transition-all hover:-translate-y-1 cursor-pointer shadow-sm snap-start">
+                                <div class="text-secondary text-sm font-bold flex items-center justify-between mb-3">
+                                    <span>3 Cơ</span>
+                                    <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">favorite</span>
+                                </div>
+                                <div class="h-24 bg-surface-variant rounded-lg mb-3 flex items-center justify-center">
+                                    <span class="material-symbols-outlined text-outline-variant text-3xl">visibility</span>
+                                </div>
+                                <p class="text-sm font-bold text-on-surface">Cảm giác</p>
+                            </div>
+                            
+                            <!-- Card 2 -->
+                            <div class="flex-none w-40 glass-card p-4 rounded-xl transition-all hover:-translate-y-1 cursor-pointer border-secondary/30 bg-secondary/5 shadow-sm snap-start">
+                                <div class="text-secondary text-sm font-bold flex items-center justify-between mb-3">
+                                    <span>5 Cơ</span>
+                                    <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">favorite</span>
+                                </div>
+                                <div class="h-24 bg-surface-variant rounded-lg mb-3 flex items-center justify-center">
+                                    <span class="material-symbols-outlined text-outline-variant text-3xl">psychology_alt</span>
+                                </div>
+                                <p class="text-sm font-bold text-on-surface">Biểu tượng</p>
+                            </div>
+                            
+                            <!-- Card 3 -->
+                            <div class="flex-none w-40 glass-card p-4 rounded-xl transition-all hover:-translate-y-1 cursor-pointer opacity-60 shadow-sm snap-start">
+                                <div class="text-secondary text-sm font-bold flex items-center justify-between mb-3">
+                                    <span>6 Cơ</span>
+                                    <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">favorite</span>
+                                </div>
+                                <div class="h-24 bg-surface-variant rounded-lg mb-3 flex items-center justify-center">
+                                    <span class="material-symbols-outlined text-outline-variant text-3xl">lock</span>
+                                </div>
+                                <p class="text-sm font-bold text-on-surface">Khái niệm</p>
+                            </div>
+                            
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- BottomNavBar (Chỉ hiển thị trên Mobile thiết bị cầm tay) -->
+    <nav class="lg:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-2 pb-3 pt-2 bg-surface-container dark:bg-inverse-surface shadow-lg border-t border-outline-variant/10">
+        <div class="flex flex-col items-center justify-center text-on-surface-variant p-1.5 cursor-pointer">
+            <span class="material-symbols-outlined text-xl">home</span>
+            <span class="text-[10px] font-bold mt-0.5">Trang chủ</span>
+        </div>
+        <div class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-xl py-1.5 px-3 cursor-pointer shadow-sm">
+            <span class="material-symbols-outlined text-xl">style</span>
+            <span class="text-[10px] font-bold mt-0.5">Bộ bài</span>
+        </div>
+        <div class="flex flex-col items-center justify-center text-on-surface-variant p-1.5 cursor-pointer">
+            <span class="material-symbols-outlined text-xl">auto_stories</span>
+            <span class="text-[10px] font-bold mt-0.5">Tiến độ</span>
+        </div>
+        <div class="flex flex-col items-center justify-center text-on-surface-variant p-1.5 cursor-pointer">
+            <span class="material-symbols-outlined text-xl">person</span>
+            <span class="text-[10px] font-bold mt-0.5">Hồ sơ</span>
+        </div>
+        <div class="flex flex-col items-center justify-center text-on-surface-variant p-1.5 cursor-pointer">
+            <span class="material-symbols-outlined text-xl">menu</span>
+            <span class="text-[10px] font-bold mt-0.5">Menu</span>
+        </div>
+    </nav>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const progress = document.querySelector('.bg-on-tertiary-container');
+            if(progress) {
+                // Đặt lại width ban đầu bằng 0 để tạo hiệu ứng chạy mượt mà
+                progress.style.width = '0%';
+                setTimeout(() => {
+                    progress.style.width = '45%';
+                }, 350);
+            }
+        });
+    </script>
+</body>
+</html>

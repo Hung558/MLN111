@@ -1,0 +1,74 @@
+/* ========================================
+   CARDS.CSS - Riêng cho trang chi tiết 13 lá bài
+   ======================================== */
+
+/* Mini card animation */
+.mini-card {
+    animation: cardIn 0.4s ease-out both;
+}
+.mini-card:nth-child(1)  { animation-delay: 0.00s; }
+.mini-card:nth-child(2)  { animation-delay: 0.04s; }
+.mini-card:nth-child(3)  { animation-delay: 0.08s; }
+.mini-card:nth-child(4)  { animation-delay: 0.12s; }
+.mini-card:nth-child(5)  { animation-delay: 0.16s; }
+.mini-card:nth-child(6)  { animation-delay: 0.20s; }
+.mini-card:nth-child(7)  { animation-delay: 0.24s; }
+.mini-card:nth-child(8)  { animation-delay: 0.28s; }
+.mini-card:nth-child(9)  { animation-delay: 0.32s; }
+.mini-card:nth-child(10) { animation-delay: 0.36s; }
+.mini-card:nth-child(11) { animation-delay: 0.40s; }
+.mini-card:nth-child(12) { animation-delay: 0.44s; }
+.mini-card:nth-child(13) { animation-delay: 0.48s; }
+
+@keyframes cardIn {
+    from {
+        opacity: 0;
+        transform: translateY(24px) rotateX(8deg);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) rotateX(0);
+    }
+}
+
+/* Mini card hover */
+.mini-card {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    background-color: var(--bg-card-surface);
+    border: 1px solid var(--border-card);
+}
+.mini-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.12);
+}
+html.dark .mini-card:hover {
+    box-shadow: 0 12px 32px rgba(0,0,0,0.4);
+}
+
+/* Card image placeholder */
+.card-img-placeholder {
+    background: linear-gradient(135deg, rgba(0,36,66,0.03) 0%, rgba(183,16,50,0.03) 100%);
+    border: 1.5px dashed var(--border-card);
+    transition: all 0.3s ease;
+    width: 100%;
+    aspect-ratio: 3/4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 12px;
+}
+html.dark .card-img-placeholder {
+    background: linear-gradient(135deg, rgba(171,201,240,0.04) 0%, rgba(255,179,180,0.04) 100%);
+}
+.mini-card:hover .card-img-placeholder {
+    border-color: rgba(183,16,50,0.2);
+}
+html.dark .mini-card:hover .card-img-placeholder {
+    border-color: rgba(255,179,180,0.2);
+}
+
+/* Card divider */
+.mini-card .border-t {
+    border-top-color: var(--border-card) !important;
+}
