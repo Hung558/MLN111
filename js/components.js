@@ -14,7 +14,7 @@ class SideBar extends HTMLElement {
                 </div>
                 <div>
                     <h2 class="text-base font-bold leading-tight transition-colors duration-300">Triết Học Hệ Số</h2>
-                    <p class="text-xs transition-colors duration-300">Nhóm Đồ Án Triết Học</p>
+                    <p class="text-xs transition-colors duration-300">Nhóm 4 Triết Học MLN111</p>
                 </div>
             </div>
             <a href="lythuyet.html" class="sidebar-btn w-full text-sm font-semibold py-2.5 rounded-full hover:opacity-90 transition-all shadow-sm flex items-center justify-center gap-2">
