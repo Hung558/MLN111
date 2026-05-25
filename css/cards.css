@@ -45,6 +45,64 @@ html.dark .mini-card:hover {
     box-shadow: 0 12px 32px rgba(0,0,0,0.4);
 }
 
+.mini-card img {
+    transition: transform 0.3s ease;
+}
+
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(15, 23, 42, 0.72);
+    backdrop-filter: blur(8px);
+    padding: 1.5rem;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+
+.modal-overlay.open {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-backdrop {
+    position: absolute;
+    inset: 0;
+    cursor: pointer;
+}
+
+.modal-container {
+    position: relative;
+    width: min(100%, 980px);
+    transform: translateY(24px) scale(0.96);
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.modal-overlay.open .modal-container {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+}
+
+.modal-close-btn {
+    border: 1px solid rgba(148, 163, 184, 0.25);
+    background: rgba(255, 255, 255, 0.95);
+    width: 2.75rem;
+    height: 2.75rem;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+body.modal-open {
+    overflow: hidden;
+}
+
 /* Card image placeholder */
 .card-img-placeholder {
     background: linear-gradient(135deg, rgba(0,36,66,0.03) 0%, rgba(183,16,50,0.03) 100%);
