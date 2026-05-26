@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html class="dark" lang="vi">
 <head>
-    <!-- Chặn hiện tượng nháy theme (FOUC) -->
     <script>
         (function() {
             const savedTheme = localStorage.getItem('theme') || 'dark';
@@ -32,16 +31,13 @@
 </head>
 <body class="min-h-screen pb-16 lg:pb-0" >
 
-    <!-- SideNavBar -->
     <side-bar active="thebai"></side-bar>
 
     <div class="lg:pl-64 flex flex-col min-h-screen">
 
-        <!-- TopAppBar -->
         <top-bar active="thebai"></top-bar>
 
         <main class="flex-grow w-full max-w-6xl mx-auto px-6 py-8">
-            <!-- Breadcrumb -->
             <div class="mb-6">
                 <a href="thebai.html" class="inline-flex items-center gap-1 text-sm font-semibold px-3 py-1.5 rounded-lg transition" style="background:#f3f4f5; color:#43474e; text-decoration:none;">
                     <span class="material-symbols-outlined text-sm">arrow_back</span>
@@ -50,285 +46,287 @@
                 <span class="ml-2 text-sm" style="color:#73777e;">Thẻ bài > Chuồn</span>
             </div>
 
-            <!-- Page Title -->
             <div class="mb-8">
                 <h1 class="text-4xl font-bold mb-2" style="color:#002442;">Chuồn - Lịch Sử</h1>
                 <p class="text-base" style="color:#43474e;">Chủ nghĩa duy vật lịch sử, hình thái kinh tế - xã hội, giai cấp và đấu tranh.</p>
             </div>
 
-            <!-- Cards Grid -->
             <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 mb-8">
-                <!-- Át -->
-                <div class="mini-card card-surface rounded-xl shadow-sm overflow-hidden group">
+                <div class="mini-card card-surface rounded-xl shadow-sm overflow-hidden group cursor-pointer transition-transform duration-300 hover:-translate-y-2">
                     <div class="relative">
-                        <div class="absolute top-2 left-2 z-10">
-                            <div class="text-xs font-bold suit-chuon" style="color:#2e7d32;">A</div>
-                            <span class="material-symbols-outlined text-xs suit-chuon" style="font-variation-settings:'FILL' 1; color:#2e7d32;">eco</span>
-                        </div>
-                        <div class="absolute bottom-2 right-2 z-10 rotate-180">
-                            <div class="text-xs font-bold suit-chuon" style="color:#2e7d32;">A</div>
-                            <span class="material-symbols-outlined text-xs suit-chuon" style="font-variation-settings:'FILL' 1; color:#2e7d32;">eco</span>
-                        </div>
-                        <div class="card-img-placeholder suit-chuon" >
-                            <span class="text-xs" style="color:#666;">[Ảnh lá Át Chuồn]</span>
+                        <div class="w-full aspect-[3/4] overflow-hidden rounded-t-xl">
+                            <img src="images/clovers/A.png" alt="Át Chuồn" class="w-full h-full object-contain object-center transition-transform duration-300 group-hover:scale-105" />
                         </div>
                     </div>
                     <div class="px-3 py-2 text-center border-t" style="border-color:#e0e0e0;">
-                        <div class="text-sm font-semibold suit-chuon" style="color:#2e7d32;">Át Chuồn</div>
+                        <div class="text-sm font-semibold suit-chuon" style="color:#1a1c1e;">Át Chuồn</div>
                     </div>
                 </div>
 
-                <!-- 2 -->
-                <div class="mini-card card-surface rounded-xl shadow-sm overflow-hidden group">
+                <div class="mini-card card-surface rounded-xl shadow-sm overflow-hidden group cursor-pointer transition-transform duration-300 hover:-translate-y-2">
                     <div class="relative">
-                        <div class="absolute top-2 left-2 z-10">
-                            <div class="text-xs font-bold suit-chuon" style="color:#2e7d32;">2</div>
-                            <span class="material-symbols-outlined text-xs suit-chuon" style="font-variation-settings:'FILL' 1; color:#2e7d32;">eco</span>
-                        </div>
-                        <div class="absolute bottom-2 right-2 z-10 rotate-180">
-                            <div class="text-xs font-bold suit-chuon" style="color:#2e7d32;">2</div>
-                            <span class="material-symbols-outlined text-xs suit-chuon" style="font-variation-settings:'FILL' 1; color:#2e7d32;">eco</span>
-                        </div>
-                        <div class="card-img-placeholder suit-chuon" >
-                            <span class="text-xs" style="color:#666;">[Ảnh lá 2 Chuồn]</span>
+                        <div class="w-full aspect-[3/4] overflow-hidden rounded-t-xl">
+                            <img src="images/clovers/2.png" alt="2 Chuồn" class="w-full h-full object-contain object-center transition-transform duration-300 group-hover:scale-105" />
                         </div>
                     </div>
                     <div class="px-3 py-2 text-center border-t" style="border-color:#e0e0e0;">
-                        <div class="text-sm font-semibold suit-chuon" style="color:#2e7d32;">2 Chuồn</div>
+                        <div class="text-sm font-semibold suit-chuon" style="color:#1a1c1e;">2 Chuồn</div>
                     </div>
                 </div>
 
-                <!-- 3 -->
-                <div class="mini-card card-surface rounded-xl shadow-sm overflow-hidden group">
+                <div class="mini-card card-surface rounded-xl shadow-sm overflow-hidden group cursor-pointer transition-transform duration-300 hover:-translate-y-2">
                     <div class="relative">
-                        <div class="absolute top-2 left-2 z-10">
-                            <div class="text-xs font-bold suit-chuon" style="color:#2e7d32;">3</div>
-                            <span class="material-symbols-outlined text-xs suit-chuon" style="font-variation-settings:'FILL' 1; color:#2e7d32;">eco</span>
-                        </div>
-                        <div class="absolute bottom-2 right-2 z-10 rotate-180">
-                            <div class="text-xs font-bold suit-chuon" style="color:#2e7d32;">3</div>
-                            <span class="material-symbols-outlined text-xs suit-chuon" style="font-variation-settings:'FILL' 1; color:#2e7d32;">eco</span>
-                        </div>
-                        <div class="card-img-placeholder suit-chuon" >
-                            <span class="text-xs" style="color:#666;">[Ảnh lá 3 Chuồn]</span>
+                        <div class="w-full aspect-[3/4] overflow-hidden rounded-t-xl">
+                            <img src="images/clovers/3.png" alt="3 Chuồn" class="w-full h-full object-contain object-center transition-transform duration-300 group-hover:scale-105" />
                         </div>
                     </div>
                     <div class="px-3 py-2 text-center border-t" style="border-color:#e0e0e0;">
-                        <div class="text-sm font-semibold suit-chuon" style="color:#2e7d32;">3 Chuồn</div>
+                        <div class="text-sm font-semibold suit-chuon" style="color:#1a1c1e;">3 Chuồn</div>
                     </div>
                 </div>
 
-                <!-- 4 -->
-                <div class="mini-card card-surface rounded-xl shadow-sm overflow-hidden group">
+                <div class="mini-card card-surface rounded-xl shadow-sm overflow-hidden group cursor-pointer transition-transform duration-300 hover:-translate-y-2">
                     <div class="relative">
-                        <div class="absolute top-2 left-2 z-10">
-                            <div class="text-xs font-bold suit-chuon" style="color:#2e7d32;">4</div>
-                            <span class="material-symbols-outlined text-xs suit-chuon" style="font-variation-settings:'FILL' 1; color:#2e7d32;">eco</span>
-                        </div>
-                        <div class="absolute bottom-2 right-2 z-10 rotate-180">
-                            <div class="text-xs font-bold suit-chuon" style="color:#2e7d32;">4</div>
-                            <span class="material-symbols-outlined text-xs suit-chuon" style="font-variation-settings:'FILL' 1; color:#2e7d32;">eco</span>
-                        </div>
-                        <div class="card-img-placeholder suit-chuon" >
-                            <span class="text-xs" style="color:#666;">[Ảnh lá 4 Chuồn]</span>
+                        <div class="w-full aspect-[3/4] overflow-hidden rounded-t-xl">
+                            <img src="images/clovers/4.png" alt="4 Chuồn" class="w-full h-full object-contain object-center transition-transform duration-300 group-hover:scale-105" />
                         </div>
                     </div>
                     <div class="px-3 py-2 text-center border-t" style="border-color:#e0e0e0;">
-                        <div class="text-sm font-semibold suit-chuon" style="color:#2e7d32;">4 Chuồn</div>
+                        <div class="text-sm font-semibold suit-chuon" style="color:#1a1c1e;">4 Chuồn</div>
                     </div>
                 </div>
 
-                <!-- 5 -->
-                <div class="mini-card card-surface rounded-xl shadow-sm overflow-hidden group">
+                <div class="mini-card card-surface rounded-xl shadow-sm overflow-hidden group cursor-pointer transition-transform duration-300 hover:-translate-y-2">
                     <div class="relative">
-                        <div class="absolute top-2 left-2 z-10">
-                            <div class="text-xs font-bold suit-chuon" style="color:#2e7d32;">5</div>
-                            <span class="material-symbols-outlined text-xs suit-chuon" style="font-variation-settings:'FILL' 1; color:#2e7d32;">eco</span>
-                        </div>
-                        <div class="absolute bottom-2 right-2 z-10 rotate-180">
-                            <div class="text-xs font-bold suit-chuon" style="color:#2e7d32;">5</div>
-                            <span class="material-symbols-outlined text-xs suit-chuon" style="font-variation-settings:'FILL' 1; color:#2e7d32;">eco</span>
-                        </div>
-                        <div class="card-img-placeholder suit-chuon" >
-                            <span class="text-xs" style="color:#666;">[Ảnh lá 5 Chuồn]</span>
+                        <div class="w-full aspect-[3/4] overflow-hidden rounded-t-xl">
+                            <img src="images/clovers/5.png" alt="5 Chuồn" class="w-full h-full object-contain object-center transition-transform duration-300 group-hover:scale-105" />
                         </div>
                     </div>
                     <div class="px-3 py-2 text-center border-t" style="border-color:#e0e0e0;">
-                        <div class="text-sm font-semibold suit-chuon" style="color:#2e7d32;">5 Chuồn</div>
+                        <div class="text-sm font-semibold suit-chuon" style="color:#1a1c1e;">5 Chuồn</div>
                     </div>
                 </div>
 
-                <!-- 6 -->
-                <div class="mini-card card-surface rounded-xl shadow-sm overflow-hidden group">
+                <div class="mini-card card-surface rounded-xl shadow-sm overflow-hidden group cursor-pointer transition-transform duration-300 hover:-translate-y-2">
                     <div class="relative">
-                        <div class="absolute top-2 left-2 z-10">
-                            <div class="text-xs font-bold suit-chuon" style="color:#2e7d32;">6</div>
-                            <span class="material-symbols-outlined text-xs suit-chuon" style="font-variation-settings:'FILL' 1; color:#2e7d32;">eco</span>
-                        </div>
-                        <div class="absolute bottom-2 right-2 z-10 rotate-180">
-                            <div class="text-xs font-bold suit-chuon" style="color:#2e7d32;">6</div>
-                            <span class="material-symbols-outlined text-xs suit-chuon" style="font-variation-settings:'FILL' 1; color:#2e7d32;">eco</span>
-                        </div>
-                        <div class="card-img-placeholder suit-chuon" >
-                            <span class="text-xs" style="color:#666;">[Ảnh lá 6 Chuồn]</span>
+                        <div class="w-full aspect-[3/4] overflow-hidden rounded-t-xl">
+                            <img src="images/clovers/6.png" alt="6 Chuồn" class="w-full h-full object-contain object-center transition-transform duration-300 group-hover:scale-105" />
                         </div>
                     </div>
                     <div class="px-3 py-2 text-center border-t" style="border-color:#e0e0e0;">
-                        <div class="text-sm font-semibold suit-chuon" style="color:#2e7d32;">6 Chuồn</div>
+                        <div class="text-sm font-semibold suit-chuon" style="color:#1a1c1e;">6 Chuồn</div>
                     </div>
                 </div>
 
-                <!-- 7 -->
-                <div class="mini-card card-surface rounded-xl shadow-sm overflow-hidden group">
+                <div class="mini-card card-surface rounded-xl shadow-sm overflow-hidden group cursor-pointer transition-transform duration-300 hover:-translate-y-2">
                     <div class="relative">
-                        <div class="absolute top-2 left-2 z-10">
-                            <div class="text-xs font-bold suit-chuon" style="color:#2e7d32;">7</div>
-                            <span class="material-symbols-outlined text-xs suit-chuon" style="font-variation-settings:'FILL' 1; color:#2e7d32;">eco</span>
-                        </div>
-                        <div class="absolute bottom-2 right-2 z-10 rotate-180">
-                            <div class="text-xs font-bold suit-chuon" style="color:#2e7d32;">7</div>
-                            <span class="material-symbols-outlined text-xs suit-chuon" style="font-variation-settings:'FILL' 1; color:#2e7d32;">eco</span>
-                        </div>
-                        <div class="card-img-placeholder suit-chuon" >
-                            <span class="text-xs" style="color:#666;">[Ảnh lá 7 Chuồn]</span>
+                        <div class="w-full aspect-[3/4] overflow-hidden rounded-t-xl">
+                            <img src="images/clovers/7.png" alt="7 Chuồn" class="w-full h-full object-contain object-center transition-transform duration-300 group-hover:scale-105" />
                         </div>
                     </div>
                     <div class="px-3 py-2 text-center border-t" style="border-color:#e0e0e0;">
-                        <div class="text-sm font-semibold suit-chuon" style="color:#2e7d32;">7 Chuồn</div>
+                        <div class="text-sm font-semibold suit-chuon" style="color:#1a1c1e;">7 Chuồn</div>
                     </div>
                 </div>
 
-                <!-- 8 -->
-                <div class="mini-card card-surface rounded-xl shadow-sm overflow-hidden group">
+                <div class="mini-card card-surface rounded-xl shadow-sm overflow-hidden group cursor-pointer transition-transform duration-300 hover:-translate-y-2">
                     <div class="relative">
-                        <div class="absolute top-2 left-2 z-10">
-                            <div class="text-xs font-bold suit-chuon" style="color:#2e7d32;">8</div>
-                            <span class="material-symbols-outlined text-xs suit-chuon" style="font-variation-settings:'FILL' 1; color:#2e7d32;">eco</span>
-                        </div>
-                        <div class="absolute bottom-2 right-2 z-10 rotate-180">
-                            <div class="text-xs font-bold suit-chuon" style="color:#2e7d32;">8</div>
-                            <span class="material-symbols-outlined text-xs suit-chuon" style="font-variation-settings:'FILL' 1; color:#2e7d32;">eco</span>
-                        </div>
-                        <div class="card-img-placeholder suit-chuon" >
-                            <span class="text-xs" style="color:#666;">[Ảnh lá 8 Chuồn]</span>
+                        <div class="w-full aspect-[3/4] overflow-hidden rounded-t-xl">
+                            <img src="images/clovers/8.png" alt="8 Chuồn" class="w-full h-full object-contain object-center transition-transform duration-300 group-hover:scale-105" />
                         </div>
                     </div>
                     <div class="px-3 py-2 text-center border-t" style="border-color:#e0e0e0;">
-                        <div class="text-sm font-semibold suit-chuon" style="color:#2e7d32;">8 Chuồn</div>
+                        <div class="text-sm font-semibold suit-chuon" style="color:#1a1c1e;">8 Chuồn</div>
                     </div>
                 </div>
 
-                <!-- 9 -->
-                <div class="mini-card card-surface rounded-xl shadow-sm overflow-hidden group">
+                <div class="mini-card card-surface rounded-xl shadow-sm overflow-hidden group cursor-pointer transition-transform duration-300 hover:-translate-y-2">
                     <div class="relative">
-                        <div class="absolute top-2 left-2 z-10">
-                            <div class="text-xs font-bold suit-chuon" style="color:#2e7d32;">9</div>
-                            <span class="material-symbols-outlined text-xs suit-chuon" style="font-variation-settings:'FILL' 1; color:#2e7d32;">eco</span>
-                        </div>
-                        <div class="absolute bottom-2 right-2 z-10 rotate-180">
-                            <div class="text-xs font-bold suit-chuon" style="color:#2e7d32;">9</div>
-                            <span class="material-symbols-outlined text-xs suit-chuon" style="font-variation-settings:'FILL' 1; color:#2e7d32;">eco</span>
-                        </div>
-                        <div class="card-img-placeholder suit-chuon" >
-                            <span class="text-xs" style="color:#666;">[Ảnh lá 9 Chuồn]</span>
+                        <div class="w-full aspect-[3/4] overflow-hidden rounded-t-xl">
+                            <img src="images/clovers/9.png" alt="9 Chuồn" class="w-full h-full object-contain object-center transition-transform duration-300 group-hover:scale-105" />
                         </div>
                     </div>
                     <div class="px-3 py-2 text-center border-t" style="border-color:#e0e0e0;">
-                        <div class="text-sm font-semibold suit-chuon" style="color:#2e7d32;">9 Chuồn</div>
+                        <div class="text-sm font-semibold suit-chuon" style="color:#1a1c1e;">9 Chuồn</div>
                     </div>
                 </div>
 
-                <!-- 10 -->
-                <div class="mini-card card-surface rounded-xl shadow-sm overflow-hidden group">
+                <div class="mini-card card-surface rounded-xl shadow-sm overflow-hidden group cursor-pointer transition-transform duration-300 hover:-translate-y-2">
                     <div class="relative">
-                        <div class="absolute top-2 left-2 z-10">
-                            <div class="text-xs font-bold suit-chuon" style="color:#2e7d32;">10</div>
-                            <span class="material-symbols-outlined text-xs suit-chuon" style="font-variation-settings:'FILL' 1; color:#2e7d32;">eco</span>
-                        </div>
-                        <div class="absolute bottom-2 right-2 z-10 rotate-180">
-                            <div class="text-xs font-bold suit-chuon" style="color:#2e7d32;">10</div>
-                            <span class="material-symbols-outlined text-xs suit-chuon" style="font-variation-settings:'FILL' 1; color:#2e7d32;">eco</span>
-                        </div>
-                        <div class="card-img-placeholder suit-chuon" >
-                            <span class="text-xs" style="color:#666;">[Ảnh lá 10 Chuồn]</span>
+                        <div class="w-full aspect-[3/4] overflow-hidden rounded-t-xl">
+                            <img src="images/clovers/10.png" alt="10 Chuồn" class="w-full h-full object-contain object-center transition-transform duration-300 group-hover:scale-105" />
                         </div>
                     </div>
                     <div class="px-3 py-2 text-center border-t" style="border-color:#e0e0e0;">
-                        <div class="text-sm font-semibold suit-chuon" style="color:#2e7d32;">10 Chuồn</div>
+                        <div class="text-sm font-semibold suit-chuon" style="color:#1a1c1e;">10 Chuồn</div>
                     </div>
                 </div>
 
-                <!-- J -->
-                <div class="mini-card card-surface rounded-xl shadow-sm overflow-hidden group">
+                <div class="mini-card card-surface rounded-xl shadow-sm overflow-hidden group cursor-pointer transition-transform duration-300 hover:-translate-y-2">
                     <div class="relative">
-                        <div class="absolute top-2 left-2 z-10">
-                            <div class="text-xs font-bold suit-chuon" style="color:#2e7d32;">J</div>
-                            <span class="material-symbols-outlined text-xs suit-chuon" style="font-variation-settings:'FILL' 1; color:#2e7d32;">eco</span>
-                        </div>
-                        <div class="absolute bottom-2 right-2 z-10 rotate-180">
-                            <div class="text-xs font-bold suit-chuon" style="color:#2e7d32;">J</div>
-                            <span class="material-symbols-outlined text-xs suit-chuon" style="font-variation-settings:'FILL' 1; color:#2e7d32;">eco</span>
-                        </div>
-                        <div class="card-img-placeholder suit-chuon" >
-                            <span class="text-xs" style="color:#666;">[Ảnh lá J Chuồn]</span>
+                        <div class="w-full aspect-[3/4] overflow-hidden rounded-t-xl">
+                            <img src="images/clovers/J.png" alt="J Chuồn" class="w-full h-full object-contain object-center transition-transform duration-300 group-hover:scale-105" />
                         </div>
                     </div>
                     <div class="px-3 py-2 text-center border-t" style="border-color:#e0e0e0;">
-                        <div class="text-sm font-semibold suit-chuon" style="color:#2e7d32;">J Chuồn</div>
+                        <div class="text-sm font-semibold suit-chuon" style="color:#1a1c1e;">J Chuồn</div>
                     </div>
                 </div>
 
-                <!-- Q -->
-                <div class="mini-card card-surface rounded-xl shadow-sm overflow-hidden group">
+                <div class="mini-card card-surface rounded-xl shadow-sm overflow-hidden group cursor-pointer transition-transform duration-300 hover:-translate-y-2">
                     <div class="relative">
-                        <div class="absolute top-2 left-2 z-10">
-                            <div class="text-xs font-bold suit-chuon" style="color:#2e7d32;">Q</div>
-                            <span class="material-symbols-outlined text-xs suit-chuon" style="font-variation-settings:'FILL' 1; color:#2e7d32;">eco</span>
-                        </div>
-                        <div class="absolute bottom-2 right-2 z-10 rotate-180">
-                            <div class="text-xs font-bold suit-chuon" style="color:#2e7d32;">Q</div>
-                            <span class="material-symbols-outlined text-xs suit-chuon" style="font-variation-settings:'FILL' 1; color:#2e7d32;">eco</span>
-                        </div>
-                        <div class="card-img-placeholder suit-chuon" >
-                            <span class="text-xs" style="color:#666;">[Ảnh lá Q Chuồn]</span>
+                        <div class="w-full aspect-[3/4] overflow-hidden rounded-t-xl">
+                            <img src="images/clovers/Q.png" alt="Q Chuồn" class="w-full h-full object-contain object-center transition-transform duration-300 group-hover:scale-105" />
                         </div>
                     </div>
                     <div class="px-3 py-2 text-center border-t" style="border-color:#e0e0e0;">
-                        <div class="text-sm font-semibold suit-chuon" style="color:#2e7d32;">Q Chuồn</div>
+                        <div class="text-sm font-semibold suit-chuon" style="color:#1a1c1e;">Q Chuồn</div>
                     </div>
                 </div>
 
-                <!-- K -->
-                <div class="mini-card card-surface rounded-xl shadow-sm overflow-hidden group">
+                <div class="mini-card card-surface rounded-xl shadow-sm overflow-hidden group cursor-pointer transition-transform duration-300 hover:-translate-y-2">
                     <div class="relative">
-                        <div class="absolute top-2 left-2 z-10">
-                            <div class="text-xs font-bold suit-chuon" style="color:#2e7d32;">K</div>
-                            <span class="material-symbols-outlined text-xs suit-chuon" style="font-variation-settings:'FILL' 1; color:#2e7d32;">eco</span>
-                        </div>
-                        <div class="absolute bottom-2 right-2 z-10 rotate-180">
-                            <div class="text-xs font-bold suit-chuon" style="color:#2e7d32;">K</div>
-                            <span class="material-symbols-outlined text-xs suit-chuon" style="font-variation-settings:'FILL' 1; color:#2e7d32;">eco</span>
-                        </div>
-                        <div class="card-img-placeholder suit-chuon" >
-                            <span class="text-xs" style="color:#666;">[Ảnh lá K Chuồn]</span>
+                        <div class="w-full aspect-[3/4] overflow-hidden rounded-t-xl">
+                            <img src="images/clovers/K.png" alt="K Chuồn" class="w-full h-full object-contain object-center transition-transform duration-300 group-hover:scale-105" />
                         </div>
                     </div>
                     <div class="px-3 py-2 text-center border-t" style="border-color:#e0e0e0;">
-                        <div class="text-sm font-semibold suit-chuon" style="color:#2e7d32;">K Chuồn</div>
+                        <div class="text-sm font-semibold suit-chuon" style="color:#1a1c1e;">K Chuồn</div>
                     </div>
                 </div>
             </div>
         </main>
+
+        <div id="card-modal" class="modal-overlay hidden">
+            <div class="modal-backdrop" data-modal-close></div>
+            <div class="modal-container card-surface rounded-3xl shadow-2xl overflow-hidden bg-white dark:bg-slate-950 relative">
+                <button id="modal-close" class="modal-close-btn absolute top-4 right-4 rounded-full p-3 text-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+                <div class="grid gap-6 p-6 lg:grid-cols-[0.95fr_1.15fr] lg:p-8">
+                    <div class="rounded-3xl overflow-hidden bg-slate-100 dark:bg-slate-900">
+                        <img id="modal-card-image" src="" alt="" class="w-full h-full object-contain object-center aspect-[3/4]" />
+                    </div>
+                    <div class="space-y-4 text-slate-700 dark:text-slate-200">
+                        <h2 id="modal-card-title" class="text-3xl font-bold" style="color:#002442;">Lá bài đã chọn</h2>
+                        <div id="modal-card-description" class="space-y-4 text-sm leading-7" style="color:#43474e;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <footer class="w-full max-w-6xl mx-auto px-6 py-8 text-center" style="border-top:1px solid rgba(195,198,206,0.1);">
             <p class="text-xs" style="color:#73777e;">© 2026 Nhóm 4 Triết Học MLN111 | Thẻ Bài Panda</p>
         </footer>
     </div>
 
-    <!-- BottomNavBar -->
     <bottom-bar active="thebai"></bottom-bar>
 
     <script src="js/components.js"></script>
+    <script>
+        function getCardDescriptions() {
+            return {
+                "Át Chuồn": [
+                    "Sản xuất vật chất là cơ sở tồn tại và phát triển của xã hội loài người.",
+                    "Đó là quá trình con người sử dụng công cụ lao động tác động vào tự nhiên, cải biến các dạng vật chất tự nhiên để tạo ra của cải đáp ứng nhu cầu tồn tại."
+                ],
+                "2 Chuồn": [
+                    "Phương thức sản xuất: Là cách thức con người tiến hành quá trình sản xuất vật chất ở một giai đoạn lịch sử nhất định.",
+                    "Sự thay thế các phương thức sản xuất quyết định sự phát triển của xã hội loài người từ thấp đến cao."
+                ],
+                "3 Chuồn": [
+                    "Lực lượng sản xuất: Thể hiện mối quan hệ giữa con người với tự nhiên trong quá trình sản xuất.",
+                    "Bao gồm người lao động (kỹ năng, tri thức) và tư liệu sản xuất (công cụ lao động là yếu tố động nhất)."
+                ],
+                "4 Chuồn": [
+                    "Quan hệ sản xuất: Là mối quan hệ giữa con người với con người trong quá trình sản xuất vật chất.",
+                    "Bao gồm quan hệ sở hữu đối với tư liệu sản xuất, quan hệ tổ chức quản lý, và quan hệ phân phối sản phẩm."
+                ],
+                "5 Chuồn": [
+                    "Quy luật QHSX phù hợp với trình độ phát triển của LLSX: Là quy luật cơ bản nhất chi phối sự vận động của lịch sử.",
+                    "LLSX là nội dung (thường xuyên biến đổi), còn QHSX là hình thức (tương đối ổn định). LLSX phát triển đòi hỏi QHSX phải thay đổi để thích ứng."
+                ],
+                "6 Chuồn": [
+                    "Cơ sở hạ tầng: Là toàn bộ những quan hệ sản xuất hợp thành cơ cấu kinh tế của một xã hội nhất định.",
+                    "Nó bao gồm quan hệ sản xuất thống trị, quan hệ sản xuất tàn dư và quan hệ sản xuất mầm mống."
+                ],
+                "7 Chuồn": [
+                    "Kiến trúc thượng tầng: Là toàn bộ những tư tưởng xã hội (chính trị, pháp quyền, triết học, tôn giáo...) và các thiết chế tương ứng (nhà nước, đảng phái...).",
+                    "Được hình thành trên một cơ sở hạ tầng nhất định và phản ánh cơ sở hạ tầng đó."
+                ],
+                "8 Chuồn": [
+                    "Biện chứng giữa CSHT và KTTT: Cơ sở hạ tầng quyết định kiến trúc thượng tầng.",
+                    "Tuy nhiên, kiến trúc thượng tầng có tính độc lập tương đối và tác động trở lại mạnh mẽ đối với cơ sở hạ tầng (đặc biệt là vai trò của Nhà nước)."
+                ],
+                "9 Chuồn": [
+                    "Hình thái kinh tế - xã hội: Là một phạm trù của CN duy vật lịch sử chỉ xã hội ở từng giai đoạn phát triển.",
+                    "Được cấu trúc bởi 3 yếu tố: Lực lượng sản xuất, Quan hệ sản xuất (Cơ sở hạ tầng) và Kiến trúc thượng tầng."
+                ],
+                "10 Chuồn": [
+                    "Sự phát triển của các hình thái kinh tế - xã hội là một quá trình lịch sử - tự nhiên.",
+                    "Tuân theo các quy luật khách quan, lịch sử nhân loại đã trải qua các hình thái: Cộng sản nguyên thủy, Chiếm hữu nô lệ, Phong kiến, Tư bản chủ nghĩa và Cộng sản chủ nghĩa."
+                ],
+                "J Chuồn": [
+                    "Giai cấp: Là những tập đoàn người to lớn khác nhau về địa vị trong một hệ thống sản xuất xã hội nhất định.",
+                    "Sự khác biệt chủ yếu nằm ở quan hệ sở hữu tư liệu sản xuất, dẫn đến việc tập đoàn này có thể chiếm đoạt lao động của tập đoàn khác."
+                ],
+                "Q Chuồn": [
+                    "Đấu tranh giai cấp: Là cuộc đấu tranh giữa các giai cấp có lợi ích căn bản đối lập nhau.",
+                    "Trong xã hội có giai cấp, đấu tranh giai cấp là một trong những động lực quan trọng nhất thúc đẩy sự phát triển của lịch sử."
+                ],
+                "K Chuồn": [
+                    "Quần chúng nhân dân: Là lực lượng sáng tạo chân chính ra lịch sử.",
+                    "Họ là người sản xuất ra của cải vật chất, sáng tạo ra các giá trị tinh thần, và là động lực cơ bản của mọi cuộc cách mạng xã hội."
+                ]
+            };
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.mini-card.cursor-pointer');
+            const modal = document.getElementById('card-modal');
+            const modalImage = document.getElementById('modal-card-image');
+            const modalTitle = document.getElementById('modal-card-title');
+            const modalDescription = document.getElementById('modal-card-description');
+            const closeButton = document.getElementById('modal-close');
+            const backdrop = modal.querySelector('[data-modal-close]');
+            const descriptions = getCardDescriptions();
+
+            function openModal(title, imgSrc) {
+                modalImage.src = imgSrc;
+                modalImage.alt = title;
+                modalTitle.innerText = title;
+                modalDescription.innerHTML = descriptions[title]
+                    ? descriptions[title].map((p) => `<p>${p}</p>`).join('')
+                    : `<p>Không có mô tả cho lá bài này.</p>`;
+                document.body.classList.add('modal-open');
+                modal.classList.remove('hidden');
+                requestAnimationFrame(() => modal.classList.add('open'));
+            }
+
+            function closeModal() {
+                modal.classList.remove('open');
+                document.body.classList.remove('modal-open');
+                modal.addEventListener('transitionend', function hide(event) {
+                    if (event.target === modal) {
+                        modal.classList.add('hidden');
+                        modal.removeEventListener('transitionend', hide);
+                    }
+                });
+            }
+
+            cards.forEach((card) => {
+                card.addEventListener('click', () => {
+                    const title = card.querySelector('.text-sm.font-semibold')?.innerText?.trim() || '';
+                    const img = card.querySelector('img');
+                    openModal(title, img.src);
+                });
+            });
+
+            closeButton.addEventListener('click', closeModal);
+            backdrop.addEventListener('click', closeModal);
+            modal.querySelector('.modal-container').addEventListener('click', (event) => event.stopPropagation());
+        });
+    </script>
     <script>
         const toggle = document.getElementById('theme-toggle');
         const modeText = document.getElementById('mode-text');
