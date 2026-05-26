@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html class="dark" lang="vi">
 <head>
-    <!-- Chặn hiện tượng nháy theme (FOUC) -->
     <script>
         (function() {
             const savedTheme = localStorage.getItem('theme') || 'dark';
@@ -32,16 +31,13 @@
 </head>
 <body class="min-h-screen pb-16 lg:pb-0" >
 
-    <!-- SideNavBar -->
     <side-bar active="thebai"></side-bar>
 
     <div class="lg:pl-64 flex flex-col min-h-screen">
 
-        <!-- TopAppBar -->
         <top-bar active="thebai"></top-bar>
 
         <main class="flex-grow w-full max-w-6xl mx-auto px-6 py-8">
-            <!-- Breadcrumb -->
             <div class="mb-6">
                 <a href="thebai.html" class="inline-flex items-center gap-1 text-sm font-semibold px-3 py-1.5 rounded-lg transition" style="background:#f3f4f5; color:#43474e; text-decoration:none;">
                     <span class="material-symbols-outlined text-sm">arrow_back</span>
@@ -50,27 +46,16 @@
                 <span class="ml-2 text-sm" style="color:#73777e;">Thẻ bài > Cơ</span>
             </div>
 
-            <!-- Page Title -->
             <div class="mb-8">
                 <h1 class="text-4xl font-bold mb-2" style="color:#002442;">Cơ - Nhận Thức</h1>
                 <p class="text-base" style="color:#43474e;">Lý luận nhận thức, thực tiễn, chân lý, các giai đoạn nhận thức.</p>
             </div>
 
-            <!-- Cards Grid -->
             <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 mb-8">
-                <!-- Át -->
-                <div class="mini-card card-surface rounded-xl shadow-sm overflow-hidden group">
+                <div class="mini-card card-surface rounded-xl shadow-sm overflow-hidden group cursor-pointer transition-transform duration-300 hover:-translate-y-2">
                     <div class="relative">
-                        <div class="absolute top-2 left-2 z-10">
-                            <div class="text-xs font-bold suit-co" style="color:#b71032;">A</div>
-                            <span class="material-symbols-outlined text-xs suit-co" style="font-variation-settings:'FILL' 1; color:#b71032;">favorite</span>
-                        </div>
-                        <div class="absolute bottom-2 right-2 z-10 rotate-180">
-                            <div class="text-xs font-bold suit-co" style="color:#b71032;">A</div>
-                            <span class="material-symbols-outlined text-xs suit-co" style="font-variation-settings:'FILL' 1; color:#b71032;">favorite</span>
-                        </div>
-                        <div class="card-img-placeholder suit-co" >
-                            <span class="text-xs" style="color:#666;">[Ảnh lá Át Cơ]</span>
+                        <div class="w-full aspect-[3/4] overflow-hidden rounded-t-xl">
+                            <img src="images/hearts/A.png" alt="Át Cơ" class="w-full h-full object-contain object-center transition-transform duration-300 group-hover:scale-105" />
                         </div>
                     </div>
                     <div class="px-3 py-2 text-center border-t" style="border-color:#e0e0e0;">
@@ -78,19 +63,10 @@
                     </div>
                 </div>
 
-                <!-- 2 -->
-                <div class="mini-card card-surface rounded-xl shadow-sm overflow-hidden group">
+                <div class="mini-card card-surface rounded-xl shadow-sm overflow-hidden group cursor-pointer transition-transform duration-300 hover:-translate-y-2">
                     <div class="relative">
-                        <div class="absolute top-2 left-2 z-10">
-                            <div class="text-xs font-bold suit-co" style="color:#b71032;">2</div>
-                            <span class="material-symbols-outlined text-xs suit-co" style="font-variation-settings:'FILL' 1; color:#b71032;">favorite</span>
-                        </div>
-                        <div class="absolute bottom-2 right-2 z-10 rotate-180">
-                            <div class="text-xs font-bold suit-co" style="color:#b71032;">2</div>
-                            <span class="material-symbols-outlined text-xs suit-co" style="font-variation-settings:'FILL' 1; color:#b71032;">favorite</span>
-                        </div>
-                        <div class="card-img-placeholder suit-co" >
-                            <span class="text-xs" style="color:#666;">[Ảnh lá 2 Cơ]</span>
+                        <div class="w-full aspect-[3/4] overflow-hidden rounded-t-xl">
+                            <img src="images/hearts/2.png" alt="2 Cơ" class="w-full h-full object-contain object-center transition-transform duration-300 group-hover:scale-105" />
                         </div>
                     </div>
                     <div class="px-3 py-2 text-center border-t" style="border-color:#e0e0e0;">
@@ -98,19 +74,10 @@
                     </div>
                 </div>
 
-                <!-- 3 -->
-                <div class="mini-card card-surface rounded-xl shadow-sm overflow-hidden group">
+                <div class="mini-card card-surface rounded-xl shadow-sm overflow-hidden group cursor-pointer transition-transform duration-300 hover:-translate-y-2">
                     <div class="relative">
-                        <div class="absolute top-2 left-2 z-10">
-                            <div class="text-xs font-bold suit-co" style="color:#b71032;">3</div>
-                            <span class="material-symbols-outlined text-xs suit-co" style="font-variation-settings:'FILL' 1; color:#b71032;">favorite</span>
-                        </div>
-                        <div class="absolute bottom-2 right-2 z-10 rotate-180">
-                            <div class="text-xs font-bold suit-co" style="color:#b71032;">3</div>
-                            <span class="material-symbols-outlined text-xs suit-co" style="font-variation-settings:'FILL' 1; color:#b71032;">favorite</span>
-                        </div>
-                        <div class="card-img-placeholder suit-co" >
-                            <span class="text-xs" style="color:#666;">[Ảnh lá 3 Cơ]</span>
+                        <div class="w-full aspect-[3/4] overflow-hidden rounded-t-xl">
+                            <img src="images/hearts/3.png" alt="3 Cơ" class="w-full h-full object-contain object-center transition-transform duration-300 group-hover:scale-105" />
                         </div>
                     </div>
                     <div class="px-3 py-2 text-center border-t" style="border-color:#e0e0e0;">
@@ -118,19 +85,10 @@
                     </div>
                 </div>
 
-                <!-- 4 -->
-                <div class="mini-card card-surface rounded-xl shadow-sm overflow-hidden group">
+                <div class="mini-card card-surface rounded-xl shadow-sm overflow-hidden group cursor-pointer transition-transform duration-300 hover:-translate-y-2">
                     <div class="relative">
-                        <div class="absolute top-2 left-2 z-10">
-                            <div class="text-xs font-bold suit-co" style="color:#b71032;">4</div>
-                            <span class="material-symbols-outlined text-xs suit-co" style="font-variation-settings:'FILL' 1; color:#b71032;">favorite</span>
-                        </div>
-                        <div class="absolute bottom-2 right-2 z-10 rotate-180">
-                            <div class="text-xs font-bold suit-co" style="color:#b71032;">4</div>
-                            <span class="material-symbols-outlined text-xs suit-co" style="font-variation-settings:'FILL' 1; color:#b71032;">favorite</span>
-                        </div>
-                        <div class="card-img-placeholder suit-co" >
-                            <span class="text-xs" style="color:#666;">[Ảnh lá 4 Cơ]</span>
+                        <div class="w-full aspect-[3/4] overflow-hidden rounded-t-xl">
+                            <img src="images/hearts/4.png" alt="4 Cơ" class="w-full h-full object-contain object-center transition-transform duration-300 group-hover:scale-105" />
                         </div>
                     </div>
                     <div class="px-3 py-2 text-center border-t" style="border-color:#e0e0e0;">
@@ -138,19 +96,10 @@
                     </div>
                 </div>
 
-                <!-- 5 -->
-                <div class="mini-card card-surface rounded-xl shadow-sm overflow-hidden group">
+                <div class="mini-card card-surface rounded-xl shadow-sm overflow-hidden group cursor-pointer transition-transform duration-300 hover:-translate-y-2">
                     <div class="relative">
-                        <div class="absolute top-2 left-2 z-10">
-                            <div class="text-xs font-bold suit-co" style="color:#b71032;">5</div>
-                            <span class="material-symbols-outlined text-xs suit-co" style="font-variation-settings:'FILL' 1; color:#b71032;">favorite</span>
-                        </div>
-                        <div class="absolute bottom-2 right-2 z-10 rotate-180">
-                            <div class="text-xs font-bold suit-co" style="color:#b71032;">5</div>
-                            <span class="material-symbols-outlined text-xs suit-co" style="font-variation-settings:'FILL' 1; color:#b71032;">favorite</span>
-                        </div>
-                        <div class="card-img-placeholder suit-co" >
-                            <span class="text-xs" style="color:#666;">[Ảnh lá 5 Cơ]</span>
+                        <div class="w-full aspect-[3/4] overflow-hidden rounded-t-xl">
+                            <img src="images/hearts/5.png" alt="5 Cơ" class="w-full h-full object-contain object-center transition-transform duration-300 group-hover:scale-105" />
                         </div>
                     </div>
                     <div class="px-3 py-2 text-center border-t" style="border-color:#e0e0e0;">
@@ -158,19 +107,10 @@
                     </div>
                 </div>
 
-                <!-- 6 -->
-                <div class="mini-card card-surface rounded-xl shadow-sm overflow-hidden group">
+                <div class="mini-card card-surface rounded-xl shadow-sm overflow-hidden group cursor-pointer transition-transform duration-300 hover:-translate-y-2">
                     <div class="relative">
-                        <div class="absolute top-2 left-2 z-10">
-                            <div class="text-xs font-bold suit-co" style="color:#b71032;">6</div>
-                            <span class="material-symbols-outlined text-xs suit-co" style="font-variation-settings:'FILL' 1; color:#b71032;">favorite</span>
-                        </div>
-                        <div class="absolute bottom-2 right-2 z-10 rotate-180">
-                            <div class="text-xs font-bold suit-co" style="color:#b71032;">6</div>
-                            <span class="material-symbols-outlined text-xs suit-co" style="font-variation-settings:'FILL' 1; color:#b71032;">favorite</span>
-                        </div>
-                        <div class="card-img-placeholder suit-co" >
-                            <span class="text-xs" style="color:#666;">[Ảnh lá 6 Cơ]</span>
+                        <div class="w-full aspect-[3/4] overflow-hidden rounded-t-xl">
+                            <img src="images/hearts/6.png" alt="6 Cơ" class="w-full h-full object-contain object-center transition-transform duration-300 group-hover:scale-105" />
                         </div>
                     </div>
                     <div class="px-3 py-2 text-center border-t" style="border-color:#e0e0e0;">
@@ -178,19 +118,10 @@
                     </div>
                 </div>
 
-                <!-- 7 -->
-                <div class="mini-card card-surface rounded-xl shadow-sm overflow-hidden group">
+                <div class="mini-card card-surface rounded-xl shadow-sm overflow-hidden group cursor-pointer transition-transform duration-300 hover:-translate-y-2">
                     <div class="relative">
-                        <div class="absolute top-2 left-2 z-10">
-                            <div class="text-xs font-bold suit-co" style="color:#b71032;">7</div>
-                            <span class="material-symbols-outlined text-xs suit-co" style="font-variation-settings:'FILL' 1; color:#b71032;">favorite</span>
-                        </div>
-                        <div class="absolute bottom-2 right-2 z-10 rotate-180">
-                            <div class="text-xs font-bold suit-co" style="color:#b71032;">7</div>
-                            <span class="material-symbols-outlined text-xs suit-co" style="font-variation-settings:'FILL' 1; color:#b71032;">favorite</span>
-                        </div>
-                        <div class="card-img-placeholder suit-co" >
-                            <span class="text-xs" style="color:#666;">[Ảnh lá 7 Cơ]</span>
+                        <div class="w-full aspect-[3/4] overflow-hidden rounded-t-xl">
+                            <img src="images/hearts/7.png" alt="7 Cơ" class="w-full h-full object-contain object-center transition-transform duration-300 group-hover:scale-105" />
                         </div>
                     </div>
                     <div class="px-3 py-2 text-center border-t" style="border-color:#e0e0e0;">
@@ -198,19 +129,10 @@
                     </div>
                 </div>
 
-                <!-- 8 -->
-                <div class="mini-card card-surface rounded-xl shadow-sm overflow-hidden group">
+                <div class="mini-card card-surface rounded-xl shadow-sm overflow-hidden group cursor-pointer transition-transform duration-300 hover:-translate-y-2">
                     <div class="relative">
-                        <div class="absolute top-2 left-2 z-10">
-                            <div class="text-xs font-bold suit-co" style="color:#b71032;">8</div>
-                            <span class="material-symbols-outlined text-xs suit-co" style="font-variation-settings:'FILL' 1; color:#b71032;">favorite</span>
-                        </div>
-                        <div class="absolute bottom-2 right-2 z-10 rotate-180">
-                            <div class="text-xs font-bold suit-co" style="color:#b71032;">8</div>
-                            <span class="material-symbols-outlined text-xs suit-co" style="font-variation-settings:'FILL' 1; color:#b71032;">favorite</span>
-                        </div>
-                        <div class="card-img-placeholder suit-co" >
-                            <span class="text-xs" style="color:#666;">[Ảnh lá 8 Cơ]</span>
+                        <div class="w-full aspect-[3/4] overflow-hidden rounded-t-xl">
+                            <img src="images/hearts/8.png" alt="8 Cơ" class="w-full h-full object-contain object-center transition-transform duration-300 group-hover:scale-105" />
                         </div>
                     </div>
                     <div class="px-3 py-2 text-center border-t" style="border-color:#e0e0e0;">
@@ -218,19 +140,10 @@
                     </div>
                 </div>
 
-                <!-- 9 -->
-                <div class="mini-card card-surface rounded-xl shadow-sm overflow-hidden group">
+                <div class="mini-card card-surface rounded-xl shadow-sm overflow-hidden group cursor-pointer transition-transform duration-300 hover:-translate-y-2">
                     <div class="relative">
-                        <div class="absolute top-2 left-2 z-10">
-                            <div class="text-xs font-bold suit-co" style="color:#b71032;">9</div>
-                            <span class="material-symbols-outlined text-xs suit-co" style="font-variation-settings:'FILL' 1; color:#b71032;">favorite</span>
-                        </div>
-                        <div class="absolute bottom-2 right-2 z-10 rotate-180">
-                            <div class="text-xs font-bold suit-co" style="color:#b71032;">9</div>
-                            <span class="material-symbols-outlined text-xs suit-co" style="font-variation-settings:'FILL' 1; color:#b71032;">favorite</span>
-                        </div>
-                        <div class="card-img-placeholder suit-co" >
-                            <span class="text-xs" style="color:#666;">[Ảnh lá 9 Cơ]</span>
+                        <div class="w-full aspect-[3/4] overflow-hidden rounded-t-xl">
+                            <img src="images/hearts/9.png" alt="9 Cơ" class="w-full h-full object-contain object-center transition-transform duration-300 group-hover:scale-105" />
                         </div>
                     </div>
                     <div class="px-3 py-2 text-center border-t" style="border-color:#e0e0e0;">
@@ -238,19 +151,10 @@
                     </div>
                 </div>
 
-                <!-- 10 -->
-                <div class="mini-card card-surface rounded-xl shadow-sm overflow-hidden group">
+                <div class="mini-card card-surface rounded-xl shadow-sm overflow-hidden group cursor-pointer transition-transform duration-300 hover:-translate-y-2">
                     <div class="relative">
-                        <div class="absolute top-2 left-2 z-10">
-                            <div class="text-xs font-bold suit-co" style="color:#b71032;">10</div>
-                            <span class="material-symbols-outlined text-xs suit-co" style="font-variation-settings:'FILL' 1; color:#b71032;">favorite</span>
-                        </div>
-                        <div class="absolute bottom-2 right-2 z-10 rotate-180">
-                            <div class="text-xs font-bold suit-co" style="color:#b71032;">10</div>
-                            <span class="material-symbols-outlined text-xs suit-co" style="font-variation-settings:'FILL' 1; color:#b71032;">favorite</span>
-                        </div>
-                        <div class="card-img-placeholder suit-co" >
-                            <span class="text-xs" style="color:#666;">[Ảnh lá 10 Cơ]</span>
+                        <div class="w-full aspect-[3/4] overflow-hidden rounded-t-xl">
+                            <img src="images/hearts/10.png" alt="10 Cơ" class="w-full h-full object-contain object-center transition-transform duration-300 group-hover:scale-105" />
                         </div>
                     </div>
                     <div class="px-3 py-2 text-center border-t" style="border-color:#e0e0e0;">
@@ -258,19 +162,10 @@
                     </div>
                 </div>
 
-                <!-- J -->
-                <div class="mini-card card-surface rounded-xl shadow-sm overflow-hidden group">
+                <div class="mini-card card-surface rounded-xl shadow-sm overflow-hidden group cursor-pointer transition-transform duration-300 hover:-translate-y-2">
                     <div class="relative">
-                        <div class="absolute top-2 left-2 z-10">
-                            <div class="text-xs font-bold suit-co" style="color:#b71032;">J</div>
-                            <span class="material-symbols-outlined text-xs suit-co" style="font-variation-settings:'FILL' 1; color:#b71032;">favorite</span>
-                        </div>
-                        <div class="absolute bottom-2 right-2 z-10 rotate-180">
-                            <div class="text-xs font-bold suit-co" style="color:#b71032;">J</div>
-                            <span class="material-symbols-outlined text-xs suit-co" style="font-variation-settings:'FILL' 1; color:#b71032;">favorite</span>
-                        </div>
-                        <div class="card-img-placeholder suit-co" >
-                            <span class="text-xs" style="color:#666;">[Ảnh lá J Cơ]</span>
+                        <div class="w-full aspect-[3/4] overflow-hidden rounded-t-xl">
+                            <img src="images/hearts/J.png" alt="J Cơ" class="w-full h-full object-contain object-center transition-transform duration-300 group-hover:scale-105" />
                         </div>
                     </div>
                     <div class="px-3 py-2 text-center border-t" style="border-color:#e0e0e0;">
@@ -278,19 +173,10 @@
                     </div>
                 </div>
 
-                <!-- Q -->
-                <div class="mini-card card-surface rounded-xl shadow-sm overflow-hidden group">
+                <div class="mini-card card-surface rounded-xl shadow-sm overflow-hidden group cursor-pointer transition-transform duration-300 hover:-translate-y-2">
                     <div class="relative">
-                        <div class="absolute top-2 left-2 z-10">
-                            <div class="text-xs font-bold suit-co" style="color:#b71032;">Q</div>
-                            <span class="material-symbols-outlined text-xs suit-co" style="font-variation-settings:'FILL' 1; color:#b71032;">favorite</span>
-                        </div>
-                        <div class="absolute bottom-2 right-2 z-10 rotate-180">
-                            <div class="text-xs font-bold suit-co" style="color:#b71032;">Q</div>
-                            <span class="material-symbols-outlined text-xs suit-co" style="font-variation-settings:'FILL' 1; color:#b71032;">favorite</span>
-                        </div>
-                        <div class="card-img-placeholder suit-co" >
-                            <span class="text-xs" style="color:#666;">[Ảnh lá Q Cơ]</span>
+                        <div class="w-full aspect-[3/4] overflow-hidden rounded-t-xl">
+                            <img src="images/hearts/Q.png" alt="Q Cơ" class="w-full h-full object-contain object-center transition-transform duration-300 group-hover:scale-105" />
                         </div>
                     </div>
                     <div class="px-3 py-2 text-center border-t" style="border-color:#e0e0e0;">
@@ -298,19 +184,10 @@
                     </div>
                 </div>
 
-                <!-- K -->
-                <div class="mini-card card-surface rounded-xl shadow-sm overflow-hidden group">
+                <div class="mini-card card-surface rounded-xl shadow-sm overflow-hidden group cursor-pointer transition-transform duration-300 hover:-translate-y-2">
                     <div class="relative">
-                        <div class="absolute top-2 left-2 z-10">
-                            <div class="text-xs font-bold suit-co" style="color:#b71032;">K</div>
-                            <span class="material-symbols-outlined text-xs suit-co" style="font-variation-settings:'FILL' 1; color:#b71032;">favorite</span>
-                        </div>
-                        <div class="absolute bottom-2 right-2 z-10 rotate-180">
-                            <div class="text-xs font-bold suit-co" style="color:#b71032;">K</div>
-                            <span class="material-symbols-outlined text-xs suit-co" style="font-variation-settings:'FILL' 1; color:#b71032;">favorite</span>
-                        </div>
-                        <div class="card-img-placeholder suit-co" >
-                            <span class="text-xs" style="color:#666;">[Ảnh lá K Cơ]</span>
+                        <div class="w-full aspect-[3/4] overflow-hidden rounded-t-xl">
+                            <img src="images/hearts/K.png" alt="K Cơ" class="w-full h-full object-contain object-center transition-transform duration-300 group-hover:scale-105" />
                         </div>
                     </div>
                     <div class="px-3 py-2 text-center border-t" style="border-color:#e0e0e0;">
@@ -320,15 +197,136 @@
             </div>
         </main>
 
+        <div id="card-modal" class="modal-overlay hidden">
+            <div class="modal-backdrop" data-modal-close></div>
+            <div class="modal-container card-surface rounded-3xl shadow-2xl overflow-hidden bg-white dark:bg-slate-950 relative">
+                <button id="modal-close" class="modal-close-btn absolute top-4 right-4 rounded-full p-3 text-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+                <div class="grid gap-6 p-6 lg:grid-cols-[0.95fr_1.15fr] lg:p-8">
+                    <div class="rounded-3xl overflow-hidden bg-slate-100 dark:bg-slate-900">
+                        <img id="modal-card-image" src="" alt="" class="w-full h-full object-contain object-center aspect-[3/4]" />
+                    </div>
+                    <div class="space-y-4 text-slate-700 dark:text-slate-200">
+                        <h2 id="modal-card-title" class="text-3xl font-bold" style="color:#002442;">Lá bài đã chọn</h2>
+                        <div id="modal-card-description" class="space-y-4 text-sm leading-7" style="color:#43474e;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <footer class="w-full max-w-6xl mx-auto px-6 py-8 text-center" style="border-top:1px solid rgba(195,198,206,0.1);">
             <p class="text-xs" style="color:#73777e;">© 2026 Nhóm 4 Triết Học MLN111 | Thẻ Bài Panda</p>
         </footer>
     </div>
 
-    <!-- BottomNavBar -->
     <bottom-bar active="thebai"></bottom-bar>
 
     <script src="js/components.js"></script>
+    <script>
+        function getCardDescriptions() {
+            return {
+                "Át Cơ": [
+                    "Bản chất của nhận thức: Là quá trình phản ánh tích cực, tự giác và sáng tạo thế giới khách quan vào bộ óc con người.",
+                    "Thực tiễn là cơ sở, động lực và mục đích của nhận thức, đồng thời là tiêu chuẩn để kiểm tra chân lý."
+                ],
+                "2 Cơ": [
+                    "Nhận thức cảm tính (Trực quan sinh động): Là giai đoạn đầu tiên của quá trình nhận thức.",
+                    "Bao gồm 3 hình thức: Cảm giác, Tri giác và Biểu tượng. Ở giai đoạn này, nhận thức phản ánh những đặc điểm bề ngoài của sự vật."
+                ],
+                "3 Cơ": [
+                    "Nhận thức lý tính (Tư duy trừu tượng): Là giai đoạn cao hơn, phản ánh bản chất, quy luật bên trong của sự vật.",
+                    "Bao gồm 3 hình thức: Khái niệm, Phán đoán và Suy luận."
+                ],
+                "4 Cơ": [
+                    "Thực tiễn: Là toàn bộ những hoạt động vật chất có mục đích, mang tính lịch sử - xã hội của con người nhằm cải tạo tự nhiên và xã hội.",
+                    "Các hình thức cơ bản của thực tiễn: Hoạt động sản xuất vật chất, hoạt động chính trị - xã hội và hoạt động thực nghiệm khoa học."
+                ],
+                "5 Cơ": [
+                    "Chân lý: Là những tri thức phù hợp với hiện thực khách quan và được thực tiễn kiểm nghiệm.",
+                    "Đặc tính của chân lý: Tính khách quan, tính tuyệt đối, tính tương đối và tính cụ thể."
+                ],
+                "6 Cơ": [
+                    "Tính khách quan của chân lý: Nội dung của chân lý không phụ thuộc vào ý chí chủ quan của con người.",
+                    "Mặc dù chân lý là nhận thức của con người, nhưng nội dung mà nó phản ánh tồn tại độc lập với ý thức."
+                ],
+                "7 Cơ": [
+                    "Mối quan hệ giữa nhận thức và thực tiễn: Là mối quan hệ biện chứng.",
+                    "Thực tiễn đóng vai trò quyết định đối với nhận thức, ngược lại nhận thức đúng đắn sẽ dẫn đường, định hướng cho hoạt động thực tiễn."
+                ],
+                "8 Cơ": [
+                    "Cảm giác: Là hình thức đầu tiên, đơn giản nhất của nhận thức cảm tính.",
+                    "Phản ánh từng thuộc tính riêng lẻ của sự vật, hiện tượng khi chúng đang trực tiếp tác động vào các giác quan của con người."
+                ],
+                "9 Cơ": [
+                    "Khái niệm: Là hình thức cơ bản của tư duy trừu tượng.",
+                    "Phản ánh những đặc tính bản chất, phổ biến của một lớp các sự vật, hiện tượng."
+                ],
+                "10 Cơ": [
+                    "Sự thống nhất giữa trực quan sinh động và tư duy trừu tượng: Quá trình nhận thức phải đi từ cảm tính đến lý tính.",
+                    "Thiếu nhận thức cảm tính thì lý tính không có cơ sở; thiếu nhận thức lý tính thì không nắm bắt được bản chất sự vật."
+                ],
+                "J Cơ": [
+                    "Sự phát triển của nhận thức: Là một quá trình biện chứng, vòng khâu đi từ cái chưa biết đến cái biết, từ biết ít đến biết nhiều.",
+                    "Nhận thức không bao giờ dừng lại mà luôn vận động cùng với sự phát triển của thực tiễn."
+                ],
+                "Q Cơ": [
+                    "Lý luận và kinh nghiệm: Kinh nghiệm là cơ sở để khái quát thành lý luận.",
+                    "Lý luận khi được soi sáng và kiểm chứng qua thực tiễn sẽ trở nên sắc bén và định hướng ngược lại cho kinh nghiệm."
+                ],
+                "K Cơ": [
+                    "Con đường biện chứng của sự nhận thức chân lý: \"Từ trực quan sinh động đến tư duy trừu tượng, và từ tư duy trừu tượng đến thực tiễn\".",
+                    "Đây là công thức nổi tiếng của V.I. Lênin tóm tắt toàn bộ quy luật của quá trình nhận thức."
+                ]
+            };
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.mini-card.cursor-pointer');
+            const modal = document.getElementById('card-modal');
+            const modalImage = document.getElementById('modal-card-image');
+            const modalTitle = document.getElementById('modal-card-title');
+            const modalDescription = document.getElementById('modal-card-description');
+            const closeButton = document.getElementById('modal-close');
+            const backdrop = modal.querySelector('[data-modal-close]');
+            const descriptions = getCardDescriptions();
+
+            function openModal(title, imgSrc) {
+                modalImage.src = imgSrc;
+                modalImage.alt = title;
+                modalTitle.innerText = title;
+                modalDescription.innerHTML = descriptions[title]
+                    ? descriptions[title].map((p) => `<p>${p}</p>`).join('')
+                    : `<p>Không có mô tả cho lá bài này.</p>`;
+                document.body.classList.add('modal-open');
+                modal.classList.remove('hidden');
+                requestAnimationFrame(() => modal.classList.add('open'));
+            }
+
+            function closeModal() {
+                modal.classList.remove('open');
+                document.body.classList.remove('modal-open');
+                modal.addEventListener('transitionend', function hide(event) {
+                    if (event.target === modal) {
+                        modal.classList.add('hidden');
+                        modal.removeEventListener('transitionend', hide);
+                    }
+                });
+            }
+
+            cards.forEach((card) => {
+                card.addEventListener('click', () => {
+                    const title = card.querySelector('.text-sm.font-semibold')?.innerText?.trim() || '';
+                    const img = card.querySelector('img');
+                    openModal(title, img.src);
+                });
+            });
+
+            closeButton.addEventListener('click', closeModal);
+            backdrop.addEventListener('click', closeModal);
+            modal.querySelector('.modal-container').addEventListener('click', (event) => event.stopPropagation());
+        });
+    </script>
     <script>
         const toggle = document.getElementById('theme-toggle');
         const modeText = document.getElementById('mode-text');
