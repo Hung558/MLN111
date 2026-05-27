@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html class="dark" lang="vi">
 <head>
-    <!-- Chặn hiện tượng nháy theme (FOUC) -->
     <script>
         (function() {
             const savedTheme = localStorage.getItem('theme') || 'dark';
@@ -32,16 +31,12 @@
 </head>
 <body class="min-h-screen pb-16 lg:pb-0" >
 
-    <!-- SideNavBar -->
     <side-bar active="index"></side-bar>
 
-    <!-- Layout chính -->
     <div class="lg:pl-64 flex flex-col min-h-screen">
 
-        <!-- TopAppBar -->
         <top-bar active="index"></top-bar>
 
-        <!-- Main Content -->
         <main class="flex-grow w-full max-w-6xl mx-auto px-6 py-8">
             <section class="text-center py-12 px-4 max-w-3xl mx-auto space-y-6">
                 <h2 id="main-title" class="hero-title text-4xl md:text-5xl font-black tracking-tight uppercase leading-tight dark-heading-secondary" style="color:#b71032;">
@@ -82,6 +77,65 @@
                 </div>
             </div>
 
+            <div class="home-card card-surface my-10 p-6 md:p-10 rounded-2xl shadow-sm flex flex-col items-center justify-center text-center space-y-6 relative overflow-hidden" style="background:#f3f4f5; border:1px solid rgba(195,198,206,0.1);">
+                <div class="absolute -left-6 -top-6 opacity-[0.03] pointer-events-none select-none">
+                    <span class="material-symbols-outlined text-[120px]">psychology_alt</span>
+                </div>
+                <div class="absolute -right-6 -bottom-6 opacity-[0.03] pointer-events-none select-none">
+                    <span class="material-symbols-outlined text-[120px]">school</span>
+                </div>
+
+                <h3 class="text-2xl md:text-3xl font-black uppercase tracking-wide dark-heading-secondary relative z-10" style="color:#b71032;">
+                    Bộ bài không chỉ là trò chơi
+                </h3>
+
+                <p class="text-base md:text-lg leading-relaxed dark-text font-medium relative z-10" style="color:#43474e;">
+                    Nó là <span class="font-bold" style="color:#002442;">hành trình nhận thức của Po</span><br class="hidden md:block"/>
+                    và cũng là <span class="font-bold" style="color:#002442;">hành trình trưởng thành của mỗi sinh viên</span>.
+                </p>
+
+                <div class="flex flex-wrap items-center justify-center gap-2 md:gap-4 py-2 w-full max-w-2xl relative z-10">
+                    <div class="flex flex-col items-center gap-2">
+                        <div class="w-12 h-12 rounded-full flex items-center justify-center shadow-md transition-transform hover:scale-110 cursor-default" style="background:#ffffff; color:#1a3a5a;">
+                            <span class="material-symbols-outlined text-xl">visibility</span>
+                        </div>
+                        <span class="text-xs font-bold uppercase tracking-wider" style="color:#1a3a5a;">Cảm giác</span>
+                    </div>
+                    
+                    <span class="material-symbols-outlined text-gray-400 hidden sm:block text-base">arrow_forward_ios</span>
+                    
+                    <div class="flex flex-col items-center gap-2">
+                        <div class="w-12 h-12 rounded-full flex items-center justify-center shadow-md transition-transform hover:scale-110 cursor-default" style="background:#ffffff; color:#1a3a5a;">
+                            <span class="material-symbols-outlined text-xl">psychology</span>
+                        </div>
+                        <span class="text-xs font-bold uppercase tracking-wider" style="color:#1a3a5a;">Tư duy</span>
+                    </div>
+                    
+                    <span class="material-symbols-outlined text-gray-400 hidden sm:block text-base">arrow_forward_ios</span>
+                    
+                    <div class="flex flex-col items-center gap-2">
+                        <div class="w-12 h-12 rounded-full flex items-center justify-center shadow-md transition-transform hover:scale-110 cursor-default" style="background:#ffffff; color:#1a3a5a;">
+                            <span class="material-symbols-outlined text-xl">architecture</span>
+                        </div>
+                        <span class="text-xs font-bold uppercase tracking-wider" style="color:#1a3a5a;">Thực tiễn</span>
+                    </div>
+                    
+                    <span class="material-symbols-outlined text-gray-400 hidden sm:block text-base">arrow_forward_ios</span>
+                    
+                    <div class="flex flex-col items-center gap-2">
+                        <div class="w-12 h-12 rounded-full flex items-center justify-center shadow-md transition-transform hover:scale-110 cursor-default" style="background:#ffffff; color:#da3148;">
+                            <span class="material-symbols-outlined text-xl">public</span>
+                        </div>
+                        <span class="text-xs font-bold uppercase tracking-wider" style="color:#da3148;">Hiểu xã hội</span>
+                    </div>
+                </div>
+
+                <div class="pt-4 w-full max-w-md mx-auto relative z-10" style="border-top: 2px dashed rgba(195,198,206,0.3);">
+                    <p class="text-lg md:text-xl font-black italic dark-heading" style="color:#002442;">
+                        "Đó chính là tinh thần của<br/> Triết học Mác – Lênin."
+                    </p>
+                </div>
+            </div>
             <div class="banner-primary mt-12 text-white p-8 rounded-2xl relative overflow-hidden shadow-md" style="background:#002442;">
                 <div class="relative z-10 space-y-4 max-w-2xl">
                     <h4 class="text-xl font-bold">Hành Trình Triết Học Hệ Số</h4>
@@ -92,7 +146,7 @@
                         <a href="lythuyet.html" class="px-6 py-2.5 rounded-full text-sm font-bold hover:opacity-90 transition-all active:scale-95 shadow-sm" style="background:#da3148; color:#fffbff;">
                             Đọc Lý Thuyết Chi Tiết
                         </a>
-                        <a href="thebai.html" class="px-6 py-2.5 rounded-full text-sm font-bold hover:opacity-90 transition-all active:scale-95 shadow-sm" style="color:#002442;">
+                        <a href="thebai.html" class="px-6 py-2.5 rounded-full text-sm font-bold hover:opacity-90 transition-all active:scale-95 shadow-sm" style="color:#002442; background: white;">
                             Xem Hệ Thống Thẻ Bài
                         </a>
                     </div>
@@ -108,7 +162,6 @@
         </footer>
     </div>
 
-    <!-- BottomNavBar -->
     <bottom-bar active="index"></bottom-bar>
 
     <script src="js/components.js"></script>
@@ -142,17 +195,19 @@
 
         const currentTheme = localStorage.getItem('theme') || 'dark';
         if (currentTheme === 'light') {
-            toggle.checked = true;
+            if(toggle) toggle.checked = true;
             updateContent(true);
         } else {
-            toggle.checked = false;
+            if(toggle) toggle.checked = false;
             updateContent(false);
         }
 
-        toggle.addEventListener('change', function() {
-            localStorage.setItem('theme', this.checked ? 'light' : 'dark');
-            updateContent(this.checked);
-        });
+        if(toggle) {
+            toggle.addEventListener('change', function() {
+                localStorage.setItem('theme', this.checked ? 'light' : 'dark');
+                updateContent(this.checked);
+            });
+        }
     </script>
 </body>
 </html>
