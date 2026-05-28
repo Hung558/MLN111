@@ -20,8 +20,11 @@
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;700;800&display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet"/>
     <link rel="stylesheet" href="css/shared.css"/>
     <link rel="stylesheet" href="css/index.css"/>
+    <link rel="stylesheet" href="css/ace-deck.css?v=4"/>
     <script>
         tailwind.config = {
             darkMode: "class",
@@ -33,9 +36,35 @@
 
     <side-bar active="index"></side-bar>
 
+    <!-- Ace Deck navigation overlay (full-screen fade during card click) -->
+    <div id="ace-nav-overlay" aria-hidden="true"></div>
+
     <div class="lg:pl-64 flex flex-col min-h-screen">
 
         <top-bar active="index"></top-bar>
+
+        <!-- ═══ ACE DECK HERO SECTION ═══ -->
+        <section id="ace-deck-section" aria-label="Khám phá triết học qua bộ bài">
+            <canvas id="ace-particles" aria-hidden="true"></canvas>
+            <div id="ace-deck-wrapper"
+                 tabindex="0"
+                 role="button"
+                 aria-label="Nhấn để mở bộ bài triết học"
+                 aria-expanded="false">
+                <div class="box">
+                    <div class="box-face bf-front"></div>
+                    <div class="box-face bf-back"></div>
+                    <div class="box-face bf-left"></div>
+                    <div class="box-face bf-right"></div>
+                    <div class="box-face bf-top"></div>
+                    <div class="box-face bf-bottom"></div>
+                </div>
+            </div>
+            <div id="ace-cards-container" role="list" aria-label="Các chủ đề triết học"></div>
+            <div id="ace-burst" aria-hidden="true"></div>
+            <p id="ace-hint" aria-hidden="true">Nhấn để khám phá</p>
+        </section>
+        <!-- ════════════════════════════ -->
 
         <main class="flex-grow w-full max-w-6xl mx-auto px-6 py-8">
             <section class="text-center py-12 px-4 max-w-3xl mx-auto space-y-6">
@@ -165,6 +194,272 @@
     <bottom-bar active="index"></bottom-bar>
 
     <script src="js/components.js"></script>
+    <script>
+    /* ═══════════════════════════════════════════════════════
+       ACE DECK — Engine
+       Card destinations: edit CARD_CONFIG below.
+       Router: replace window.location.href in doNavigate().
+    ═══════════════════════════════════════════════════════ */
+    const CARD_CONFIG = [
+      {
+        suit: '♠', suitClass: 'suit-black', suitName: 'Bích',
+        label: 'Lý Luận', sublabel: 'Logic & Theory',
+        href: 'lythuyet.html', img: 'images/spades/A.png',
+        fanX: -295, fanY: 0, fanRot: -18,
+        mobX: -115, mobY: 0, mobRot: -18,
+        stagger: 0,   arcDir: 1,
+      },
+      {
+        suit: '♥', suitClass: 'suit-red', suitName: 'Cơ',
+        label: 'Thẻ Bài', sublabel: 'Card System',
+        href: 'thebai.html', img: 'images/hearts/A.png',
+        fanX: -98, fanY: 0, fanRot: -6,
+        mobX: -46, mobY: 0, mobRot: -6,
+        stagger: 80,  arcDir: 1,
+      },
+      {
+        suit: '♦', suitClass: 'suit-red', suitName: 'Rô',
+        label: 'Mỹ Học', sublabel: 'Aesthetics',
+        href: 'ro.html', img: 'images/diamonds/A.png',
+        fanX: 98, fanY: 0, fanRot: 6,
+        mobX: 46, mobY: 0, mobRot: 6,
+        stagger: 160, arcDir: -1,
+      },
+      {
+        suit: '♣', suitClass: 'suit-black', suitName: 'Chuồn',
+        label: 'Siêu Hình', sublabel: 'Metaphysics',
+        href: 'chuon.html', img: 'images/clovers/A.png',
+        fanX: 295, fanY: 0, fanRot: 18,
+        mobX: 115, mobY: 0, mobRot: 18,
+        stagger: 240, arcDir: -1,
+      },
+    ];
+
+    const sectionEl  = document.getElementById('ace-deck-section');
+    const deckEl     = document.getElementById('ace-deck-wrapper');
+    const cardsEl    = document.getElementById('ace-cards-container');
+    const burstEl    = document.getElementById('ace-burst');
+    const hintEl     = document.getElementById('ace-hint');
+    const overlayEl  = document.getElementById('ace-nav-overlay');
+    const particleCV = document.getElementById('ace-particles');
+
+    let deckState = 'idle';
+    let cardEls   = [];
+
+    (function initParticles() {
+      const ctx = particleCV.getContext('2d');
+      let W, H, particles = [];
+      function resize() {
+        W = particleCV.width  = sectionEl.offsetWidth;
+        H = particleCV.height = sectionEl.offsetHeight;
+      }
+      function mkParticle() {
+        return {
+          x: Math.random() * (W || 400), y: Math.random() * (H || 600),
+          r: Math.random() * 1.4 + 0.3, speed: Math.random() * 0.35 + 0.08,
+          angle: Math.random() * Math.PI * 2,
+          a: Math.random() * 0.35 + 0.08,
+          aDir: (Math.random() < 0.5 ? 1 : -1) * 0.004,
+          gold: Math.random() < 0.28,
+        };
+      }
+      function tick() {
+        ctx.clearRect(0, 0, W, H);
+        const dark = document.documentElement.classList.contains('dark');
+        particles.forEach(p => {
+          p.x += Math.cos(p.angle) * p.speed; p.y += Math.sin(p.angle) * p.speed;
+          p.a += p.aDir;
+          if (p.a < 0.06 || p.a > 0.5) p.aDir *= -1;
+          if (p.x < 0) p.x = W; if (p.x > W) p.x = 0;
+          if (p.y < 0) p.y = H; if (p.y > H) p.y = 0;
+          ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+          ctx.fillStyle = p.gold ? `rgba(201,168,76,${p.a})`
+            : dark ? `rgba(170,195,255,${p.a * 0.55})` : `rgba(70,50,20,${p.a * 0.38})`;
+          ctx.fill();
+        });
+        requestAnimationFrame(tick);
+      }
+      resize();
+      for (let i = 0; i < 75; i++) particles.push(mkParticle());
+      window.addEventListener('resize', resize);
+      tick();
+    })();
+
+    function buildCards() {
+      cardsEl.innerHTML = ''; cardEls = [];
+      CARD_CONFIG.forEach((cfg, i) => {
+        const el = document.createElement('div');
+        el.className = 'ace-card';
+        el.setAttribute('role', 'listitem');
+        el.setAttribute('tabindex', '-1');
+        el.setAttribute('aria-label', `${cfg.suitName} — ${cfg.label}: ${cfg.sublabel}`);
+        el.innerHTML = `
+          <div class="ace-card-inner">
+            <div class="ace-card-back"></div>
+            <div class="ace-card-front">
+              <img src="${cfg.img}" alt="Ace of ${cfg.suitName}" draggable="false">
+              <div class="c-shimmer"></div>
+            </div>
+          </div>`;
+        el._cfg = cfg; el._index = i;
+        el.addEventListener('mouseenter', onCardEnter);
+        el.addEventListener('mouseleave', onCardLeave);
+        el.addEventListener('mousemove',  onCardTilt);
+        el.addEventListener('click',      onCardClick);
+        el.addEventListener('keydown', e => {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onCardClick.call(el); }
+        });
+        cardsEl.appendChild(el); cardEls.push(el);
+      });
+    }
+
+    const isMobile = () => window.innerWidth <= 640;
+    function getFanPos(cfg) {
+      const m = isMobile();
+      return { x: m ? cfg.mobX : cfg.fanX, y: m ? cfg.mobY : cfg.fanY, r: m ? cfg.mobRot : cfg.fanRot };
+    }
+    function arcMid(fx, fy, arcDir, h = 68) {
+      const dist = Math.sqrt(fx*fx + fy*fy) || 1;
+      return { x: fx*0.46 + (-fy/dist)*arcDir*h, y: fy*0.46 + (fx/dist)*arcDir*h };
+    }
+    function setFanTransform(card) {
+      const { x, y, r } = getFanPos(card._cfg);
+      card.style.transform = `translate(calc(${x}px - 50%), calc(${y}px - 50%)) rotate(${r}deg) scale(1)`;
+    }
+
+    function explodeAndFan() {
+      if (deckState !== 'idle') return;
+      deckState = 'exploding';
+      hintEl.style.opacity = '0';
+      deckEl.setAttribute('aria-expanded', 'true');
+      burstEl.classList.add('burst--fire');
+
+      const boxEl = deckEl.querySelector('.box');
+      const currentTransform = getComputedStyle(boxEl).transform;
+      boxEl.style.animation = 'none';
+      boxEl.style.transform = currentTransform;
+      void boxEl.offsetWidth;
+      boxEl.animate([
+        { transform: currentTransform, offset: 0 },
+        { transform: 'rotateX(0deg) rotateY(0deg) scale(1.12)', offset: 0.22, easing: 'ease-out' },
+        { transform: 'rotateX(-12deg) rotateY(8deg) scale(0.55) translateZ(70px)', offset: 0.62 },
+        { transform: 'rotateX(-20deg) rotateY(18deg) scale(0) translateZ(120px)', offset: 1 },
+      ], { duration: 480, easing: 'ease-in', fill: 'forwards' });
+
+      deckEl.classList.add('exploding');
+      setTimeout(() => {
+        deckEl.style.display = 'none';
+        cardEls.forEach(card => {
+          const cfg = card._cfg;
+          const { x: fx, y: fy, r: fr } = getFanPos(cfg);
+          const mid = arcMid(fx, fy, cfg.arcDir, isMobile() ? 42 : 68);
+          const inner = card.querySelector('.ace-card-inner');
+          card.style.opacity = '1';
+          card.style.zIndex  = String(15 + card._index);
+          const flyAnim = card.animate([
+            { transform: 'translate(-50%,-50%) rotate(0deg) scale(0.75)', offset: 0 },
+            { transform: `translate(calc(${mid.x}px - 50%),calc(${mid.y}px - 50%)) rotate(${fr*0.35}deg) scale(1.06)`, offset: 0.44 },
+            { transform: `translate(calc(${fx}px - 50%),calc(${fy-14}px - 50%)) rotate(${fr*1.18}deg) scale(1.02)`, offset: 0.82 },
+            { transform: `translate(calc(${fx}px - 50%),calc(${fy}px - 50%)) rotate(${fr}deg) scale(1)`, offset: 1 },
+          ], { duration: 860, delay: cfg.stagger, easing: 'cubic-bezier(0.34,1.56,0.64,1)', fill: 'forwards' });
+          const flipAnim = inner.animate([
+            { transform: 'rotateY(0deg)',   offset: 0 },
+            { transform: 'rotateY(0deg)',   offset: 0.37 },
+            { transform: 'rotateY(90deg)',  offset: 0.52, easing: 'ease-in' },
+            { transform: 'rotateY(180deg)', offset: 0.67, easing: 'ease-out' },
+            { transform: 'rotateY(180deg)', offset: 1 },
+          ], { duration: 860, delay: cfg.stagger, fill: 'forwards' });
+          flyAnim.onfinish = () => {
+            flyAnim.commitStyles();  flyAnim.cancel();
+            flipAnim.commitStyles(); flipAnim.cancel();
+            card.style.transition = 'transform 0.22s ease, filter 0.28s ease, opacity 0.22s ease';
+            card.classList.add('revealed');
+            card.setAttribute('tabindex', '0');
+          };
+        });
+        deckState = 'fanned';
+      }, 460);
+    }
+
+    function onCardEnter() {
+      if (deckState !== 'fanned') return;
+      this.classList.add('is-hovered');
+      this.style.zIndex = '50';
+      cardEls.forEach(c => {
+        if (c === this) return;
+        const { x, y, r } = getFanPos(c._cfg);
+        c.style.transform = `translate(calc(${x}px - 50%),calc(${y}px - 50%)) rotate(${r}deg) scale(0.93)`;
+        c.style.filter    = 'brightness(0.58) saturate(0.55)';
+      });
+    }
+    function onCardLeave() {
+      this.classList.remove('is-hovered');
+      this.style.zIndex = String(15 + this._index);
+      this.querySelector('.ace-card-inner').style.transform = 'rotateY(180deg)';
+      this.style.filter = '';
+      cardEls.forEach(c => { setFanTransform(c); c.style.filter = ''; });
+    }
+    function onCardTilt(e) {
+      if (deckState !== 'fanned') return;
+      const rect = this.getBoundingClientRect();
+      const dx = (e.clientX - (rect.left + rect.width/2))  / (rect.width/2);
+      const dy = (e.clientY - (rect.top  + rect.height/2)) / (rect.height/2);
+      const { x: fx, y: fy, r: fr } = getFanPos(this._cfg);
+      this.querySelector('.ace-card-inner').style.transform = `rotateY(${180+dx*13}deg) rotateX(${-dy*13}deg)`;
+      this.style.transform = `translate(calc(${fx}px - 50%),calc(${fy-13}px - 50%)) rotate(${fr}deg) scale(1.07)`;
+      this.style.filter    = `brightness(1.1) drop-shadow(${-dx*9}px ${-dy*9+18}px 28px var(--card-shadow))`;
+    }
+
+    function onCardClick() {
+      if (deckState !== 'fanned') return;
+      deckState = 'navigating';
+      const self = this, cfg = this._cfg;
+      cardEls.forEach(c => {
+        if (c === self) return;
+        const angle = Math.random()*Math.PI*2, dist = 540 + Math.random()*240;
+        c.style.transition  = 'transform 0.42s cubic-bezier(0.4,0,1,1), opacity 0.32s ease';
+        c.style.transform   = `translate(calc(${Math.cos(angle)*dist}px - 50%),calc(${Math.sin(angle)*dist}px - 50%)) rotate(${Math.random()*140-70}deg) scale(0.3)`;
+        c.style.opacity     = '0';
+        c.style.pointerEvents = 'none';
+      });
+      self.classList.remove('is-hovered');
+      self.style.zIndex    = '200';
+      self.style.transition = 'transform 0.48s cubic-bezier(0.16,1,0.3,1), opacity 0.42s ease';
+      self.style.transform  = 'translate(-50%,-50%) scale(3.8) rotate(0deg)';
+      setTimeout(() => { self.style.opacity = '0'; }, 160);
+      function doNavigate(href) { window.location.href = href; }
+      if (document.startViewTransition) {
+        setTimeout(() => document.startViewTransition(() => doNavigate(cfg.href)), 360);
+      } else {
+        overlayEl.classList.add('visible');
+        setTimeout(() => doNavigate(cfg.href), 620);
+      }
+    }
+
+    deckEl.addEventListener('click', explodeAndFan);
+    deckEl.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); explodeAndFan(); }
+    });
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && deckState !== 'idle' && deckState !== 'navigating') resetDeck();
+    });
+
+    function resetDeck() {
+      deckState = 'idle';
+      deckEl.classList.remove('exploding');
+      deckEl.style.display = '';
+      deckEl.setAttribute('aria-expanded', 'false');
+      deckEl.setAttribute('aria-label', 'Nhấn để mở bộ bài triết học');
+      burstEl.classList.remove('burst--fire');
+      hintEl.style.opacity = '';
+      overlayEl.classList.remove('visible');
+      const boxEl = deckEl.querySelector('.box');
+      if (boxEl) { boxEl.style.animation = ''; boxEl.style.transform = ''; }
+      buildCards();
+    }
+
+    buildCards();
+    </script>
     <script>
         const toggle = document.getElementById('theme-toggle');
         const modeText = document.getElementById('mode-text');
