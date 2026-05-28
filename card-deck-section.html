@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html class="dark" lang="vi">
+<head>
+  <!--
+    ╔═══════════════════════════════════════════════════════════╗
+    ║         ACE DECK SECTION — Triết Học Hệ Số              ║
+    ╠═══════════════════════════════════════════════════════════╣
+    ║  EMBED INTO YOUR PAGE                                    ║
+    ║  1. Add this <link> to your <head>:                      ║
+    ║     <link href="https://fonts.googleapis.com/css2?       ║
+    ║     family=Cormorant+Garamond:ital,wght@0,400;0,600;     ║
+    ║     0,700;1,400;1,600&family=Playfair+Display:           ║
+    ║     wght@700;900&display=swap" rel="stylesheet">         ║
+    ║  2. Copy <style id="ace-deck-styles"> into your CSS      ║
+    ║  3. Copy <section id="ace-deck-section"> into your HTML  ║
+    ║  4. Copy <script id="ace-deck-script"> before </body>    ║
+    ║  5. Copy <div id="ace-nav-overlay"> before the section   ║
+    ║                                                          ║
+    ║  CONFIGURE DESTINATIONS                                  ║
+    ║  Edit CARD_CONFIG at the top of the script block.        ║
+    ║  Fields: suit, suitClass, suitName, label, sublabel,     ║
+    ║          href, fanX, fanY, fanRot, mobX, mobY, mobRot,  ║
+    ║          stagger, arcDir                                 ║
+    ║                                                          ║
+    ║  CONNECT YOUR ROUTER                                     ║
+    ║  Find doNavigate(href) in the script and replace         ║
+    ║  window.location.href with your router call.             ║
+    ╚═══════════════════════════════════════════════════════════╝
+  -->
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ace Deck — Demo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+
+  <style id="ace-deck-styles">
+  /* ═══════════════════════════════════════════════════
+     ACE DECK — Design Tokens
+  ═══════════════════════════════════════════════════ */
+  :root {
+    --deck-w: 178px;
+    --deck-h: 258px;
+    --card-w: 130px;
+    --card-h: 190px;
+    --card-r: 10px;
+
+    /* Light mode */
+    --ads-bg:          #ede8df;
+    --ads-hint-color:  rgba(40,28,12,0.45);
+    --deck-back-a:     #2a1a4e;
+    --deck-back-b:     #0c1840;
+    --deck-border:     #9b7d4a;
+    --deck-gold:       #c9a84c;
+    --deck-shadow-a:   #d4c4a0;
+    --deck-shadow-b:   #c0ae8c;
+    --card-bg:         #faf6ee;
+    --card-border:     #9b7d4a;
+    --card-ornament:   rgba(155,125,74,0.45);
+    --card-black:      #0f1a36;
+    --card-red:        #8b1520;
+    --card-shadow:     rgba(0,0,0,0.30);
+    --burst-color:     rgba(201,168,76,0.85);
+    --overlay-color:   #faf6ee;
+
+    /* Easing curves */
+    --ease-spring:     cubic-bezier(0.34, 1.56, 0.64, 1);
+    --ease-spring-s:   cubic-bezier(0.22, 1.20, 0.36, 1);
+    --ease-out-expo:   cubic-bezier(0.16, 1.00, 0.30, 1);
+  }
+
+  html.dark {
+    --ads-bg:          #0c0d14;
+    --ads-hint-color:  rgba(220,210,190,0.38);
+    --deck-back-a:     #08061a;
+    --deck-back-b:     #06102a;
+    --deck-border:     #c9a84c;
+    --deck-gold:       #e0bc50;
+    --deck-shadow-a:   #181428;
+    --deck-shadow-b:   #120e20;
+    --card-bg:         #100f1c;
+    --card-border:     #c9a84c;
+    --card-ornament:   rgba(201,168,76,0.38);
+    --card-black:      #9cc4f8;
+    --card-red:        #ff7070;
+    --card-shadow:     rgba(0,0,0,0.75);
+    --burst-color:     rgba(224,188,80,0.95);
+    --overlay-color:   #100f1c;
+  }
+
+  /* ═══════════════════════════════════════════════════
+     Section Layout
+  ═══════════════════════════════════════════════════ */
+  #ace-deck-section {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    min-height: 560px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--ads-bg);
+    overflow: hidden;
+    transition: background-color 0.3s ease;
+    user-select: none;
+  }
+
+  #ace-particles {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ═══════════════════════════════════════════════════
+     Deck Wrapper
+  ═══════════════════════════════════════════════════ */
+  #ace-deck-wrapper {
+    position: relative;
+    width: var(--deck-w);
+    height: var(--deck-h);
+    cursor: pointer;
+    z-index: 10;
+    border-radius: var(--card-r);
+    animation: deck-breathe 5.5s ease-in-out infinite;
+    outline: none;
+  }
+
+  #ace-deck-wrapper:focus-visible { outline: 2px solid var(--deck-gold); outline-offset: 6px; }
+
+  /* Stacked card depth illusion */
+  #ace-deck-wrapper::before,
+  #ace-deck-wrapper::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: var(--card-r);
+    background: var(--deck-shadow-a);
+    border: 1px solid var(--deck-border);
+  }
+  #ace-deck-wrapper::before { transform: translate(4px, 6px); z-index: -1; background: var(--deck-shadow-a); }
+  #ace-deck-wrapper::after  { transform: translate(8px, 12px); z-index: -2; background: var(--deck-shadow-b); }
+
+  /* ═══════════════════════════════════════════════════
+     Deck Face Design (card-back pattern)
+  ═══════════════════════════════════════════════════ */
+  .deck-face {
+    position: absolute;
+    inset: 0;
+    border-radius: var(--card-r);
+    background: linear-gradient(140deg, var(--deck-back-a) 0%, var(--deck-back-b) 55%, var(--deck-back-a) 100%);
+    border: 1px solid var(--deck-border);
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: 18px;
+  }
+
+  /* crosshatch grid */
+  .deck-face::before {
+    content: '';
+    position: absolute;
+    inset: 9px;
+    border: 1px solid rgba(201,168,76,0.22);
+    border-radius: 4px;
+    background-image:
+      repeating-linear-gradient( 45deg, rgba(201,168,76,0.07) 0, rgba(201,168,76,0.07) 1px, transparent 0, transparent 50%),
+      repeating-linear-gradient(-45deg, rgba(201,168,76,0.07) 0, rgba(201,168,76,0.07) 1px, transparent 0, transparent 50%);
+    background-size: 11px 11px;
+  }
+
+  /* emblem */
+  .deck-face::after {
+    content: '✦';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -54%);
+    font-size: 52px;
+    color: var(--deck-gold);
+    opacity: 0.65;
+    text-shadow: 0 0 24px var(--deck-gold);
+    animation: emblem-pulse 3.2s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  .deck-label {
+    position: relative;
+    z-index: 1;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 10px;
+    letter-spacing: 0.20em;
+    text-transform: uppercase;
+    color: var(--deck-gold);
+    opacity: 0.75;
+  }
+
+  /* ═══════════════════════════════════════════════════
+     Burst Light
+  ═══════════════════════════════════════════════════ */
+  #ace-burst {
+    position: absolute;
+    top: 50%; left: 50%;
+    width: 0; height: 0;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--burst-color) 0%, transparent 65%);
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 20;
+    opacity: 0;
+  }
+  .burst--fire { animation: burst-flash 0.65s ease-out forwards !important; }
+
+  @keyframes burst-flash {
+    0%   { width: 0;    height: 0;    opacity: 1; }
+    35%  { width: 320px; height: 320px; opacity: 0.9; }
+    100% { width: 900px; height: 900px; opacity: 0; }
+  }
+
+  /* ═══════════════════════════════════════════════════
+     Hint Text
+  ═══════════════════════════════════════════════════ */
+  #ace-hint {
+    position: absolute;
+    bottom: 52px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 13px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ads-hint-color);
+    pointer-events: none;
+    z-index: 5;
+    white-space: nowrap;
+    transition: opacity 0.4s ease;
+    animation: hint-bob 2.8s ease-in-out infinite;
+  }
+
+  @keyframes hint-bob {
+    0%,100% { transform: translateX(-50%) translateY(0); }
+    50%      { transform: translateX(-50%) translateY(-7px); }
+  }
+
+  /* ═══════════════════════════════════════════════════
+     Idle Breathing
+  ═══════════════════════════════════════════════════ */
+  @keyframes deck-breathe {
+    0%   { transform: perspective(900px) rotateX(0deg)   rotateY(0deg); }
+    18%  { transform: perspective(900px) rotateX(4deg)   rotateY(-6deg); }
+    38%  { transform: perspective(900px) rotateX(-3deg)  rotateY(7deg); }
+    58%  { transform: perspective(900px) rotateX(5deg)   rotateY(-3deg); }
+    78%  { transform: perspective(900px) rotateX(-2deg)  rotateY(5deg); }
+    100% { transform: perspective(900px) rotateX(0deg)   rotateY(0deg); }
+  }
+
+  @keyframes emblem-pulse {
+    0%,100% { opacity: 0.65; transform: translate(-50%,-54%) scale(1); }
+    50%      { opacity: 0.95; transform: translate(-50%,-54%) scale(1.1); text-shadow: 0 0 40px var(--deck-gold); }
+  }
+
+  /* ═══════════════════════════════════════════════════
+     Deck Explosion State
+  ═══════════════════════════════════════════════════ */
+  #ace-deck-wrapper.exploding {
+    animation: deck-explode 0.55s ease-in forwards !important;
+    pointer-events: none;
+  }
+
+  @keyframes deck-explode {
+    0%   { transform: perspective(900px) rotateX(0deg)    scale(1)    translateZ(0);    opacity: 1; }
+    22%  { transform: perspective(900px) rotateX(-18deg)  scale(1.09) translateZ(28px); opacity: 1; }
+    60%  { transform: perspective(900px) rotateX(-165deg) scale(0.42) translateZ(70px); opacity: 0.35; }
+    100% { transform: perspective(900px) rotateX(-180deg) scale(0.05) translateZ(90px); opacity: 0; }
+  }
+
+  /* ═══════════════════════════════════════════════════
+     Ace Cards
+  ═══════════════════════════════════════════════════ */
+  #ace-cards-container {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  .ace-card {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: var(--card-w);
+    height: var(--card-h);
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+    z-index: 15;
+    outline: none;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .ace-card.revealed { pointer-events: auto; }
+  .ace-card:focus-visible { outline: 2px solid var(--deck-gold); outline-offset: 4px; border-radius: var(--card-r); }
+
+  /* Flip container */
+  .ace-card-inner {
+    position: absolute;
+    inset: 0;
+    transform-style: preserve-3d;
+    border-radius: var(--card-r);
+  }
+
+  /* Back & Front shared */
+  .ace-card-back,
+  .ace-card-front {
+    position: absolute;
+    inset: 0;
+    border-radius: var(--card-r);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+
+  /* ── Card Back ── */
+  .ace-card-back {
+    background: linear-gradient(140deg, var(--deck-back-a), var(--deck-back-b), var(--deck-back-a));
+    border: 1px solid var(--deck-border);
+    overflow: hidden;
+  }
+  .ace-card-back::before {
+    content: '';
+    position: absolute;
+    inset: 7px;
+    border: 1px solid rgba(201,168,76,0.26);
+    border-radius: 3px;
+    background-image:
+      repeating-linear-gradient( 45deg, rgba(201,168,76,0.08) 0, rgba(201,168,76,0.08) 1px, transparent 0, transparent 50%),
+      repeating-linear-gradient(-45deg, rgba(201,168,76,0.08) 0, rgba(201,168,76,0.08) 1px, transparent 0, transparent 50%);
+    background-size: 9px 9px;
+  }
+  .ace-card-back::after {
+    content: '✦';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 30px;
+    color: var(--deck-gold);
+    opacity: 0.45;
+  }
+
+  /* ── Card Front ── */
+  .ace-card-front {
+    background-color: var(--card-bg);
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.68' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+    background-size: 200px 200px;
+    border: 1px solid var(--card-border);
+    transform: rotateY(180deg);
+    overflow: hidden;
+  }
+
+  /* ornamental inner border */
+  .ace-card-front::before {
+    content: '';
+    position: absolute;
+    inset: 7px;
+    border: 0.5px solid var(--card-ornament);
+    border-radius: 3px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* corner ornament dots */
+  .ace-card-front::after {
+    content: '';
+    position: absolute;
+    inset: 12px;
+    border-radius: 1px;
+    box-shadow:
+      -4px  0   0 0.5px var(--card-ornament),
+       4px  0   0 0.5px var(--card-ornament),
+       0  -4px  0 0.5px var(--card-ornament),
+       0   4px  0 0.5px var(--card-ornament);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Corner pips */
+  .c-pip {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 1;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    z-index: 2;
+  }
+  .c-pip-tl { top: 9px; left: 9px; }
+  .c-pip-br { bottom: 9px; right: 9px; transform: rotate(180deg); }
+  .c-rank { font-size: 17px; font-weight: 700; line-height: 1; }
+  .c-suit-sm { font-size: 11px; line-height: 1; margin-top: -1px; }
+
+  /* Center content */
+  .c-center {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    text-align: center;
+    z-index: 2;
+  }
+  .c-suit-lg {
+    font-size: 50px;
+    line-height: 1;
+    filter: drop-shadow(0 2px 8px rgba(0,0,0,0.15));
+  }
+  .c-label {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 9.5px;
+    letter-spacing: 0.17em;
+    text-transform: uppercase;
+    font-weight: 700;
+    opacity: 0.82;
+  }
+  .c-sublabel {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 8.5px;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+    font-style: italic;
+    opacity: 0.48;
+  }
+
+  /* Suit colours */
+  .suit-black { color: var(--card-black); }
+  .suit-red   { color: var(--card-red);   }
+
+  /* Golden shimmer sweep */
+  .c-shimmer {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(108deg, transparent 28%, rgba(201,168,76,0.28) 50%, transparent 72%);
+    background-size: 220% 100%;
+    background-position: -100% 0;
+    border-radius: var(--card-r);
+    pointer-events: none;
+    z-index: 3;
+    opacity: 0;
+    transition: opacity 0.18s;
+  }
+  .ace-card.is-hovered .c-shimmer {
+    opacity: 1;
+    animation: shimmer-sweep 0.65s ease-out;
+  }
+  @keyframes shimmer-sweep {
+    from { background-position: -100% 0; }
+    to   { background-position: 220%  0; }
+  }
+
+  /* ═══════════════════════════════════════════════════
+     Navigation Full-Screen Overlay (fallback)
+  ═══════════════════════════════════════════════════ */
+  #ace-nav-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9000;
+    background-color: var(--overlay-color);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.42s ease;
+  }
+  #ace-nav-overlay.visible {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  /* ═══════════════════════════════════════════════════
+     Mobile — 2×2 grid layout (≤ 640px)
+  ═══════════════════════════════════════════════════ */
+  @media (max-width: 640px) {
+    :root {
+      --card-w: 108px;
+      --card-h: 158px;
+      --deck-w: 148px;
+      --deck-h: 214px;
+    }
+    .c-suit-lg { font-size: 40px; }
+    .c-label   { font-size: 8px; }
+  }
+  </style>
+</head>
+<body style="margin:0;padding:0;">
+
+<!-- ═══════ DEMO CONTROLS (remove in production) ═══════ -->
+<style>
+  #demo-toggle {
+    position: fixed; top: 14px; right: 14px; z-index: 9999;
+    padding: 5px 14px; font-size: 11px; font-family: monospace;
+    border: 1px solid currentColor; background: transparent;
+    cursor: pointer; border-radius: 20px; opacity: 0.7;
+  }
+  body { background: var(--ads-bg); }
+</style>
+<button id="demo-toggle">⟳ Theme</button>
+<script>
+  (function(){
+    const t = localStorage.getItem('theme') || 'dark';
+    document.documentElement.className = t;
+  })();
+  document.getElementById('demo-toggle').addEventListener('click', () => {
+    const isDark = document.documentElement.classList.contains('dark');
+    const next = isDark ? 'light' : 'dark';
+    document.documentElement.className = next;
+    localStorage.setItem('theme', next);
+  });
+</script>
+<!-- ════════════════════════════════════════════════════ -->
+
+<!-- Navigation overlay (place before the section in your page) -->
+<div id="ace-nav-overlay" aria-hidden="true"></div>
+
+<!-- ═══════════════════════════════════════════════════
+     THE SECTION — copy this block into your page
+════════════════════════════════════════════════════ -->
+<section id="ace-deck-section" aria-label="Khám phá triết học qua bộ bài">
+
+  <canvas id="ace-particles" aria-hidden="true"></canvas>
+
+  <div id="ace-deck-wrapper"
+       tabindex="0"
+       role="button"
+       aria-label="Nhấn để mở bộ bài triết học"
+       aria-expanded="false">
+    <div class="deck-face">
+      <span class="deck-label">Triết Học Hệ Số</span>
+    </div>
+  </div>
+
+  <div id="ace-cards-container" role="list" aria-label="Các chủ đề triết học"></div>
+
+  <div id="ace-burst" aria-hidden="true"></div>
+
+  <p id="ace-hint" aria-hidden="true">Nhấn để khám phá</p>
+
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     SCRIPT — copy this block before </body>
+════════════════════════════════════════════════════ -->
+<script id="ace-deck-script">
+/* ══════════════════════════════════════════════════════════
+   ACE DECK — Configuration & Engine
+   ══════════════════════════════════════════════════════════ */
+
+/* ── CONFIGURE CARD DESTINATIONS ─────────────────────────
+   fanX/fanY : offset from section center on desktop (px)
+   fanRot    : final tilt angle (degrees)
+   mobX/Y/Rot: same for mobile (≤640px)
+   stagger   : launch delay (ms)
+   arcDir    : 1 or -1 — which side the arc bows toward
+─────────────────────────────────────────────────────────── */
+const CARD_CONFIG = [
+  {
+    suit: '♠', suitClass: 'suit-black', suitName: 'Bích',
+    label: 'Lý Luận', sublabel: 'Logic & Theory',
+    href: 'lythuyet.html',
+    fanX: -295, fanY: 0, fanRot: -18,
+    mobX: -115, mobY: 0, mobRot: -18,
+    stagger: 0,   arcDir: 1,
+  },
+  {
+    suit: '♥', suitClass: 'suit-red', suitName: 'Cơ',
+    label: 'Thẻ Bài', sublabel: 'Card System',
+    href: 'thebai.html',
+    fanX: -98, fanY: 0, fanRot: -6,
+    mobX: -46, mobY: 0, mobRot: -6,
+    stagger: 80,  arcDir: 1,
+  },
+  {
+    suit: '♦', suitClass: 'suit-red', suitName: 'Rô',
+    label: 'Mỹ Học', sublabel: 'Aesthetics',
+    href: 'ro.html',
+    fanX: 98, fanY: 0, fanRot: 6,
+    mobX: 46, mobY: 0, mobRot: 6,
+    stagger: 160, arcDir: -1,
+  },
+  {
+    suit: '♣', suitClass: 'suit-black', suitName: 'Chuồn',
+    label: 'Siêu Hình', sublabel: 'Metaphysics',
+    href: 'chuon.html',
+    fanX: 295, fanY: 0, fanRot: 18,
+    mobX: 115, mobY: 0, mobRot: 18,
+    stagger: 240, arcDir: -1,
+  },
+];
+
+/* ── DOM REFS ─────────────────────────────────────────── */
+const sectionEl  = document.getElementById('ace-deck-section');
+const deckEl     = document.getElementById('ace-deck-wrapper');
+const cardsEl    = document.getElementById('ace-cards-container');
+const burstEl    = document.getElementById('ace-burst');
+const hintEl     = document.getElementById('ace-hint');
+const overlayEl  = document.getElementById('ace-nav-overlay');
+const particleCV = document.getElementById('ace-particles');
+
+let state   = 'idle'; /* idle | exploding | fanned | navigating */
+let cardEls = [];
+
+/* ── PARTICLE SHIMMER ─────────────────────────────────── */
+(function initParticles() {
+  const ctx = particleCV.getContext('2d');
+  let W, H, particles = [];
+
+  function resize() {
+    W = particleCV.width  = sectionEl.offsetWidth;
+    H = particleCV.height = sectionEl.offsetHeight;
+  }
+
+  function mkParticle() {
+    return {
+      x: Math.random() * (W || 400),
+      y: Math.random() * (H || 600),
+      r: Math.random() * 1.4 + 0.3,
+      speed: Math.random() * 0.35 + 0.08,
+      angle: Math.random() * Math.PI * 2,
+      a: Math.random() * 0.35 + 0.08,
+      aDir: (Math.random() < 0.5 ? 1 : -1) * 0.004,
+      gold: Math.random() < 0.28,
+    };
+  }
+
+  function tick() {
+    ctx.clearRect(0, 0, W, H);
+    const dark = document.documentElement.classList.contains('dark');
+    particles.forEach(p => {
+      p.x += Math.cos(p.angle) * p.speed;
+      p.y += Math.sin(p.angle) * p.speed;
+      p.a += p.aDir;
+      if (p.a < 0.06 || p.a > 0.5) p.aDir *= -1;
+      if (p.x < 0) p.x = W; if (p.x > W) p.x = 0;
+      if (p.y < 0) p.y = H; if (p.y > H) p.y = 0;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = p.gold
+        ? `rgba(201,168,76,${p.a})`
+        : dark
+          ? `rgba(170,195,255,${p.a * 0.55})`
+          : `rgba(70,50,20,${p.a * 0.38})`;
+      ctx.fill();
+    });
+    requestAnimationFrame(tick);
+  }
+
+  resize();
+  for (let i = 0; i < 75; i++) particles.push(mkParticle());
+  window.addEventListener('resize', resize);
+  tick();
+})();
+
+/* ── BUILD CARD ELEMENTS ──────────────────────────────── */
+function buildCards() {
+  cardsEl.innerHTML = '';
+  cardEls = [];
+
+  CARD_CONFIG.forEach((cfg, i) => {
+    const el = document.createElement('div');
+    el.className = 'ace-card';
+    el.setAttribute('role', 'listitem');
+    el.setAttribute('tabindex', '-1');
+    el.setAttribute('aria-label', `${cfg.suitName} — ${cfg.label}: ${cfg.sublabel}`);
+
+    el.innerHTML = `
+      <div class="ace-card-inner">
+        <div class="ace-card-back"></div>
+        <div class="ace-card-front ${cfg.suitClass}">
+          <div class="c-pip c-pip-tl">
+            <span class="c-rank">A</span>
+            <span class="c-suit-sm">${cfg.suit}</span>
+          </div>
+          <div class="c-center">
+            <div class="c-suit-lg">${cfg.suit}</div>
+            <div class="c-label">${cfg.label}</div>
+            <div class="c-sublabel">${cfg.sublabel}</div>
+          </div>
+          <div class="c-pip c-pip-br">
+            <span class="c-rank">A</span>
+            <span class="c-suit-sm">${cfg.suit}</span>
+          </div>
+          <div class="c-shimmer"></div>
+        </div>
+      </div>`;
+
+    el._cfg   = cfg;
+    el._index = i;
+
+    el.addEventListener('mouseenter', onCardEnter);
+    el.addEventListener('mouseleave', onCardLeave);
+    el.addEventListener('mousemove',  onCardTilt);
+    el.addEventListener('click',      onCardClick);
+    el.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onCardClick.call(el); }
+    });
+
+    cardsEl.appendChild(el);
+    cardEls.push(el);
+  });
+}
+
+/* ── HELPERS ──────────────────────────────────────────── */
+const isMobile = () => window.innerWidth <= 640;
+
+function getFanPos(cfg) {
+  const m = isMobile();
+  return { x: m ? cfg.mobX : cfg.fanX, y: m ? cfg.mobY : cfg.fanY, r: m ? cfg.mobRot : cfg.fanRot };
+}
+
+/* Compute arc midpoint perpendicular to travel direction */
+function arcMid(fx, fy, arcDir, h = 68) {
+  const dist = Math.sqrt(fx * fx + fy * fy) || 1;
+  const nx = (-fy / dist) * arcDir;
+  const ny = ( fx / dist) * arcDir;
+  return { x: fx * 0.46 + nx * h, y: fy * 0.46 + ny * h };
+}
+
+/* Set a card's committed inline transform (fan resting position) */
+function setFanTransform(card) {
+  const { x, y, r } = getFanPos(card._cfg);
+  card.style.transform = `translate(calc(${x}px - 50%), calc(${y}px - 50%)) rotate(${r}deg) scale(1)`;
+}
+
+/* ── PHASE 2 + 3: EXPLODE THEN FAN OUT ───────────────── */
+function explodeAndFan() {
+  if (state !== 'idle') return;
+  state = 'exploding';
+
+  hintEl.style.opacity = '0';
+  deckEl.setAttribute('aria-expanded', 'true');
+
+  burstEl.classList.add('burst--fire');
+  deckEl.classList.add('exploding');
+
+  setTimeout(() => {
+    deckEl.style.display = 'none';
+
+    cardEls.forEach(card => {
+      const cfg  = card._cfg;
+      const { x: fx, y: fy, r: fr } = getFanPos(cfg);
+      const mid  = arcMid(fx, fy, cfg.arcDir, isMobile() ? 42 : 68);
+      const inner = card.querySelector('.ace-card-inner');
+
+      card.style.opacity = '1';
+      card.style.zIndex  = String(15 + card._index);
+
+      /* ── Flight arc (position + tilt) ── */
+      const flyAnim = card.animate([
+        { transform: 'translate(-50%,-50%) rotate(0deg) scale(0.75)',                                                offset: 0 },
+        { transform: `translate(calc(${mid.x}px - 50%),calc(${mid.y}px - 50%)) rotate(${fr * 0.35}deg) scale(1.06)`, offset: 0.44 },
+        { transform: `translate(calc(${fx}px - 50%),calc(${fy - 14}px - 50%)) rotate(${fr * 1.18}deg) scale(1.02)`, offset: 0.82 },
+        { transform: `translate(calc(${fx}px - 50%),calc(${fy}px - 50%)) rotate(${fr}deg) scale(1)`,                offset: 1 },
+      ], { duration: 860, delay: cfg.stagger, easing: 'cubic-bezier(0.34,1.56,0.64,1)', fill: 'forwards' });
+
+      /* ── Card flip mid-arc ── */
+      const flipAnim = inner.animate([
+        { transform: 'rotateY(0deg)',   offset: 0 },
+        { transform: 'rotateY(0deg)',   offset: 0.37 },
+        { transform: 'rotateY(90deg)',  offset: 0.52, easing: 'ease-in' },
+        { transform: 'rotateY(180deg)', offset: 0.67, easing: 'ease-out' },
+        { transform: 'rotateY(180deg)', offset: 1 },
+      ], { duration: 860, delay: cfg.stagger, fill: 'forwards' });
+
+      flyAnim.onfinish = () => {
+        /* Commit animated values as inline styles, then release the animation */
+        flyAnim.commitStyles();  flyAnim.cancel();
+        flipAnim.commitStyles(); flipAnim.cancel();
+
+        card.style.transition = 'transform 0.22s ease, filter 0.28s ease, opacity 0.22s ease';
+        card.classList.add('revealed');
+        card.setAttribute('tabindex', '0');
+      };
+    });
+
+    state = 'fanned';
+  }, 460);
+}
+
+/* ── PHASE 4: HOVER ───────────────────────────────────── */
+function onCardEnter() {
+  if (state !== 'fanned') return;
+  this.classList.add('is-hovered');
+  this.style.zIndex = '50';
+
+  /* Recede other cards */
+  cardEls.forEach(c => {
+    if (c === this) return;
+    const { x, y, r } = getFanPos(c._cfg);
+    c.style.transform = `translate(calc(${x}px - 50%),calc(${y}px - 50%)) rotate(${r}deg) scale(0.93)`;
+    c.style.filter    = 'brightness(0.58) saturate(0.55)';
+  });
+}
+
+function onCardLeave() {
+  this.classList.remove('is-hovered');
+  this.style.zIndex = String(15 + this._index);
+
+  /* Reset inner tilt to face-forward */
+  const inner = this.querySelector('.ace-card-inner');
+  inner.style.transform = 'rotateY(180deg)';
+  this.style.filter = '';
+
+  /* Restore all to fan positions */
+  cardEls.forEach(c => {
+    setFanTransform(c);
+    c.style.filter = '';
+  });
+}
+
+function onCardTilt(e) {
+  if (state !== 'fanned') return;
+  const rect = this.getBoundingClientRect();
+  const dx   = (e.clientX - (rect.left + rect.width  / 2)) / (rect.width  / 2);
+  const dy   = (e.clientY - (rect.top  + rect.height / 2)) / (rect.height / 2);
+
+  const { x: fx, y: fy, r: fr } = getFanPos(this._cfg);
+  const tiltX =  -dy * 13;
+  const tiltY =   dx * 13;
+  const shadowX = -dx * 9;
+  const shadowY = -dy * 9 + 18;
+
+  const inner = this.querySelector('.ace-card-inner');
+  inner.style.transform = `rotateY(${180 + tiltY}deg) rotateX(${tiltX}deg)`;
+
+  this.style.transform = `translate(calc(${fx}px - 50%),calc(${fy - 13}px - 50%)) rotate(${fr}deg) scale(1.07)`;
+  this.style.filter    = `brightness(1.1) drop-shadow(${shadowX}px ${shadowY}px 28px var(--card-shadow))`;
+}
+
+/* ── PHASE 5: CARD CLICK → NAVIGATE ─────────────────── */
+function onCardClick() {
+  if (state !== 'fanned') return;
+  state = 'navigating';
+
+  const self = this;
+  const cfg  = this._cfg;
+
+  /* Scatter the other three */
+  cardEls.forEach(c => {
+    if (c === self) return;
+    const angle = Math.random() * Math.PI * 2;
+    const dist  = 540 + Math.random() * 240;
+    c.style.transition = 'transform 0.42s cubic-bezier(0.4,0,1,1), opacity 0.32s ease';
+    c.style.transform  = `translate(calc(${Math.cos(angle)*dist}px - 50%),calc(${Math.sin(angle)*dist}px - 50%)) rotate(${Math.random()*140-70}deg) scale(0.3)`;
+    c.style.opacity    = '0';
+    c.style.pointerEvents = 'none';
+  });
+
+  /* Target card flies at viewer */
+  self.classList.remove('is-hovered');
+  self.style.zIndex    = '200';
+  self.style.transition = 'transform 0.48s cubic-bezier(0.16,1,0.3,1), opacity 0.42s ease';
+  self.style.transform  = 'translate(-50%,-50%) scale(3.8) rotate(0deg)';
+
+  setTimeout(() => { self.style.opacity = '0'; }, 160);
+
+  /* ── CONFIGURE YOUR ROUTER HERE ──────────────────────
+     Replace the body of doNavigate() with your call:
+       router.push(href);          ← Vue Router / React Router
+       history.pushState({}, '', href); window.dispatchEvent(...)
+       window.location.href = href; ← plain HTML (default)
+  ────────────────────────────────────────────────────── */
+  function doNavigate(href) {
+    window.location.href = href;
+  }
+
+  if (document.startViewTransition) {
+    setTimeout(() => document.startViewTransition(() => doNavigate(cfg.href)), 360);
+  } else {
+    overlayEl.classList.add('visible');
+    setTimeout(() => doNavigate(cfg.href), 620);
+  }
+}
+
+/* ── KEYBOARD A11Y ────────────────────────────────────── */
+deckEl.addEventListener('keydown', e => {
+  if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); explodeAndFan(); }
+});
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && state !== 'idle' && state !== 'navigating') resetDeck();
+});
+
+/* ── RESET (Escape key) ───────────────────────────────── */
+function resetDeck() {
+  state = 'idle';
+  deckEl.classList.remove('exploding');
+  deckEl.style.display = '';
+  deckEl.setAttribute('aria-expanded', 'false');
+  deckEl.setAttribute('aria-label', 'Nhấn để mở bộ bài triết học');
+  burstEl.classList.remove('burst--fire');
+  hintEl.style.opacity = '';
+  overlayEl.classList.remove('visible');
+  buildCards();
+}
+
+/* ── DECK CLICK ───────────────────────────────────────── */
+deckEl.addEventListener('click', explodeAndFan);
+
+/* ── INIT ─────────────────────────────────────────────── */
+buildCards();
+</script>
+
+</body>
+</html>
