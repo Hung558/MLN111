@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="css/shared.css"/>
     <link rel="stylesheet" href="css/index.css"/>
     <link rel="stylesheet" href="css/ace-deck.css?v=4"/>
+    <link rel="stylesheet" href="css/story.css"/>
     <script>
         tailwind.config = {
             darkMode: "class",
@@ -165,6 +166,18 @@
                     </p>
                 </div>
             </div>
+
+            <!-- Story Section -->
+            <section class="w-full py-12 px-6">
+                <div class="max-w-4xl mx-auto">
+                    <div class="text-center mb-10">
+                        <h2 class="text-3xl lg:text-4xl font-black mb-3 dark-heading">Hành Trình Ngộ Triết của Po</h2>
+                        <p class="text-base leading-relaxed dark-text">Câu chuyện về một chú gấu trúc học cách hiểu cuộc đời qua 52 lá bài triết học</p>
+                    </div>
+                    <div id="story-reader" class="card-surface p-8 rounded-2xl shadow-lg mx-auto" style="border:1px solid var(--border-card);"></div>
+                </div>
+            </section>
+
             <div class="banner-primary mt-12 text-white p-8 rounded-2xl relative overflow-hidden shadow-md" style="background:var(--bg-banner-primary);">
                 <div class="relative z-10 space-y-4 max-w-2xl">
                     <h4 class="text-xl font-bold">Hành Trình Triết Học Hệ Số</h4>
@@ -194,6 +207,7 @@
     <bottom-bar active="index"></bottom-bar>
 
     <script src="js/components.js"></script>
+    <script src="js/story.js"></script>
     <script>
     /* ═══════════════════════════════════════════════════════
        ACE DECK — Engine

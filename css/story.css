@@ -1,0 +1,161 @@
+/* ========================================
+   STORY.CSS - Comic-style Story Reader
+   ======================================== */
+
+.story-container {
+    perspective: 1000px;
+    position: relative;
+}
+
+.story-card-wrapper {
+    min-height: 450px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.story-slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateX(50px) rotateY(-10deg);
+}
+
+.story-slide.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0) rotateY(0deg);
+    z-index: 10;
+}
+
+.story-slide.exit {
+    opacity: 0;
+    transform: translateX(-50px) rotateY(10deg);
+}
+
+.comic-frame {
+    background: var(--bg-card-surface);
+    border: 4px solid var(--text-sidebar-title);
+    border-radius: 1rem;
+    padding: 2rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 10px 10px 0px var(--text-sidebar-title);
+    position: relative;
+}
+
+html.dark .comic-frame {
+    box-shadow: 10px 10px 0px var(--bg-nav-active);
+    border-color: var(--bg-nav-active);
+}
+
+.comic-illustration {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    font-size: 5rem;
+    color: var(--text-header-title);
+    position: relative;
+}
+
+.comic-text-bubble {
+    background: white;
+    color: #1a1c20;
+    padding: 1.5rem;
+    border-radius: 1.5rem;
+    border: 2px solid #1a1c20;
+    position: relative;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    line-height: 1.6;
+    font-size: 1.05rem;
+    box-shadow: 4px 4px 0px rgba(0,0,0,0.1);
+}
+
+.comic-text-bubble::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 40px;
+    border-width: 15px 15px 0;
+    border-style: solid;
+    border-color: #1a1c20 transparent;
+    display: block;
+    width: 0;
+}
+
+.comic-text-bubble::before {
+    content: '';
+    position: absolute;
+    bottom: -11px;
+    left: 42px;
+    border-width: 13px 13px 0;
+    border-style: solid;
+    border-color: white transparent;
+    display: block;
+    width: 0;
+    z-index: 1;
+}
+
+.story-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2rem;
+    padding: 0 1rem;
+}
+
+.story-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: var(--bg-sidebar-btn);
+    color: var(--text-sidebar-btn);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.story-btn:hover {
+    transform: scale(1.1);
+    opacity: 0.9;
+}
+
+.story-btn:active {
+    transform: scale(0.95);
+}
+
+.story-btn.disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.story-progress {
+    font-size: 0.8rem;
+    font-weight: 800;
+    color: var(--text-sidebar-title);
+    letter-spacing: 0.1rem;
+}
+
+@media (max-width: 640px) {
+    .story-card-wrapper {
+        min-height: 500px;
+    }
+    .comic-frame {
+        padding: 1.5rem;
+    }
+    .comic-text-bubble {
+        font-size: 0.95rem;
+    }
+}
