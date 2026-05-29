@@ -1,117 +1,139 @@
 /* ========================================
-   STORY.JS - Comic-style Story Reader
+   STORY.JS - Comic-style Story Reader with Premium Effects
    ======================================== */
 
 const storyData = [
     {
         emoji: "🏔️",
+        gradient: "bg-grad-mountains",
         text: "Ngày xưa, ở một vùng núi xa xôi có một học viện mang tên Thiên Trúc Sơn. Đó không phải là nơi đào tạo những chiến binh mạnh nhất, mà là nơi đào tạo những người hiểu được bản chất của thế giới."
     },
     {
         emoji: "🐼",
+        gradient: "bg-grad-panda",
         text: "Trong học viện ấy có một chú gấu trúc tên Po. Po nổi tiếng vì ba điều: ham ăn, ngủ gật và cực kỳ ghét học Triết học."
     },
     {
         emoji: "📚",
+        gradient: "bg-grad-book",
         text: "Mỗi lần thầy giáo giảng đến những khái niệm như 'vật chất', 'biện chứng', 'nhận thức'... Po đều cảm thấy đầu óc quay cuồng. Với cậu, Triết học chỉ là những dòng chữ khô khan."
     },
     {
         emoji: "🥟",
+        gradient: "bg-grad-panda",
         text: "Trong khi các bạn khác chăm chỉ luyện tập, Po lại trốn ra sau núi để ăn bánh bao. Cậu luôn nghĩ rằng: 'Chỉ cần sống vui vẻ là đủ, cần gì phải hiểu thế giới.'"
     },
     {
         emoji: "⛈️",
-        text: "Cho đến một đêm mưa lớn, mọi thứ thay đổi. Po bị phạt dọn thư viện cũ dưới tầng hầm. Trong lúc đang lau bụi, Po vô tình làm rơi một cuốn sách cổ. Mặt đất rung chuyển. Một cánh cửa đá từ từ mở ra."
+        gradient: "bg-grad-storm",
+        text: "Cho đến một đêm mưa lớn, mọi thứ thay đổi. Po bị phạt dọn thư viện cũ dưới tầng hầm. Trong lúc đang lau bụi, Po vô tình làm rơi một cuốn sách cổ. Một cánh cửa đá từ từ mở ra."
     },
     {
         emoji: "✨",
+        gradient: "bg-grad-magic",
         text: "Sau cánh cửa là một bộ bài phát sáng màu vàng kim. Trên hộp bài có dòng chữ: 'Người muốn thay đổi cuộc đời mình phải học cách hiểu thế giới.'"
     },
     {
         emoji: "🌌",
-        text: "Po tò mò chạm vào lá bài đầu tiên. Ngay lập tức, ánh sáng bao trùm toàn bộ căn phòng. Cậu bị hút vào một không gian vô tận nơi các hành tinh đang chuyển động. Một giọng nói vang lên: 'Muốn trưởng thành, ngươi phải hoàn thành Hành trình Ngộ Triết.'"
+        gradient: "bg-grad-cosmos",
+        text: "Po tò mò chạm vào lá bài đầu tiên. Ngay lập tức, ánh sáng bao trùm toàn bộ căn phòng. Cậu bị hút vào một không gian vô tận. Một giọng nói vang lên: 'Muốn trưởng thành, ngươi phải hoàn thành Hành trình Ngộ Triết.'"
     },
     {
         emoji: "🏔️",
-        text: "Po bước vào thế giới đầu tiên. Ở đó, cậu nhìn thấy núi non, sông biển, bầu trời và vô số sinh vật. Một vị sư già hỏi: 'Con nghĩ những thứ này tồn tại vì con nhìn thấy chúng sao?'"
+        gradient: "bg-grad-mountains",
+        text: "Po bước vào thế giới đầu tiên. Ở đó, cậu nhìn thấy núi non, sông biển, bầu trời. Một vị sư già hỏi: 'Con nghĩ những thứ này tồn tại vì con nhìn thấy chúng sao?'"
     },
     {
-        emoji: "🪨",
-        text: "Lần đầu tiên Po hiểu rằng thế giới không phụ thuộc vào suy nghĩ của riêng mình. Núi vẫn là núi dù không ai quan sát. Dòng sông vẫn chảy dù không ai lắng nghe. Po bắt đầu hiểu khái niệm 'vật chất'."
+        emoji: "🌍",
+        gradient: "bg-grad-cosmos",
+        text: "Lần đầu tiên Po hiểu rằng thế giới không phụ thuộc vào suy nghĩ của mình. Núi vẫn là núi dù không ai quan sát. Dòng sông vẫn chảy dù không ai lắng nghe. Cậu bắt đầu hiểu 'vật chất'."
     },
     {
         emoji: "🪞",
-        text: "Vị sư dẫn Po tới một căn phòng đầy gương. Trong mỗi tấm gương là những cảm xúc, ký ức và suy nghĩ khác nhau của Po. Vị sư nói: 'Ý thức của con không tự sinh ra. Nó phản ánh thế giới mà con đã trải qua.'"
+        gradient: "bg-grad-mirror",
+        text: "Vị sư dẫn Po tới một căn phòng đầy gương. Vị sư nói: 'Ý thức của con không tự sinh ra. Nó phản ánh thế giới mà con đã trải qua.' Po nhận ra suy nghĩ của mình được hình thành từ cuộc sống."
     },
     {
-        emoji: "🍂",
-        text: "Càng đi tiếp, Po càng thấy mọi thứ luôn thay đổi: lá cây úa rồi mọc lại, nước bốc hơi rồi thành mưa, ngày nối tiếp đêm, mùa đông chuyển sang mùa xuân. Po hiểu: mọi sự vật đều vận động và phát triển."
+        emoji: "🍃",
+        gradient: "bg-grad-leaves",
+        text: "Càng đi tiếp, Po càng thấy mọi thứ luôn thay đổi: lá úa rồi mọc lại, nước bốc hơi rồi thành mưa. Cậu hiểu: mọi sự vật đều luôn vận động và phát triển không ngừng."
     },
     {
         emoji: "⚔️",
-        text: "Ở cánh cổng tiếp theo, Po gặp một kẻ giống hệt mình - Hắc Po. Hắc Po lười biếng, nóng giận, ích kỷ. Hai bên lao vào chiến đấu dữ dội. Nhưng Po càng đánh, Hắc Po càng mạnh."
+        gradient: "bg-grad-battle",
+        text: "Ở cánh cổng tiếp theo, Po gặp Hắc Po - kẻ lười biếng, nóng giận. Po càng đánh, Hắc Po càng mạnh. Po hét lên: 'Tại sao ta không thể thắng ngươi?'"
     },
     {
-        emoji: "🪞",
-        text: "Kiệt sức, Po hét lên: 'Tại sao ta không thể thắng ngươi?' Hắc Po cười: 'Vì ta chính là ngươi.' Po hiểu rằng con người luôn tồn tại những mặt đối lập: mạnh và yếu, tốt và xấu."
+        emoji: "☯️",
+        gradient: "bg-grad-mirror",
+        text: "Hắc Po cười: 'Vì ta chính là ngươi.' Po hiểu rằng con người luôn tồn tại những mặt đối lập: mạnh và yếu, tốt và xấu. Không thể trưởng thành nếu trốn tránh phần tối của mình."
     },
     {
-        emoji: "💧",
-        text: "Po được giao nhiệm vụ đun một nồi nước khổng lồ. Suốt một thời gian dài, nước vẫn không thay đổi dù nhiệt độ liên tục tăng. Nhưng đúng khi nhiệt độ đạt 100 độ, toàn bộ nước hóa thành hơi."
+        emoji: "🔥",
+        gradient: "bg-grad-battle",
+        text: "Po đun một nồi nước khổng lồ. Suốt thời gian dài, nước vẫn không đổi dù nhiệt độ tăng cao. Nhưng khi đạt đúng 100 độ, toàn bộ nước hóa thành hơi trong chớp mắt."
+    },
+    {
+        emoji: "📈",
+        gradient: "bg-grad-water",
+        text: "'Có những thay đổi nhỏ tích lũy âm thầm, cho tới một thời điểm sẽ tạo ra bước chuyển lớn.' Po hiểu rằng sự trưởng thành cũng cần thời gian tích lũy kiên trì."
+    },
+    {
+        emoji: "💥",
+        gradient: "bg-grad-storm",
+        text: "Nhưng rồi một thất bại lớn xảy ra. Po thua hoàn toàn. Cậu mất niềm tin vào bản thân và muốn bỏ cuộc, nằm gục xuống trong bóng tối."
     },
     {
         emoji: "🌱",
-        text: "Vị sư mỉm cười: 'Có những thay đổi nhỏ tích lũy âm thầm, cho tới một thời điểm sẽ tạo ra bước chuyển lớn.' Po hiểu rằng sự trưởng thành cũng như vậy. Mọi cố gắng đều cần thời gian tích lũy."
-    },
-    {
-        emoji: "⚔️",
-        text: "Nhưng rồi một thất bại lớn xảy ra. Trong một trận chiến, Po thua hoàn toàn. Cậu mất niềm tin vào bản thân và muốn bỏ cuộc."
-    },
-    {
-        emoji: "🌿",
-        text: "Vị sư đưa cho Po một hạt tre nhỏ rồi hỏi: 'Con nghĩ hạt tre biến mất khi cây tre mọc lên sao?' Po lắc đầu. 'Không, nó vẫn tồn tại trong hình dạng mới.' Po hiểu rằng cái mới kế thừa những điều tốt đẹp để phát triển hơn."
+        gradient: "bg-grad-sprout",
+        text: "Vị sư đưa cho Po một hạt tre: 'Con nghĩ hạt tre biến mất khi cây tre mọc lên sao? Không, nó vẫn tồn tại trong hình dạng mới.' Po hiểu rằng cái mới kế thừa cái cũ để tốt đẹp hơn."
     },
     {
         emoji: "🌉",
-        text: "Hành trình tiếp theo đưa Po tới một ngôi làng nghèo nơi cây cầu duy nhất đã sập. Người dân không thể vận chuyển lương thực. Po lao vào đọc sách sửa cầu và tin rằng mình đã hiểu mọi thứ."
+        gradient: "bg-grad-bridge",
+        text: "Po tới một ngôi làng nghèo nơi cây cầu duy nhất đã sập. Po lao vào đọc sách sửa cầu và tin rằng mình đã giỏi. Nhưng khi làm thật, cầu đổ sập ngay lập tức."
     },
     {
         emoji: "🔨",
-        text: "Nhưng khi bắt tay làm thật, cây cầu đổ sập ngay lập tức. Vị sư nói: 'Kiến thức không được kiểm chứng bằng thực tế chỉ là lý thuyết.' Po bắt đầu học từ người dân: cách đo dòng nước, cách buộc dây, cách đặt nền móng."
+        gradient: "bg-grad-bridge",
+        text: "Vị sư nói: 'Kiến thức không được kiểm chứng bằng thực tế chỉ là lý thuyết.' Po bắt đầu học từ dân làng cách đo dòng nước, buộc dây... Thực tiễn mới là nơi kiểm chứng chân lý."
     },
     {
-        emoji: "🌉",
-        text: "Sau rất nhiều lần thất bại, cây cầu cuối cùng cũng được xây xong. Người dân reo hò trong niềm vui. Po hiểu sâu sắc rằng: thực tiễn là nơi kiểm chứng chân lý."
-    },
-    {
-        emoji: "🏙️",
-        text: "Trên đoạn đường cuối cùng, Po đi qua những ngôi làng, các nhà máy, thành phố đông đúc, và cả chiến tranh. Cậu chứng kiến con người lao động để tồn tại."
-    },
-    {
-        emoji: "👥",
-        text: "Po thấy xã hội thay đổi khi công cụ thay đổi. Cậu thấy những mâu thuẫn giữa giàu và nghèo, giữa cái cũ và cái mới. Ban đầu Po nghĩ lịch sử được tạo nên bởi những anh hùng."
+        emoji: "🏭",
+        gradient: "bg-grad-city",
+        text: "Trên chặng cuối, Po đi qua những nhà máy, thành phố đông đúc. Cậu chứng kiến con người lao động để tồn tại. Cậu thấy xã hội thay đổi khi công cụ lao động thay đổi."
     },
     {
         emoji: "🤝",
-        text: "Nhưng rồi cậu nhận ra: chính những người dân bình thường, những người lao động mỗi ngày, mới là những người xây dựng xã hội. Một người có thể mạnh. Nhưng hàng ngàn con người đoàn kết còn mạnh hơn."
+        gradient: "bg-grad-city",
+        text: "Po nhận ra: chính những người lao động bình thường mới là những người thực sự xây dựng nên xã hội. Một người có thể mạnh, nhưng hàng ngàn người đoàn kết còn mạnh hơn rất nhiều."
     },
     {
-        emoji: "🌟",
-        text: "Sau khi hoàn thành lá bài cuối cùng, Po trở về học viện. Nhưng giờ đây, cậu không còn là chú gấu trúc ham chơi ngày nào nữa. Po nhìn bầu trời rồi mỉm cười."
+        emoji: "🐼",
+        gradient: "bg-grad-panda",
+        text: "Sau khi hoàn thành lá bài cuối cùng, Po trở về học viện. Cậu không còn là chú gấu trúc ham chơi ngày nào. Po nhìn bầu trời rồi mỉm cười thanh thản."
     },
     {
-        emoji: "📖",
-        text: "Cậu hiểu rằng Triết học không phải là những dòng chữ khô khan để học thuộc lòng. Triết học là: cách nhìn thế giới, cách hiểu con người, và cách trưởng thành từ chính những trải nghiệm của bản thân."
+        emoji: "📜",
+        gradient: "bg-grad-book",
+        text: "Cậu hiểu rằng Triết học không phải là lý thuyết khô khan. Nó là cách nhìn thế giới, cách hiểu con người, và cách trưởng thành từ chính trải nghiệm của bản thân."
+    },
+    {
+        emoji: "🃏",
+        gradient: "bg-grad-magic",
+        text: "52 lá bài bay lên giữa bầu trời đêm rực rỡ. Mỗi lá bài là một bài học. Mỗi thử thách là một bước trưởng thành trên hành trình cuộc đời."
     },
     {
         emoji: "✨",
-        text: "52 lá bài bay lên giữa bầu trời đêm. Mỗi lá bài là một bài học. Mỗi thử thách là một bước trưởng thành. Và Po cuối cùng nhận ra: 'Ngộ Triết không phải trở thành người thông minh nhất. Mà là học cách hiểu cuộc đời.'"
+        gradient: "bg-grad-cosmos",
+        text: "'Ngộ Triết không phải trở thành người thông minh nhất. Mà là học cách hiểu cuộc đời.' Po đã thực sự tìm thấy bản ngã của mình."
     }
 ];
 
 class StoryReader {
     constructor(containerId) {
         this.container = document.getElementById(containerId);
+        if (!this.container) return;
         this.currentSlide = 0;
         this.totalSlides = storyData.length;
         this.init();
@@ -123,6 +145,8 @@ class StoryReader {
     }
 
     render() {
+        this.container.innerHTML = ''; // Clear container
+
         const wrapper = document.createElement('div');
         wrapper.className = 'story-card-wrapper';
 
@@ -131,7 +155,10 @@ class StoryReader {
             slideEl.className = `story-slide ${index === 0 ? 'active' : ''}`;
             slideEl.innerHTML = `
                 <div class="comic-frame">
-                    <div class="comic-illustration">${slide.emoji}</div>
+                    <div class="comic-illustration-container ${slide.gradient}">
+                        <div class="cosmic-dust"></div>
+                        <div class="comic-illustration">${slide.emoji}</div>
+                    </div>
                     <div class="comic-text-bubble">${slide.text}</div>
                 </div>
             `;
@@ -159,8 +186,8 @@ class StoryReader {
         const prevBtn = this.container.querySelector('.prev-btn');
         const nextBtn = this.container.querySelector('.next-btn');
 
-        prevBtn.addEventListener('click', () => this.prevSlide());
-        nextBtn.addEventListener('click', () => this.nextSlide());
+        if (prevBtn) prevBtn.addEventListener('click', () => this.prevSlide());
+        if (nextBtn) nextBtn.addEventListener('click', () => this.nextSlide());
 
         document.addEventListener('keydown', (e) => {
             if (e.key === 'ArrowLeft') this.prevSlide();
@@ -182,6 +209,7 @@ class StoryReader {
 
     goToSlide(index) {
         const slides = this.container.querySelectorAll('.story-slide');
+        if (!slides[this.currentSlide] || !slides[index]) return;
 
         slides[this.currentSlide].classList.remove('active');
         slides[this.currentSlide].classList.add('exit');
@@ -206,8 +234,8 @@ class StoryReader {
         const prevBtn = this.container.querySelector('.prev-btn');
         const nextBtn = this.container.querySelector('.next-btn');
 
-        prevBtn.classList.toggle('disabled', this.currentSlide === 0);
-        nextBtn.classList.toggle('disabled', this.currentSlide === this.totalSlides - 1);
+        if (prevBtn) prevBtn.classList.toggle('disabled', this.currentSlide === 0);
+        if (nextBtn) nextBtn.classList.toggle('disabled', this.currentSlide === this.totalSlides - 1);
     }
 }
 

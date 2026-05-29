@@ -1,14 +1,14 @@
 /* ========================================
-   STORY.CSS - Comic-style Story Reader
+   STORY.CSS - Comic-style Story Reader with Premium Cards
    ======================================== */
 
 .story-container {
-    perspective: 1000px;
+    perspective: 1200px;
     position: relative;
 }
 
 .story-card-wrapper {
-    min-height: 450px;
+    min-height: 480px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -22,88 +22,118 @@
     height: 100%;
     opacity: 0;
     visibility: hidden;
-    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-    transform: translateX(50px) rotateY(-10deg);
+    transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    transform: scale(0.9) translateY(30px);
 }
 
 .story-slide.active {
     opacity: 1;
     visibility: visible;
-    transform: translateX(0) rotateY(0deg);
+    transform: scale(1) translateY(0);
     z-index: 10;
 }
 
 .story-slide.exit {
     opacity: 0;
-    transform: translateX(-50px) rotateY(10deg);
+    transform: scale(0.9) translateY(-30px);
 }
 
+/* Premium Comic / Tarot Card Frame */
 .comic-frame {
     background: var(--bg-card-surface);
-    border: 4px solid var(--text-sidebar-title);
-    border-radius: 1rem;
+    border: 3px solid var(--text-sidebar-title);
+    border-radius: 1.5rem;
     padding: 2rem;
     height: 100%;
     display: flex;
     flex-direction: column;
-    box-shadow: 10px 10px 0px var(--text-sidebar-title);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
     position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
 }
 
 html.dark .comic-frame {
-    box-shadow: 10px 10px 0px var(--bg-nav-active);
-    border-color: var(--bg-nav-active);
+    border-color: rgba(171, 201, 240, 0.25);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), inset 0 0 20px rgba(171, 201, 240, 0.05);
 }
 
-.comic-illustration {
+/* Elegant Magical Border */
+.comic-frame::before {
+    content: '';
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    right: 6px;
+    bottom: 6px;
+    border: 1px dashed rgba(171, 201, 240, 0.3);
+    border-radius: 1.2rem;
+    pointer-events: none;
+}
+
+/* Illustration Backdrop with Rich Gradients */
+.comic-illustration-container {
     flex: 1;
     display: flex;
     align-items: center;
     justify-content: center;
     margin-bottom: 1.5rem;
-    font-size: 5rem;
-    color: var(--text-header-title);
+    min-height: 180px;
+    border-radius: 1rem;
     position: relative;
+    overflow: hidden;
+    box-shadow: inset 0 0 20px rgba(0,0,0,0.2);
 }
 
+.comic-illustration {
+    font-size: 5.5rem;
+    z-index: 2;
+    filter: drop-shadow(0 10px 15px rgba(0,0,0,0.3));
+    animation: float 4s ease-in-out infinite;
+}
+
+/* Floating Animation */
+@keyframes float {
+    0% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-8px) rotate(3deg); }
+    100% { transform: translateY(0px) rotate(0deg); }
+}
+
+/* Cosmic background effects */
+.cosmic-dust {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image:
+        radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.15) 1px, transparent 1px),
+        radial-gradient(circle at 75% 60%, rgba(255, 255, 255, 0.15) 1px, transparent 1px);
+    background-size: 20px 20px;
+    opacity: 0.5;
+}
+
+/* Speech Bubble in Modern Card Design */
 .comic-text-bubble {
-    background: white;
-    color: #1a1c20;
+    background: rgba(255, 255, 255, 0.95);
+    color: #111318;
     padding: 1.5rem;
-    border-radius: 1.5rem;
-    border: 2px solid #1a1c20;
-    position: relative;
+    border-radius: 1.25rem;
     font-family: 'Be Vietnam Pro', sans-serif;
-    line-height: 1.6;
+    line-height: 1.7;
     font-size: 1.05rem;
-    box-shadow: 4px 4px 0px rgba(0,0,0,0.1);
+    font-weight: 500;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    position: relative;
+    border-left: 5px solid var(--text-sidebar-title);
 }
 
-.comic-text-bubble::after {
-    content: '';
-    position: absolute;
-    bottom: -15px;
-    left: 40px;
-    border-width: 15px 15px 0;
-    border-style: solid;
-    border-color: #1a1c20 transparent;
-    display: block;
-    width: 0;
+html.dark .comic-text-bubble {
+    background: rgba(26, 28, 32, 0.95);
+    color: #e2e2e5;
+    border-left-color: var(--text-sidebar-title);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
 }
 
-.comic-text-bubble::before {
-    content: '';
-    position: absolute;
-    bottom: -11px;
-    left: 42px;
-    border-width: 13px 13px 0;
-    border-style: solid;
-    border-color: white transparent;
-    display: block;
-    width: 0;
-    z-index: 1;
-}
-
+/* Story controls */
 .story-controls {
     display: flex;
     justify-content: space-between;
@@ -113,8 +143,8 @@ html.dark .comic-frame {
 }
 
 .story-btn {
-    width: 50px;
-    height: 50px;
+    width: 48px;
+    height: 48px;
     border-radius: 50%;
     background: var(--bg-sidebar-btn);
     color: var(--text-sidebar-btn);
@@ -122,13 +152,14 @@ html.dark .comic-frame {
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    transition: all 0.2s;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    border: none;
 }
 
 .story-btn:hover {
-    transform: scale(1.1);
-    opacity: 0.9;
+    transform: scale(1.1) translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
 }
 
 .story-btn:active {
@@ -136,26 +167,43 @@ html.dark .comic-frame {
 }
 
 .story-btn.disabled {
-    opacity: 0.3;
+    opacity: 0.2;
     cursor: not-allowed;
     pointer-events: none;
 }
 
 .story-progress {
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     font-weight: 800;
     color: var(--text-sidebar-title);
-    letter-spacing: 0.1rem;
+    letter-spacing: 0.15rem;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
+
+/* Custom Gradient Theme Maps */
+.bg-grad-mountains { background: linear-gradient(135deg, #1f4037, #99f2c8); }
+.bg-grad-panda { background: linear-gradient(135deg, #3a6073, #3a7bd5); }
+.bg-grad-book { background: linear-gradient(135deg, #4b6cb7, #182848); }
+.bg-grad-storm { background: linear-gradient(135deg, #0f2027, #203a43, #2c5364); }
+.bg-grad-magic { background: linear-gradient(135deg, #4e54c8, #8f94fb); }
+.bg-grad-cosmos { background: linear-gradient(135deg, #000428, #004e92); }
+.bg-grad-mirror { background: linear-gradient(135deg, #00c6ff, #0072ff); }
+.bg-grad-leaves { background: linear-gradient(135deg, #11998e, #38ef7d); }
+.bg-grad-battle { background: linear-gradient(135deg, #e65c00, #f9d423); }
+.bg-grad-water { background: linear-gradient(135deg, #2193b0, #6dd5ed); }
+.bg-grad-sprout { background: linear-gradient(135deg, #56ab2f, #a8e063); }
+.bg-grad-bridge { background: linear-gradient(135deg, #e9d362, #333333); }
+.bg-grad-city { background: linear-gradient(135deg, #614385, #516395); }
 
 @media (max-width: 640px) {
     .story-card-wrapper {
-        min-height: 500px;
+        min-height: 520px;
     }
     .comic-frame {
         padding: 1.5rem;
     }
     .comic-text-bubble {
         font-size: 0.95rem;
+        padding: 1.2rem;
     }
 }
