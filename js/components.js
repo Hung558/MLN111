@@ -51,7 +51,7 @@ class TopBar extends HTMLElement {
     connectedCallback() {
         const active = this.getAttribute('active') || '';
         this.innerHTML = `
-    <header class="shadow-sm sticky top-0 z-30 border-b transition-all duration-300">
+    <header class="shadow-sm fixed top-0 left-0 right-0 lg:left-64 z-50 border-b transition-all duration-300">
         <div class="flex justify-between items-center w-full px-6 py-3 max-w-6xl mx-auto">
             <h1 class="text-xl font-extrabold tracking-tight transition-colors duration-300">Triết Học Hệ Số</h1>
             <nav class="hidden md:flex gap-6 items-center">
@@ -68,6 +68,7 @@ class TopBar extends HTMLElement {
             </div>
         </div>
     </header>
+    <div class="h-[60px] w-full invisible shrink-0"></div>
         `;
     }
 }
