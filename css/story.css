@@ -8,22 +8,21 @@
 }
 
 .story-card-wrapper {
-    min-height: 480px;
-    display: flex;
-    align-items: center;
+    display: grid;
+    align-items: start; /* align-items: center có thể làm nháy nhẹ do căn giữa, ưu tiên start hoặc center nếu cùng chiều cao */
     justify-content: center;
     position: relative;
-    overflow: hidden;
 }
 
 .story-slide {
-    position: absolute;
+    grid-area: 1 / 1;
     width: 100%;
-    height: auto; /* Đã sửa: Để thẻ tự co giãn chiều cao thay vì gò bó 100% */
+    height: auto;
     opacity: 0;
     visibility: hidden;
     transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
     transform: scale(0.9) translateY(30px);
+    pointer-events: none; /* Tránh click nhầm vào slide ẩn */
 }
 
 .story-slide.active {
@@ -31,13 +30,12 @@
     visibility: visible;
     transform: scale(1) translateY(0);
     z-index: 10;
-    position: relative; /* Đã sửa: Khi active, chiếm không gian thực tế để đẩy nội dung bên dưới */
+    pointer-events: auto;
 }
 
 .story-slide.exit {
     opacity: 0;
     transform: scale(0.9) translateY(-30px);
-    position: absolute; /* Trả về absolute khi thoát để hiệu ứng mượt */
 }
 
 /* Premium Comic / Tarot Card Frame */
@@ -144,40 +142,10 @@ html.dark .comic-text-bubble {
 /* Story controls */
 .story-controls {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     margin-top: 2rem;
     padding: 0 1rem;
-}
-
-.story-btn {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    background: var(--bg-sidebar-btn);
-    color: var(--text-sidebar-btn);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
-    border: none;
-}
-
-.story-btn:hover {
-    transform: scale(1.1) translateY(-2px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
-}
-
-.story-btn:active {
-    transform: scale(0.95);
-}
-
-.story-btn.disabled {
-    opacity: 0.2;
-    cursor: not-allowed;
-    pointer-events: none;
 }
 
 .story-progress {
@@ -186,6 +154,66 @@ html.dark .comic-text-bubble {
     color: var(--text-sidebar-title);
     letter-spacing: 0.15rem;
     text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Nút mũi tên overlay ở ngoài 2 bên thẻ câu chuyện */
+.story-overlay-nav {
+    position: absolute;
+    top: 50%;
+    left: -70px;
+    right: -70px;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    pointer-events: none;
+    z-index: 20;
+}
+
+.story-overlay-btn {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: #ffffff;
+    color: #1a1c20;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+    border: none;
+    pointer-events: auto;
+    font-size: 24px;
+    font-weight: bold;
+    flex-shrink: 0;
+}
+
+.story-overlay-btn:hover {
+    background: #f0f0f0;
+    transform: scale(1.15);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+}
+
+.story-overlay-btn:active {
+    transform: scale(0.95);
+}
+
+.story-overlay-btn.disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+html.dark .story-overlay-btn {
+    background: #2a2d33;
+    color: #ffffff;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+}
+
+html.dark .story-overlay-btn:hover {
+    background: #3a3d43;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6);
 }
 
 /* Custom Gradient Theme Maps */

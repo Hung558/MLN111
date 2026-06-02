@@ -149,11 +149,12 @@ class StoryReader {
 
         const wrapper = document.createElement('div');
         wrapper.className = 'story-card-wrapper';
+        wrapper.style.position = 'relative';
 
         storyData.forEach((slide, index) => {
             const slideEl = document.createElement('div');
             slideEl.className = `story-slide ${index === 0 ? 'active' : ''}`;
-            
+
             slideEl.innerHTML = `
                 <div class="comic-frame">
                     <div class="comic-illustration-container ${slide.gradient}">
@@ -168,16 +169,23 @@ class StoryReader {
             wrapper.appendChild(slideEl);
         });
 
+        // Thêm overlay nav ở giữa 2 bên thẻ
+        const overlayNav = document.createElement('div');
+        overlayNav.className = 'story-overlay-nav';
+        overlayNav.innerHTML = `
+            <button class="story-overlay-btn overlay-prev-btn" aria-label="Trang trước">
+                <span class="material-symbols-outlined">arrow_back</span>
+            </button>
+            <button class="story-overlay-btn overlay-next-btn" aria-label="Trang tiếp theo">
+                <span class="material-symbols-outlined">arrow_forward</span>
+            </button>
+        `;
+        wrapper.appendChild(overlayNav);
+
         const controls = document.createElement('div');
         controls.className = 'story-controls';
         controls.innerHTML = `
-            <button class="story-btn prev-btn" aria-label="Trang trước">
-                <span class="material-symbols-outlined">arrow_back</span>
-            </button>
             <span class="story-progress"><span class="current-page">1</span> / <span class="total-pages">${this.totalSlides}</span></span>
-            <button class="story-btn next-btn" aria-label="Trang tiếp theo">
-                <span class="material-symbols-outlined">arrow_forward</span>
-            </button>
         `;
 
         this.container.appendChild(wrapper);
@@ -186,11 +194,11 @@ class StoryReader {
     }
 
     attachEventListeners() {
-        const prevBtn = this.container.querySelector('.prev-btn');
-        const nextBtn = this.container.querySelector('.next-btn');
+        const overlayPrevBtn = this.container.querySelector('.overlay-prev-btn');
+        const overlayNextBtn = this.container.querySelector('.overlay-next-btn');
 
-        if (prevBtn) prevBtn.addEventListener('click', () => this.prevSlide());
-        if (nextBtn) nextBtn.addEventListener('click', () => this.nextSlide());
+        if (overlayPrevBtn) overlayPrevBtn.addEventListener('click', () => this.prevSlide());
+        if (overlayNextBtn) overlayNextBtn.addEventListener('click', () => this.nextSlide());
 
         document.addEventListener('keydown', (e) => {
             if (e.key === 'ArrowLeft') this.prevSlide();
@@ -214,16 +222,24 @@ class StoryReader {
         const slides = this.container.querySelectorAll('.story-slide');
         if (!slides[this.currentSlide] || !slides[index]) return;
 
-        slides[this.currentSlide].classList.remove('active');
-        slides[this.currentSlide].classList.add('exit');
+        const oldSlide = slides[this.currentSlide];
+        const newSlide = slides[index];
 
+        // Slide cũ sẽ thoát ra
+        oldSlide.classList.remove('active');
+        oldSlide.classList.add('exit');
+
+        // Slide mới sẽ xuất hiện ngay lập tức (giao thoa mượt mà)
+        newSlide.classList.add('active');
+
+        this.currentSlide = index;
+        this.updateProgress();
+        this.updateButtons();
+
+        // Dọn dẹp class exit sau khi hiệu ứng kết thúc (600ms tương ứng với CSS transition 0.6s)
         setTimeout(() => {
-            slides[this.currentSlide].classList.remove('exit');
-            this.currentSlide = index;
-            slides[this.currentSlide].classList.add('active');
-            this.updateProgress();
-            this.updateButtons();
-        }, 300);
+            oldSlide.classList.remove('exit');
+        }, 600);
     }
 
     updateProgress() {
@@ -234,11 +250,14 @@ class StoryReader {
     }
 
     updateButtons() {
-        const prevBtn = this.container.querySelector('.prev-btn');
-        const nextBtn = this.container.querySelector('.next-btn');
+        const overlayPrevBtn = this.container.querySelector('.overlay-prev-btn');
+        const overlayNextBtn = this.container.querySelector('.overlay-next-btn');
 
-        if (prevBtn) prevBtn.classList.toggle('disabled', this.currentSlide === 0);
-        if (nextBtn) nextBtn.classList.toggle('disabled', this.currentSlide === this.totalSlides - 1);
+        const isFirst = this.currentSlide === 0;
+        const isLast = this.currentSlide === this.totalSlides - 1;
+
+        if (overlayPrevBtn) overlayPrevBtn.classList.toggle('disabled', isFirst);
+        if (overlayNextBtn) overlayNextBtn.classList.toggle('disabled', isLast);
     }
 }
 
